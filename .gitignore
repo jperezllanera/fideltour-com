@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude — user-machine-specific memory (no compartir)
+.claude/projects/

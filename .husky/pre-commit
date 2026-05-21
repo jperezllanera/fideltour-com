@@ -1,0 +1,4 @@
+npm run typecheck
+npm run lint
+npm run brand-guard
+npm run check-images
