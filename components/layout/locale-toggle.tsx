@@ -18,7 +18,7 @@ export function LocaleToggle({ className }: { className?: string }) {
       role="group"
       aria-label="Selector de idioma"
       className={cn(
-        "inline-flex items-center rounded-full border border-border bg-card/60 p-0.5 text-[11px] font-mono uppercase backdrop-blur",
+        "text-eyebrow inline-flex items-center rounded-full border border-border bg-card/60 p-0.5 backdrop-blur",
         className,
       )}
     >

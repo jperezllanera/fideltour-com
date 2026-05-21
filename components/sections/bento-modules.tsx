@@ -6,10 +6,10 @@ export function BentoModulesSection() {
     <section id="plataforma" className="relative">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
         <div className="max-w-2xl">
-          <div className="font-mono text-[11px] uppercase tracking-wider text-brand-navy-deep">
+          <div className="text-eyebrow text-brand-navy-deep">
             La plataforma · 12 módulos
           </div>
-          <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+          <h2 className="mt-3">
             Un CDP que unifica todo el dato del hotel.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -34,18 +34,18 @@ export function BentoModulesSection() {
               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
               <header className="flex items-start justify-between gap-3">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-brand-navy-deep">
+                <span className="text-eyebrow text-brand-navy-deep">
                   {m.label}
                 </span>
                 {m.metric && (
-                  <span className="font-mono text-[11px] text-brand">
+                  <span className="text-2xs text-brand">
                     {m.metric}
                   </span>
                 )}
               </header>
 
               <div className="mt-6">
-                <h3 className="font-sans text-lg font-bold tracking-tight text-foreground">
+                <h3>
                   {m.title}
                 </h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">

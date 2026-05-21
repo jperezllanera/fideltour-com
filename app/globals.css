@@ -76,17 +76,17 @@
   --color-brand-foreground: #ffffff;
   --color-brand-mint: #46deb1;
   --color-brand-mint-foreground: #0c1523;
-  --color-brand-navy: #22304a;
-  --color-brand-navy-deep: #003a5d;
+  --color-brand-navy: #1a4a7e;
+  --color-brand-navy-deep: #0f3560;
   --color-brand-ink: #575756;
 }
 
 :root {
-  /* ─── Paleta corporativa Fideltour (extraída del sitio en producción) ───
+  /* ─── Paleta corporativa Fideltour ────────────────────────────────────
      #25CAD2  cian del logo  → brand
      #46DEB1  verde-menta CTA → brand-mint
-     #22304A  azul oscuro hero → brand-navy
-     #003A5D  azul medio        → brand-navy-deep
+     #1A4A7E  cobalto hero/background → brand-navy (azul vibrante, no slate)
+     #0F3560  cobalto profundo (acentos)  → brand-navy-deep
      #2D60EC → #3CCFDA gradiente firma (brand-gradient)
      #575756  gris del wordmark → brand-ink
      ─────────────────────────────────────────────────────────────────────── */
@@ -94,8 +94,8 @@
   --brand-primary-foreground: oklch(0.99 0 0);
   --brand-mint: oklch(0.84 0.13 168);          /* menta #46DEB1 */
   --brand-mint-foreground: oklch(0.20 0.02 240);
-  --brand-navy: oklch(0.27 0.045 256);         /* navy hero #22304A */
-  --brand-navy-deep: oklch(0.38 0.10 235);     /* azul medio #003A5D */
+  --brand-navy: oklch(0.385 0.105 248);        /* cobalto #1A4A7E */
+  --brand-navy-deep: oklch(0.295 0.095 248);   /* cobalto profundo #0F3560 */
   --brand-ink: oklch(0.50 0.003 85);           /* gris wordmark #575756 */
   --brand-gradient: linear-gradient(135deg, oklch(0.55 0.20 265) 0%, oklch(0.78 0.13 200) 100%);
 
@@ -144,9 +144,9 @@
 
   --radius: 0.875rem;
 
-  /* Instrument Mono cargado vía <link> en layout (no next/font), por eso
-     la variable se declara aquí en lugar de inyectarla next/font. */
-  --font-mono: "Instrument Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Una sola familia tipográfica: Nunito. Cualquier utilidad font-mono
+     restante cae también a Nunito (decisión de marca, ver CLAUDE.md). */
+  --font-mono: var(--font-sans);
 
   --sidebar: var(--neutral-50);
   --sidebar-foreground: var(--neutral-900);
@@ -171,6 +171,33 @@
     @apply bg-background text-foreground;
     position: relative;
     isolation: isolate;
+  }
+  /* ─── Headings base ─────────────────────────────────────────────────────
+     Todos los <h1>/<h2>/<h3>/<h4> heredan tamaño, peso, color y tracking
+     desde aquí. Las secciones NO deben sobreescribir text-3xl/text-4xl/
+     font-bold/tracking-tight: si necesitas otro tamaño usa los modifiers
+     .h-mega o .h-cta. Sobre fondos oscuros, añade text-white. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--brand-navy);
+  }
+  h1 {
+    font-size: clamp(2.25rem, 4vw + 1.25rem, 4rem);     /* 36 → 64 px */
+    line-height: 1.05;
+  }
+  h2 {
+    font-size: clamp(1.875rem, 2.5vw + 1rem, 3rem);     /* 30 → 48 px */
+    line-height: 1.1;
+  }
+  h3 {
+    font-size: clamp(1.25rem, 1vw + 1rem, 1.625rem);    /* 20 → 26 px */
+    line-height: 1.25;
+  }
+  h4 {
+    font-size: 1.125rem;                                /* 18 px */
+    line-height: 1.3;
   }
 
   /* Gradient mesh — capa de profundidad muy sutil, nunca dominante */
@@ -207,6 +234,59 @@
   :focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 2px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────────
+   Tokens de tipografía semántica
+   Toda la web debe componerse con estas clases. Ninguna sección debe
+   declarar text-[XXpx], leading-[X.XX] ni font-[XXX] arbitrarios.
+   ────────────────────────────────────────────────────────────────────── */
+@layer components {
+  /* Heading modifiers para los casos puntuales que rompen la escala base.
+     Se aplican SOBRE un <h1>/<h2> real (mantienen semántica). */
+  .h-mega {
+    font-size: clamp(3rem, 5vw + 1.5rem, 5rem);         /* 48 → 80 px */
+    line-height: 1.02;
+  }
+  .h-cta {
+    font-size: clamp(2rem, 3.5vw + 1rem, 3.5rem);       /* 32 → 56 px */
+    line-height: 1.05;
+  }
+
+  /* Eyebrow — la etiqueta uppercase corta que precede a un heading.
+     Estandariza el text-[11px] uppercase tracking-wider repetido en todas
+     las secciones. */
+  .text-eyebrow {
+    font-size: 0.6875rem;          /* 11 px */
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  .text-eyebrow-sm {
+    font-size: 0.625rem;           /* 10 px */
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  /* Cuerpo en tamaños no estándar (footer, legal, microcopy). */
+  .text-body-sm {
+    font-size: 0.8125rem;          /* 13 px */
+    line-height: 1.65;
+  }
+  .text-body-md {
+    font-size: 0.9375rem;          /* 15 px */
+    line-height: 1.7;
+  }
+
+  /* Microcopy 11px no-uppercase (códigos, métricas en bento, etc.).
+     Para microcopy uppercase usa siempre .text-eyebrow. */
+  .text-2xs {
+    font-size: 0.6875rem;          /* 11 px */
+    line-height: 1;
   }
 }
 
@@ -257,6 +337,20 @@
   @keyframes marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
+  }
+
+  /* Fondo degradado de marca para superficies oscuras (hero + CTA cards).
+     Horizontal: brand-navy a la izquierda, manteniéndose sólido en el
+     primer ~18% para legibilidad del texto, y mezclándose hacia el cian
+     de marca (~65%) a la derecha. Replica el degradado de fideltour.com. */
+  .bg-hero-gradient {
+    background-color: var(--brand-navy);
+    background-image: linear-gradient(
+      90deg,
+      var(--brand-navy) 0%,
+      var(--brand-navy) 18%,
+      color-mix(in oklch, var(--brand) 65%, var(--brand-navy) 35%) 100%
+    );
   }
 
   @media (prefers-reduced-motion: reduce) {

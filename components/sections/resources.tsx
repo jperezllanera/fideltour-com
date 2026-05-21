@@ -17,7 +17,7 @@ const items = [
     title: "Artículos",
     description:
       "Artículos para entender tendencias, datos y buenas prácticas del sector hotelero.",
-    href: "#blog",
+    href: "/blog",
   },
   {
     label: "Vídeos",
@@ -42,10 +42,10 @@ export function ResourcesSection() {
     <section id="recursos" className="relative bg-muted/40">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-24">
         <div className="max-w-2xl">
-          <div className="font-mono text-[11px] uppercase tracking-wider text-brand-navy-deep">
+          <div className="text-eyebrow text-brand-navy-deep">
             Recursos
           </div>
-          <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+          <h2 className="mt-3">
             Recursos para avanzar con criterio
           </h2>
         </div>
@@ -58,7 +58,7 @@ export function ResourcesSection() {
             >
               <CardContent className="flex h-full flex-col gap-5 p-6">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <span className="text-eyebrow text-muted-foreground">
                     {label}
                   </span>
                   <span className="inline-flex size-10 items-center justify-center rounded-full bg-brand-navy text-white transition-colors group-hover:bg-brand">
@@ -66,7 +66,7 @@ export function ResourcesSection() {
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-sans text-lg font-bold tracking-tight text-foreground">
+                  <h3>
                     {title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">

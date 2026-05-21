@@ -5,10 +5,10 @@ export function LoyaltyLadderSection() {
     <section className="relative bg-muted/40">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
         <div className="max-w-3xl">
-          <div className="font-mono text-[11px] uppercase tracking-wider text-brand-navy-deep">
+          <div className="text-eyebrow text-brand-navy-deep">
             Escalera de fidelización
           </div>
-          <h2 className="mt-3 font-sans text-3xl font-bold tracking-tight text-foreground md:text-4xl lg:text-5xl">
+          <h2 className="mt-3">
             12 pasos para escalar del CRM al CDP
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -21,7 +21,7 @@ export function LoyaltyLadderSection() {
         <div className="mt-12 overflow-hidden rounded-2xl bg-background shadow-[var(--shadow-bento)]">
           {/* Desktop / tablet */}
           <Image
-            src="/brand/escalera-fidelizacion-desktop.png"
+            src="/brand/escalera-fidelizacion-desktop.webp"
             alt="Escalera de fidelización Fideltour: 12 pasos del tráfico anónimo a la venta directa recurrente"
             width={2400}
             height={1200}
@@ -29,7 +29,7 @@ export function LoyaltyLadderSection() {
           />
           {/* Mobile */}
           <Image
-            src="/brand/escalera-fidelizacion-mobile.png"
+            src="/brand/escalera-fidelizacion-mobile.webp"
             alt="Escalera de fidelización Fideltour: 12 pasos"
             width={800}
             height={1600}

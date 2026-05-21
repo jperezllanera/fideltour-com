@@ -1,8 +1,9 @@
 import { Nunito } from "next/font/google";
 
 /**
- * Nunito — sans-serif corporativa de Fideltour.
- * Self-hosted automáticamente por `next/font/google` (sin requests a Google).
+ * Nunito — única familia tipográfica de Fideltour (display + cuerpo +
+ * etiquetas). Self-hosted automáticamente por `next/font/google`.
+ * Diferenciación por peso, no por familia. Ver CLAUDE.md › Tipografía.
  */
 export const sans = Nunito({
   subsets: ["latin"],

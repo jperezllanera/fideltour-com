@@ -81,7 +81,7 @@ function DesktopNav() {
             <div className="grid w-[min(92vw,920px)] grid-cols-4 gap-4 p-4">
               {platformGroups.map((group) => (
                 <div key={group.title} className="space-y-2">
-                  <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <div className="text-eyebrow text-muted-foreground">
                     {group.title}
                   </div>
                   <ul className="space-y-1">
@@ -160,7 +160,7 @@ function MobileNav() {
                 <div className="space-y-4 pl-1">
                   {platformGroups.map((group) => (
                     <div key={group.title}>
-                      <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                      <div className="text-eyebrow-sm text-muted-foreground">
                         {group.title}
                       </div>
                       <ul className="mt-1 space-y-1">

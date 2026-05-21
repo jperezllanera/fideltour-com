@@ -33,19 +33,19 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Soluciones",
     links: [
-      { label: "Data Import", href: "#" },
-      { label: "Data Intelligence", href: "#" },
-      { label: "Data Activation", href: "#" },
-      { label: "Multicanalidad", href: "#" },
+      { label: "Casos de éxito", href: "/casos-de-exito" },
+      { label: "Marketplace", href: "/marketplace" },
+      { label: "Recursos", href: "/recursos" },
+      { label: "Blog", href: "/blog" },
     ],
   },
   {
     title: "Empresa",
     links: [
-      { label: "Clientes", href: "#clientes" },
-      { label: "Recursos", href: "#recursos" },
-      { label: "Blog", href: "#blog" },
-      { label: "Marketplace", href: "#marketplace" },
+      { label: "Sobre Fideltour", href: "/fideltour" },
+      { label: "Clientes", href: "/clientes" },
+      { label: "Partners", href: "/partners" },
+      { label: "Contacto", href: "/contacto" },
     ],
   },
 ];
@@ -57,11 +57,32 @@ const countries = [
   { label: "Portugal", code: "PT" },
 ];
 
-const seals = [
-  { src: "/brand/sello-ue-nextgeneration.png", alt: "Cofinanciado por la Unión Europea — NextGenerationEU" },
-  { src: "/brand/sello-enisa.png", alt: "Enisa" },
-  { src: "/brand/sello-pyme-innovadora.png", alt: "PYME Innovadora MEIC" },
-  { src: "/brand/sello-cdti.png", alt: "CDTI" },
+/* Sellos institucionales replicados de fideltour.com (versiones 2026).
+   Cada PNG es ya un compuesto oficial (Gobierno + Ministerio + organismo). */
+const sealsRow1 = [
+  {
+    src: "/brand/sello-ue-nextgeneration.webp",
+    alt: "Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos",
+  },
+  {
+    src: "/brand/sello-enisa.webp",
+    alt: "Gobierno de España · Ministerio de Industria, Comercio y Turismo · ENISA",
+  },
+  {
+    src: "/brand/sello-pyme-innovadora.webp",
+    alt: "Gobierno de España · Ministerio de Ciencia e Innovación · PYME Innovadora",
+  },
+  {
+    src: "/brand/sello-cdti.webp",
+    alt: "Gobierno de España · Ministerio de Ciencia e Innovación · CDTI",
+  },
+];
+
+const sealsRow2 = [
+  {
+    src: "/brand/sello-prtr-generalitat.webp",
+    alt: "Finançat per la Unió Europea NextGenerationEU · Ministerio de Industria y Turismo · Pla de Recuperació, Transformació i Resiliència · Generalitat de Catalunya, Conselleria de Turisme, Cultura i Esports",
+  },
 ];
 
 export function SiteFooter() {
@@ -71,7 +92,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4 space-y-4">
             <Logo />
-            <p className="font-mono text-[13px] leading-relaxed text-muted-foreground max-w-xs">
+            <p className="text-body-sm text-muted-foreground max-w-xs">
               Conecta, conoce y fideliza a tu cliente.
             </p>
             <div className="flex items-center gap-3 pt-2">
@@ -84,7 +105,7 @@ export function SiteFooter() {
 
           {columns.map((col) => (
             <div key={col.title} className="md:col-span-2">
-              <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+              <div className="text-eyebrow text-muted-foreground">
                 {col.title}
               </div>
               <ul className="mt-3 space-y-2">
@@ -103,7 +124,7 @@ export function SiteFooter() {
           ))}
 
           <div className="md:col-span-4">
-            <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+            <div className="text-eyebrow text-muted-foreground">
               Contacto
             </div>
             <ul className="mt-3 grid grid-cols-2 gap-2">
@@ -113,12 +134,12 @@ export function SiteFooter() {
                   className="flex items-center justify-between rounded-md border border-border/70 px-3 py-2 text-sm"
                 >
                   <span>{c.label}</span>
-                  <span className="font-mono text-[11px] text-muted-foreground">{c.code}</span>
+                  <span className="text-2xs text-muted-foreground">{c.code}</span>
                 </li>
               ))}
             </ul>
             <a
-              href="#contacto"
+              href="/contacto"
               className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
             >
               hola@fideltour.com →
@@ -127,30 +148,69 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 border-t border-border/70 pt-8">
-          <div className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+          <div className="text-eyebrow text-muted-foreground">
             Sellos institucionales
           </div>
-          <div className="mt-4 flex flex-wrap items-center gap-x-8 gap-y-4">
-            {seals.map((s) => (
-              <Image
-                key={s.src}
-                src={s.src}
-                alt={s.alt}
-                width={140}
-                height={56}
-                className="h-12 w-auto opacity-90"
-              />
-            ))}
+          <div className="mt-5 space-y-5">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-5 md:gap-x-10">
+              {sealsRow1.map((s) => (
+                <div
+                  key={s.src}
+                  className="flex items-center rounded-lg bg-white/90 px-3 py-2 ring-1 ring-border/60 shadow-[var(--shadow-soft)]"
+                >
+                  <Image
+                    src={s.src}
+                    alt={s.alt}
+                    width={300}
+                    height={70}
+                    className="h-9 w-auto md:h-10"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
+              {sealsRow2.map((s) => (
+                <div
+                  key={s.src}
+                  className="flex items-center rounded-lg bg-white/90 px-3 py-2 ring-1 ring-border/60 shadow-[var(--shadow-soft)]"
+                >
+                  <Image
+                    src={s.src}
+                    alt={s.alt}
+                    width={600}
+                    height={70}
+                    className="h-9 w-auto md:h-10"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+
+        {/* Disclosure obligatoria de la subvención NextGenerationEU. Texto
+            facilitado por el cliente; no modificar sin acuerdo previo. */}
+        <div className="mt-10 rounded-2xl border border-border/70 bg-card p-6 text-body-sm text-muted-foreground md:p-8">
+          <p>
+            Fideltour SL ha desarrollado el proyecto «Investigación Industrial
+            para un CRM B2B». Este proyecto se enmarca en los Proyectos
+            innovadores a través de la cooperación con el objetivo de buscar,
+            implementar y digitalizar soluciones innovadoras sostenibles en los
+            establecimientos turísticos de las Islas Baleares, y ha permitido
+            el desarrollo e implementación de una solución tecnológica
+            avanzada orientada a la digitalización, optimización de datos y
+            mejora de la gestión comercial en el sector turístico. Proyecto
+            financiado por la Unión Europea a través del Mecanismo de
+            Recuperación y Resiliencia – NextGeneration EU. Inversión
+            subvencionada: 140.521,56 €.
+          </p>
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <div>© {new Date().getFullYear()} Fideltour — CDP para hoteles.</div>
           <div className="flex flex-wrap gap-x-5 gap-y-1">
-            <Link href="#aviso-legal" className="hover:text-foreground">Aviso legal</Link>
-            <Link href="#privacidad" className="hover:text-foreground">Privacidad</Link>
-            <Link href="#cookies" className="hover:text-foreground">Cookies</Link>
-            <Link href="#condiciones" className="hover:text-foreground">Condiciones</Link>
+            <Link href="/terminos-y-condiciones" className="hover:text-foreground">Términos y condiciones</Link>
+            <Link href="/politica-de-privacidad" className="hover:text-foreground">Política de privacidad</Link>
+            <Link href="/politica-de-cookies" className="hover:text-foreground">Política de cookies</Link>
           </div>
         </div>
       </div>
