@@ -3,7 +3,7 @@ export function CasosHeroSection() {
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.22]"
+        className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1440px] max-h-[1440px] rounded-full border-[130px] border-brand/[0.22]"
       />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">

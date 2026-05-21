@@ -5,11 +5,8 @@ import { ArrowRight } from "lucide-react";
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
-      {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1400px] max-h-[1400px] rounded-full border-[120px] border-brand/[0.22]"
-      />
+      {/* Aro de marca — 25% ancho, derecha, decorativo encima del mockup */}
+      <div aria-hidden className="hero-decor-ring" />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-16 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-28">
         <div className="md:col-span-6 flex flex-col gap-7">

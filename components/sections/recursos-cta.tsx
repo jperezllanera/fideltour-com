@@ -32,13 +32,10 @@ export function RecursosCtaSection() {
               próximo trimestre.
             </p>
 
-            {/* TODO senior: la web original enlaza a /auditoria-gratuita-hotel/,
-                endpoint que aún no existe en este repo. De momento redirige al
-                formulario de /contacto. */}
             <Button
               size="lg"
               className="mt-auto rounded-full bg-brand text-white hover:bg-brand/90 px-6 gap-1.5"
-              render={<Link href="/contacto" />}
+              render={<Link href="/auditoria-gratuita-hotel" />}
             >
               Solicita tu auditoría gratuita
               <ArrowRight className="size-4" aria-hidden />

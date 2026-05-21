@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { MenuIcon } from "lucide-react";
+import { ArrowRight, MenuIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
@@ -29,7 +29,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { platformGroups, topNavLinks } from "@/lib/content/nav";
+import { platformFeatured, platformGroups, topNavLinks } from "@/lib/content/nav";
 
 export function SiteHeader() {
   return (
@@ -40,26 +40,27 @@ export function SiteHeader() {
         "bg-background/70 backdrop-blur-md supports-backdrop-filter:bg-background/55",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:px-6">
-        <div className="flex items-center gap-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 md:px-6">
+        <div className="flex flex-1 items-center">
           <Logo />
-          <DesktopNav />
         </div>
 
-        <div className="hidden md:flex items-center gap-2">
+        <DesktopNav />
+
+        <div className="hidden md:flex flex-1 items-center justify-end gap-2">
           <LocaleToggle />
           <Button
             variant="outline"
             size="sm"
             className="rounded-full px-4 border-border/80"
-            render={<a href="#demo" />}
+            render={<a href="/contacto/" />}
           >
             DEMO Gratuita
           </Button>
           <Button
             size="sm"
             className="rounded-full bg-brand-navy text-white hover:bg-brand-navy/90 px-4"
-            render={<a href="#login" />}
+            render={<a href="https://sso.fideltour.com/login/" target="_blank" rel="noopener noreferrer" />}
           >
             Iniciar Sesión
           </Button>
@@ -71,41 +72,90 @@ export function SiteHeader() {
   );
 }
 
+function FeaturedCard() {
+  return (
+    <div className="group col-span-3 flex flex-col rounded-lg bg-brand-navy p-5 text-white">
+      <div className="text-eyebrow text-white/70">
+        {platformFeatured.eyebrow}
+      </div>
+      <h3 className="mt-2 text-white">{platformFeatured.title}</h3>
+      <p className="mt-2 text-sm text-white/80">
+        {platformFeatured.description}
+      </p>
+
+      <div className="relative mt-4 aspect-video overflow-hidden rounded-md bg-black/40 ring-1 ring-white/10">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${platformFeatured.youtubeId}?rel=0&modestbranding=1`}
+          title={`${platformFeatured.title} — vídeo`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          className="absolute inset-0 size-full"
+        />
+      </div>
+
+      <NavigationMenuLink
+        render={
+          <Link
+            href={platformFeatured.ctaHref}
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/90"
+          >
+            {platformFeatured.ctaLabel}
+            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        }
+      />
+    </div>
+  );
+}
+
 function DesktopNav() {
   return (
-    <NavigationMenu className="hidden lg:flex">
+    <NavigationMenu className="hidden lg:flex" fullBleed>
       <NavigationMenuList className="gap-1">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Plataforma</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid w-[min(92vw,920px)] grid-cols-4 gap-4 p-4">
-              {platformGroups.map((group) => (
-                <div key={group.title} className="space-y-2">
-                  <div className="text-eyebrow text-muted-foreground">
-                    {group.title}
+            <div className="grid w-[min(96vw,1320px)] grid-cols-12 gap-6 p-6">
+              <FeaturedCard />
+              <div className="col-span-9 grid grid-cols-4 gap-6">
+                {platformGroups.map((group) => (
+                  <div key={group.title} className="flex flex-col">
+                    <div className="text-sm font-bold text-brand-navy">
+                      {group.title}
+                    </div>
+                    {group.description && (
+                      <p className="mt-1.5 text-xs text-muted-foreground">
+                        {group.description}
+                      </p>
+                    )}
+                    <ul className="mt-4 space-y-3">
+                      {group.items.map((item) => (
+                        <li key={item.label}>
+                          <NavigationMenuLink
+                            render={
+                              <Link
+                                href={item.href}
+                                className="group/item flex-col items-start gap-0 transition-colors"
+                              >
+                                <span className="text-sm font-medium text-foreground/90 transition-colors group-hover/item:text-primary">
+                                  {item.label}
+                                </span>
+                                {item.description && (
+                                  <span className="mt-0.5 block text-xs text-muted-foreground">
+                                    {item.description}
+                                  </span>
+                                )}
+                              </Link>
+                            }
+                          />
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-1">
-                    {group.items.map((item) => (
-                      <li key={item.label}>
-                        <NavigationMenuLink
-                          render={
-                            <Link href={item.href} className="block">
-                              <div className="text-sm font-medium text-foreground">
-                                {item.label}
-                              </div>
-                              {item.description && (
-                                <div className="mt-0.5 text-xs text-muted-foreground">
-                                  {item.description}
-                                </div>
-                              )}
-                            </Link>
-                          }
-                        />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -198,14 +248,14 @@ function MobileNav() {
             variant="outline"
             size="sm"
             className="justify-center rounded-full"
-            render={<a href="#demo" />}
+            render={<a href="/contacto/" />}
           >
             DEMO Gratuita
           </Button>
           <Button
             size="sm"
             className="justify-center rounded-full bg-brand-navy text-white hover:bg-brand-navy/90"
-            render={<a href="#login" />}
+            render={<a href="https://sso.fideltour.com/login/" target="_blank" rel="noopener noreferrer" />}
           >
             Iniciar Sesión
           </Button>

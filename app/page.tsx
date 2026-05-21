@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { HeroSection } from "@/components/sections/hero";
+import { AwardsStrip } from "@/components/sections/awards-strip";
 import { CrmToCdpSection } from "@/components/sections/crm-to-cdp";
 import { LoyaltyLadderSection } from "@/components/sections/loyalty-ladder";
 import { TestimonialsSection } from "@/components/sections/testimonials";
@@ -40,6 +41,7 @@ export default function HomePage() {
         description={HOME_DESCRIPTION}
       />
       <HeroSection />
+      <AwardsStrip />
       <CrmToCdpSection />
       <LoyaltyLadderSection />
       <TestimonialsSection />

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { recursosEbooks } from "@/lib/content/recursos";
 
 import { LeadMagnetTrigger } from "./recursos-lead-magnet";
@@ -21,7 +23,7 @@ export function RecursosEbooksSection() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {recursosEbooks.map(
-            ({ slug, eyebrow, title, description, pages }, i) => (
+            ({ slug, eyebrow, title, description, pages, cover, coverAlt }, i) => (
               <article
                 key={slug}
                 style={{ ["--i" as never]: i + 1 }}
@@ -32,16 +34,26 @@ export function RecursosEbooksSection() {
                   className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
 
-                <div className="relative isolate flex h-44 items-end overflow-hidden bg-hero-gradient p-5 text-white">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -right-12 -top-12 size-[220px] rounded-full border-[36px] border-brand/25"
+                {/* Portada del ebook como cabecera del card. Las artes están
+                    en /public/ebooks/ con nombres SEO-friendly; senior puede
+                    sustituirlas sin cambiar el código. */}
+                <div className="relative isolate aspect-[16/10] overflow-hidden bg-brand-navy">
+                  <Image
+                    src={cover}
+                    alt={coverAlt}
+                    fill
+                    sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="relative flex w-full items-end justify-between gap-3">
-                    <span className="text-eyebrow rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-white/85 backdrop-blur">
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/50 via-brand-navy-deep/10 to-transparent"
+                  />
+                  <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
+                    <span className="text-eyebrow rounded-full border border-white/15 bg-brand-navy-deep/70 px-2.5 py-1 text-white backdrop-blur">
                       {eyebrow}
                     </span>
-                    <span className="text-2xs text-white/70">
+                    <span className="text-2xs rounded-full bg-white/15 px-2.5 py-1 text-white backdrop-blur">
                       {pages} páginas
                     </span>
                   </div>

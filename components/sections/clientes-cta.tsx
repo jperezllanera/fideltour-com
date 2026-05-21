@@ -30,11 +30,10 @@ export function ClientesCtaSection() {
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              {/* TODO senior: enchufar formulario / endpoint real de auditoría */}
               <Button
                 size="lg"
                 className="rounded-full bg-brand text-white hover:bg-brand/90 px-6 gap-1.5"
-                render={<a href="/contacto" />}
+                render={<a href="/auditoria-gratuita-hotel" />}
               >
                 Solicita una auditoría GRATIS
                 <ArrowRight className="size-4" />

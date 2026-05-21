@@ -10,11 +10,9 @@ import {
 /* ──────────────────────────────────────────────────────────────────────
    Hub de vídeos — /recursos/nuestros-videos-crm-hotelero
    ----------------------------------------------------------------------
-   Réplica de la página actual de fideltour.com. La web original carga
-   los vídeos dinámicamente (sin URLs públicas de detalle), así que aquí
-   los referenciamos por slug + título y dejamos el href apuntando al
-   propio hub. Cuando senior decida la stack de hosting de vídeo
-   (YouTube no listado, Spotify, etc.), basta con sustituir `href`.
+   Catálogo migrado desde fideltour.com (legacy WordPress). Cada vídeo se
+   reproduce como embed de YouTube vía <YouTubePlayer> con click-to-play
+   (sin cargar el iframe hasta la interacción).
    ────────────────────────────────────────────────────────────────────── */
 
 export type VideoItem = {
@@ -22,7 +20,7 @@ export type VideoItem = {
   title: string;
   description?: string;
   duration?: string;
-  href: string;
+  youtubeId: string;
 };
 
 export type VideoSection = {
@@ -35,25 +33,23 @@ export type VideoSection = {
   videos: VideoItem[];
 };
 
-const HUB_HREF = "/recursos/nuestros-videos-crm-hotelero";
-
 export const videoSections: VideoSection[] = [
   {
     id: "esencial",
     eyebrow: "Empieza por lo esencial",
     title: "Empieza por lo esencial",
     description:
-      "Una explicación clara de cómo se articula la herramienta y cómo se aplica en el día a día del hotel.",
+      "Una explicación clara de cómo se articula el CDP para hoteles de Fideltour y cómo encaja en el día a día del equipo.",
     icon: GraduationCap,
     layout: "feature",
     videos: [
       {
-        slug: "introduccion-fideltour",
-        title: "Introducción a Fideltour",
+        slug: "fideltour-crm-venta-directa",
+        title: "Fideltour · Tu venta más directa",
         description:
-          "Cómo encaja el CDP para hoteles en el día a día del equipo de marketing, recepción y dirección.",
-        duration: "9 min",
-        href: HUB_HREF,
+          "Cómo el CDP para hoteles ordena el dato del huésped y se traduce en venta directa, menos dependencia de OTAs y campañas con criterio hotelero.",
+        duration: "2 min",
+        youtubeId: "za_cEzVxsrs",
       },
     ],
   },
@@ -67,68 +63,60 @@ export const videoSections: VideoSection[] = [
     layout: "grid-4",
     videos: [
       {
-        slug: "modulo-crm",
-        title: "CRM",
-        description:
-          "El núcleo: perfil unificado del huésped y datos accionables por cualquier canal.",
-        duration: "6 min",
-        href: HUB_HREF,
-      },
-      {
         slug: "modulo-campaigns",
-        title: "Campaigns",
+        title: "Módulo Campaigns",
         description:
           "Email, SMS y push con criterio hotelero: segmentación viva, no listas estáticas.",
-        duration: "5 min",
-        href: HUB_HREF,
+        duration: "2 min",
+        youtubeId: "w2RGPDvH-Mk",
       },
       {
         slug: "modulo-automation",
-        title: "Automation",
+        title: "Módulo Automation",
         description:
           "Flujos pre, durante y post estancia que respetan el ritmo del huésped.",
-        duration: "6 min",
-        href: HUB_HREF,
+        duration: "1 min",
+        youtubeId: "vUmxkWGFO68",
       },
       {
         slug: "modulo-landings",
-        title: "Landings",
+        title: "Módulo Landings",
         description:
           "Páginas y formularios para captar dato propio sin depender de IT.",
-        duration: "4 min",
-        href: HUB_HREF,
+        duration: "1 min",
+        youtubeId: "o_rVRxearTs",
       },
       {
         slug: "modulo-reviews",
-        title: "Reviews",
+        title: "Módulo Reviews",
         description:
           "Reputación online como input del CDP, no como métrica suelta.",
-        duration: "5 min",
-        href: HUB_HREF,
+        duration: "2 min",
+        youtubeId: "cORqcll_FTk",
       },
       {
         slug: "modulo-rewards",
-        title: "Rewards",
+        title: "Módulo Rewards",
         description:
           "Programa de fidelización con escalera por valor real del huésped.",
-        duration: "5 min",
-        href: HUB_HREF,
+        duration: "2 min",
+        youtubeId: "HmcuccyVZCE",
       },
       {
         slug: "modulo-social",
-        title: "Social",
+        title: "Módulo Social",
         description:
           "Audiencias y campañas sincronizadas con Meta, Google y TTD.",
-        duration: "5 min",
-        href: HUB_HREF,
+        duration: "1 min",
+        youtubeId: "oQmxnNu5fWw",
       },
       {
         slug: "modulo-connect",
-        title: "Connect",
+        title: "Módulo Connect",
         description:
           "Integraciones con PMS, motor de reservas, portal cautivo y BI.",
-        duration: "6 min",
-        href: HUB_HREF,
+        duration: "2 min",
+        youtubeId: "6FdvLo-xBWI",
       },
     ],
   },
@@ -146,72 +134,80 @@ export const videoSections: VideoSection[] = [
         title: "FidelTalks 1×01 · Abrirse paso entre las OTAs",
         description:
           "Cómo construir venta directa en un mercado dominado por la intermediación.",
-        duration: "26 min",
-        href: "/blog/fideltalks/fideltalks-episodio1-abrirse-paso-entre-las-otas/",
+        duration: "32 min",
+        youtubeId: "oM_HbYJAA14",
       },
       {
         slug: "fideltalks-1x02-embajadores-marca",
-        title: "FidelTalks 1×02 · Embajadores de marca",
+        title: "FidelTalks 1×02 · Fidelizar y crear embajadores de marca",
         description:
           "Convertir huéspedes recurrentes en prescriptores que mueven la ocupación.",
-        duration: "24 min",
-        href: "/blog/fideltalks/fideltalks-episodio2-crear-embajadores-de-marca-para-tu-hotel/",
+        duration: "33 min",
+        youtubeId: "-XxK1UOxLec",
       },
       {
         slug: "fideltalks-1x03-email-marketing",
-        title: "FidelTalks 1×03 · Email marketing para hoteles",
+        title: "FidelTalks 1×03 · Email marketing hotelero",
         description:
-          "Más allá del newsletter: ciclos de vida del huésped que sí venden.",
-        duration: "22 min",
-        href: "/blog/fideltalks/fideltalks-episodio3-email-marketing-para-hoteles/",
+          "Conocer, enamorar y fidelizar al huésped con ciclos de vida que sí venden.",
+        duration: "30 min",
+        youtubeId: "09VNvMKGJXo",
       },
       {
         slug: "fideltalks-1x04-tendencias",
-        title: "FidelTalks 1×04 · Tendencias de marketing hotelero",
+        title: "FidelTalks 1×04 · Tendencias en marketing hotelero",
         description:
           "Qué se cuece en el sector y qué es ruido pasajero, contado por quien lo vive.",
-        duration: "25 min",
-        href: "/blog/fideltalks/fideltalks-episodio4-tendencias-marketing-hotelero/",
+        duration: "22 min",
+        youtubeId: "y53iOVk2uBw",
       },
       {
-        slug: "fideltalks-1x05-inbound",
-        title: "FidelTalks 1×05 · Inbound marketing en hotelería",
+        slug: "fideltalks-1x04-ia-fidelizacion",
+        title: "FidelTalks 1×04 · IA y fidelización hotelera",
         description:
-          "Atraer al huésped antes de la reserva con contenido que sí responde a su búsqueda real.",
-        duration: "23 min",
-        href: "/blog/fideltalks/fideltalks-episodio5-inbound-marketing-para-hoteles/",
+          "Dónde la IA suma valor real en la relación con el huésped y dónde es ruido de marketing.",
+        duration: "25 min",
+        youtubeId: "cvv_Q5Gw5yI",
       },
       {
-        slug: "fideltalks-1x06-empresa-tecnologica",
-        title: "FidelTalks 1×06 · Crear empresa tecnológica hotelera",
+        slug: "fideltalks-1x05-del-valor-a-la-venta",
+        title: "FidelTalks 1×05 · Del valor a la venta",
+        description:
+          "Cómo trasladar la propuesta de valor del hotel a tarifas que el huésped percibe como justas.",
+        duration: "26 min",
+        youtubeId: "1dv7zK5VAJI",
+      },
+      {
+        slug: "fideltalks-1x05-que-enamora-al-huesped",
+        title: "FidelTalks 1×05 · Qué enamora a tu huésped",
+        description:
+          "Los detalles y momentos que un hotel puede activar para convertir estancia en relación.",
+        duration: "23 min",
+        youtubeId: "Ix5nsiskKf4",
+      },
+      {
+        slug: "fideltalks-1x06-empresa-tecnologica-hotelera",
+        title: "FidelTalks 1×06 · Crear una empresa tecnológica hotelera",
         description:
           "El detrás de Fideltour: producto, equipo y aprendizajes de los primeros años.",
-        duration: "28 min",
-        href: "/blog/fideltalks/fideltalks-1x06-como-crear-empresa-tecnologica-hotelera/",
-      },
-      {
-        slug: "fideltalks-rebeca-cool-hotels",
-        title: "FidelTalks · Rebeca Artidiello (Cool Hotels)",
-        description:
-          "Cómo una marca boutique convierte el dato propio en experiencias memorables.",
         duration: "27 min",
-        href: "/blog/fideltalks/fideltalks-rebeca-artidiello-cool-hotels/",
+        youtubeId: "oh5O7OtV1sw",
       },
       {
-        slug: "fideltalks-refineria",
-        title: "FidelTalks · Refinería · Cómo mejorar la venta directa",
+        slug: "fideltalks-2x01-consultoria-real",
+        title: "FidelTalks 2×01 · Consultoría real en hoteles",
         description:
-          "Conversación con la agencia Refinería sobre métricas que sí mueven la cuenta.",
-        duration: "24 min",
-        href: "/blog/fideltalks/fideltalks-refineria-como-mejorar-la-venta-directa/",
+          "No hay digitalización sin humanos: cómo se acompaña al hotel cuando el dato cambia su operativa.",
+        duration: "29 min",
+        youtubeId: "wGOW7qL3QaY",
       },
       {
-        slug: "fideltalks-videopodcast",
-        title: "FidelTalks · El videopodcast de Fideltour",
+        slug: "fideltalks-2x02-90-venta-directa",
+        title: "FidelTalks 2×02 · Hasta un 90% de venta directa",
         description:
-          "Episodio especial: por qué existe FidelTalks y a quién va dirigido.",
-        duration: "18 min",
-        href: "/blog/fideltalks/fideltalks-videopodcast-fideltour/",
+          "Cómo un hotel independiente puede acercarse al 90% de venta directa con dato propio y marca fuerte.",
+        duration: "31 min",
+        youtubeId: "a_q5HsYrxYM",
       },
     ],
   },
@@ -222,51 +218,89 @@ export const videoSections: VideoSection[] = [
     description:
       "Reflexiones sobre datos, tecnología y el futuro de la fidelización hotelera.",
     icon: LineChart,
-    layout: "grid-3",
+    layout: "grid-2",
     videos: [
       {
-        slug: "tendencias-sector-hotelero",
-        title: "Tendencias del sector hotelero",
+        slug: "tendencias-tecnologicas-2025",
+        title: "Tendencias tecnológicas en 2025 · Updating Hotelero",
         description:
-          "Los movimientos que están redefiniendo el próximo ciclo del marketing hotelero.",
-        duration: "8 min",
-        href: HUB_HREF,
+          "Javier Pérez-Llanera repasa qué tecnologías están moviendo de verdad la cuenta del hotel en 2025.",
+        duration: "3 min",
+        youtubeId: "pLhEvnfjBKY",
       },
       {
-        slug: "influencia-crm",
-        title: "La influencia del CRM en la cuenta de explotación",
+        slug: "crm-experiencia-cliente-power",
+        title: "Cómo el CRM influye en la experiencia del cliente",
         description:
-          "Por qué el CRM hotelero pasa de ser herramienta táctica a palanca de margen.",
-        duration: "7 min",
-        href: HUB_HREF,
+          "Sesión con The Power Business School sobre el paso del CRM al CDP en el sector hotelero.",
+        duration: "14 min",
+        youtubeId: "a65w6nT2xpw",
       },
       {
-        slug: "uso-de-tendencias",
-        title: "Cómo usar las tendencias sin perseguir el ruido",
+        slug: "tendencias-compra-fidelizacion",
+        title: "Tendencias de compra para estrategias de fidelización",
         description:
-          "Marco para decidir qué tendencia se incorpora y cuál se ignora con criterio.",
-        duration: "6 min",
-        href: HUB_HREF,
+          "Marco para decidir qué tendencia se incorpora al journey del huésped y cuál se ignora con criterio.",
+        duration: "5 min",
+        youtubeId: "6cBb0KeiNfM",
       },
       {
-        slug: "evolucion-del-dato",
-        title: "La evolución del dato hotelero",
+        slug: "evolucion-dato-turistico",
+        title: "Evolución del dato en el sector turístico",
         description:
-          "Del Excel suelto al CDP: por qué el dato propio define quién manda en la venta.",
-        duration: "9 min",
-        href: HUB_HREF,
-      },
-      {
-        slug: "datos-guest-journey",
-        title: "Mejorar el dato a lo largo del guest journey",
-        description:
-          "Las 7 etapas del journey y qué dato útil se puede capturar en cada una.",
-        duration: "10 min",
-        href: HUB_HREF,
+          "Del Excel suelto al CDP: por qué el dato propio define quién manda en la venta directa.",
+        duration: "14 min",
+        youtubeId: "hdjBvvIJ8Bo",
       },
     ],
   },
 ];
 
-export const videoHubHref = HUB_HREF;
+export const videoHubHref = "/recursos/nuestros-videos-crm-hotelero";
 export const videoFallbackIcon: LucideIcon = Compass;
+
+/* ──────────────────────────────────────────────────────────────────────
+   Highlights — selección para el preview de /recursos
+   ----------------------------------------------------------------------
+   /recursos consume un puñado de vídeos representativos del catálogo
+   real (no una lista paralela inventada). Definimos aquí la selección
+   por slug + categoría legible para la pill, y resolvemos el VideoItem
+   completo desde videoSections.
+   ────────────────────────────────────────────────────────────────────── */
+
+export type VideoHighlight = VideoItem & {
+  category: string;
+  sectionId: string;
+  href: string;
+};
+
+const HIGHLIGHT_SELECTION: { slug: string; category: string }[] = [
+  { slug: "fideltour-crm-venta-directa", category: "Esencial" },
+  { slug: "modulo-automation", category: "Módulo" },
+  { slug: "fideltalks-1x01-abrirse-paso-otas", category: "FidelTalks" },
+  { slug: "fideltalks-2x02-90-venta-directa", category: "FidelTalks" },
+  { slug: "tendencias-tecnologicas-2025", category: "Visión" },
+  { slug: "evolucion-dato-turistico", category: "Visión" },
+];
+
+export function getHighlightedVideos(): VideoHighlight[] {
+  const hubAnchor = (sectionId: string) =>
+    `${videoHubHref}/#${sectionId}`;
+
+  const result: VideoHighlight[] = [];
+  for (const { slug, category } of HIGHLIGHT_SELECTION) {
+    for (const section of videoSections) {
+      const video = section.videos.find((v) => v.slug === slug);
+      if (video) {
+        result.push({
+          ...video,
+          category,
+          sectionId: section.id,
+          href: hubAnchor(section.id),
+        });
+        break;
+      }
+    }
+  }
+  return result;
+}

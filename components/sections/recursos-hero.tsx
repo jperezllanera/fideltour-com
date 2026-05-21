@@ -6,7 +6,7 @@ export function RecursosHeroSection() {
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-[18%] top-1/2 -translate-y-1/2 size-[110vw] max-w-[1100px] max-h-[1100px] rounded-full border-[100px] border-brand/[0.22]"
+        className="pointer-events-none absolute -left-[18%] top-1/2 -translate-y-1/2 size-[132vw] max-w-[1320px] max-h-[1320px] rounded-full border-[120px] border-brand/[0.22]"
       />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">

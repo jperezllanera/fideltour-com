@@ -58,30 +58,34 @@ const countries = [
 ];
 
 /* Sellos institucionales replicados de fideltour.com (versiones 2026).
-   Cada PNG es ya un compuesto oficial (Gobierno + Ministerio + organismo). */
-const sealsRow1 = [
+   Cada PNG es ya un compuesto oficial (Gobierno + Ministerio + organismo).
+   `width` natural de cada compuesto: 300 para la mayoría, 600 para el PRTR
+   (es el doble de largo). El height visual se normaliza con la clase. */
+const seals = [
   {
     src: "/brand/sello-ue-nextgeneration.webp",
     alt: "Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos",
+    width: 300,
   },
   {
     src: "/brand/sello-enisa.webp",
     alt: "Gobierno de España · Ministerio de Industria, Comercio y Turismo · ENISA",
+    width: 300,
   },
   {
     src: "/brand/sello-pyme-innovadora.webp",
     alt: "Gobierno de España · Ministerio de Ciencia e Innovación · PYME Innovadora",
+    width: 300,
   },
   {
     src: "/brand/sello-cdti.webp",
     alt: "Gobierno de España · Ministerio de Ciencia e Innovación · CDTI",
+    width: 300,
   },
-];
-
-const sealsRow2 = [
   {
     src: "/brand/sello-prtr-generalitat.webp",
     alt: "Finançat per la Unió Europea NextGenerationEU · Ministerio de Industria y Turismo · Pla de Recuperació, Transformació i Resiliència · Generalitat de Catalunya, Conselleria de Turisme, Cultura i Esports",
+    width: 600,
   },
 ];
 
@@ -151,59 +155,41 @@ export function SiteFooter() {
           <div className="text-eyebrow text-muted-foreground">
             Sellos institucionales
           </div>
-          <div className="mt-5 space-y-5">
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-5 md:gap-x-10">
-              {sealsRow1.map((s) => (
-                <div
-                  key={s.src}
-                  className="flex items-center rounded-lg bg-white/90 px-3 py-2 ring-1 ring-border/60 shadow-[var(--shadow-soft)]"
-                >
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    width={300}
-                    height={70}
-                    className="h-9 w-auto md:h-10"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
-              {sealsRow2.map((s) => (
-                <div
-                  key={s.src}
-                  className="flex items-center rounded-lg bg-white/90 px-3 py-2 ring-1 ring-border/60 shadow-[var(--shadow-soft)]"
-                >
-                  <Image
-                    src={s.src}
-                    alt={s.alt}
-                    width={600}
-                    height={70}
-                    className="h-9 w-auto md:h-10"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-5 md:flex-nowrap md:justify-between md:gap-x-3">
+            {seals.map((s) => (
+              <div
+                key={s.src}
+                className="flex shrink items-center rounded-lg bg-white/90 px-3 py-2 ring-1 ring-border/60 shadow-[var(--shadow-soft)]"
+              >
+                <Image
+                  src={s.src}
+                  alt={s.alt}
+                  width={s.width}
+                  height={70}
+                  className="h-8 w-auto md:h-9 lg:h-10"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Disclosure obligatoria de la subvención NextGenerationEU. Texto
-            facilitado por el cliente; no modificar sin acuerdo previo. */}
-        <div className="mt-10 rounded-2xl border border-border/70 bg-card p-6 text-body-sm text-muted-foreground md:p-8">
-          <p>
-            Fideltour SL ha desarrollado el proyecto «Investigación Industrial
-            para un CRM B2B». Este proyecto se enmarca en los Proyectos
-            innovadores a través de la cooperación con el objetivo de buscar,
-            implementar y digitalizar soluciones innovadoras sostenibles en los
-            establecimientos turísticos de las Islas Baleares, y ha permitido
-            el desarrollo e implementación de una solución tecnológica
-            avanzada orientada a la digitalización, optimización de datos y
-            mejora de la gestión comercial en el sector turístico. Proyecto
-            financiado por la Unión Europea a través del Mecanismo de
-            Recuperación y Resiliencia – NextGeneration EU. Inversión
-            subvencionada: 140.521,56 €.
-          </p>
-        </div>
+            facilitado por el cliente; no modificar sin acuerdo previo.
+            Visual contenido: tamaño microcopy y opacidad reducida para que
+            no compita con los sellos ni con el resto del footer. */}
+        <p className="mt-8 text-3xs text-muted-foreground/70">
+          Fideltour SL ha desarrollado el proyecto «Investigación Industrial
+          para un CRM B2B». Este proyecto se enmarca en los Proyectos
+          innovadores a través de la cooperación con el objetivo de buscar,
+          implementar y digitalizar soluciones innovadoras sostenibles en los
+          establecimientos turísticos de las Islas Baleares, y ha permitido
+          el desarrollo e implementación de una solución tecnológica
+          avanzada orientada a la digitalización, optimización de datos y
+          mejora de la gestión comercial en el sector turístico. Proyecto
+          financiado por la Unión Europea a través del Mecanismo de
+          Recuperación y Resiliencia – NextGeneration EU. Inversión
+          subvencionada: 140.521,56 €.
+        </p>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-border/70 pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
           <div>© {new Date().getFullYear()} Fideltour — CDP para hoteles.</div>

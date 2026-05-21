@@ -34,13 +34,10 @@ export function MarketplaceCtaSection() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-              {/* TODO senior: la web original enlaza a /auditoria-gratuita-hotel/,
-                  endpoint que aún no existe en este repo. De momento redirige al
-                  formulario de /contacto. */}
               <Button
                 size="lg"
                 className="rounded-full bg-brand text-white hover:bg-brand/90 px-6 gap-1.5"
-                render={<a href="/contacto" />}
+                render={<a href="/auditoria-gratuita-hotel" />}
               >
                 Auditoría GRATIS
                 <ArrowRight className="size-4" />

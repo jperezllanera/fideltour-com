@@ -4,7 +4,7 @@ export function ContactoHeroSection() {
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -left-[15%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1100px] max-h-[1100px] rounded-full border-[104px] border-brand/[0.22]"
+        className="pointer-events-none absolute -left-[15%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1320px] max-h-[1320px] rounded-full border-[125px] border-brand/[0.22]"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-6 md:pt-24 md:pb-24">
