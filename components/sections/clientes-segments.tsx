@@ -1,0 +1,101 @@
+import { cn } from "@/lib/utils";
+import { clienteSegments } from "@/lib/content/clientes";
+
+export function ClientesSegmentsSection() {
+  return (
+    <section id="segmentos" className="relative bg-background">
+      <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
+        <div className="max-w-2xl">
+          <div className="text-eyebrow text-brand-navy-deep">
+            Segmentos · 04
+          </div>
+          <h2 className="mt-3">
+            Una plataforma. Cuatro realidades hoteleras.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+            Cada hotelero opera en un contexto distinto. Fideltour se adapta al
+            tamaño, complejidad y madurez de tu organización — sin perder la
+            misma fuente de verdad por huésped.
+          </p>
+        </div>
+
+        <div className="mt-14 flex flex-col gap-8 md:gap-12">
+          {clienteSegments.map(({ id, label, title, description, icon: Icon, customers }, i) => (
+            <article
+              key={id}
+              id={id}
+              style={{ ["--i" as never]: i }}
+              className={cn(
+                "bento-cell group relative overflow-hidden rounded-2xl border border-border/70 bg-card",
+                "shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-bento)] transition-shadow duration-300",
+              )}
+            >
+              <div
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+              />
+
+              <div className="grid gap-8 p-6 md:grid-cols-12 md:gap-10 md:p-10">
+                <header className="md:col-span-5 lg:col-span-4 flex flex-col gap-5">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex size-11 items-center justify-center rounded-full bg-brand-navy text-white transition-colors group-hover:bg-brand">
+                      <Icon className="size-5" />
+                    </span>
+                    <span className="text-eyebrow text-brand-navy-deep">
+                      {label}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3>
+                      {title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                      {description}
+                    </p>
+                  </div>
+                </header>
+
+                <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-4">
+                  {customers.length > 0 ? (
+                    <>
+                      <div className="text-eyebrow text-muted-foreground">
+                        Algunos clientes
+                      </div>
+                      {/*
+                        TODO senior: sustituir las "logo cards" tipográficas por
+                        los SVG/PNG reales de cada cliente cuando lleguen los
+                        assets (la web actual los lista pero no tenemos sus
+                        logotipos en el repo).
+                      */}
+                      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                        {customers.map((name) => (
+                          <li
+                            key={name}
+                            className="flex h-20 items-center justify-center rounded-xl border border-border/60 bg-background px-3 text-center text-sm font-semibold text-brand-navy shadow-[var(--shadow-soft)]"
+                          >
+                            {name}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <div className="flex h-full min-h-[140px] flex-col justify-center rounded-xl border border-dashed border-border/70 bg-muted/30 p-6">
+                      <div className="text-eyebrow text-brand-navy-deep">
+                        Operaciones globales
+                      </div>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
+                        Gobernanza de datos, orquestación cross-marca y modelos
+                        de identidad únicos para portfolios internacionales.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

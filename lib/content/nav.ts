@@ -48,9 +48,9 @@ export const platformGroups: {
 ];
 
 export const topNavLinks: NavLink[] = [
-  { label: "Clientes", href: "#clientes" },
-  { label: "Recursos", href: "#recursos" },
-  { label: "Marketplace", href: "#marketplace" },
-  { label: "Contacto", href: "#contacto" },
-  { label: "Blog", href: "#blog" },
+  { label: "Clientes", href: "/clientes" },
+  { label: "Recursos", href: "/recursos" },
+  { label: "Marketplace", href: "/marketplace" },
+  { label: "Contacto", href: "/contacto" },
+  { label: "Blog", href: "/blog" },
 ];
