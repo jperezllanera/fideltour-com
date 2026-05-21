@@ -185,20 +185,75 @@ export function getNonFeaturedPosts(): BlogPost[] {
   return getAllPosts().filter((p) => p !== featured);
 }
 
+/** Tamaño de página por defecto en la landing del blog y categorías. */
+export const POSTS_PER_PAGE = 24;
+
+/**
+ * Aplica paginación a una lista ya ordenada. Devuelve la lista de la página
+ * solicitada junto al total, clampando `page` al rango [1, totalPages].
+ */
+export function paginatePosts<T>(
+  items: T[],
+  page: number,
+  pageSize: number = POSTS_PER_PAGE,
+): { page: number; totalPages: number; pageItems: T[] } {
+  const totalPages = Math.max(1, Math.ceil(items.length / pageSize));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * pageSize;
+  return {
+    page: safePage,
+    totalPages,
+    pageItems: items.slice(start, start + pageSize),
+  };
+}
+
 export function getPostsByCategory(
   category: BlogCategorySlug,
 ): BlogPost[] {
   return getAllPosts().filter((post) => post.category === category);
 }
 
+/**
+ * Posts relacionados con scoring híbrido:
+ *  - +3 por cada tag compartido (más específico, pesa más).
+ *  - +1 por estar en la misma categoría.
+ *  - Empate: el más reciente gana.
+ *
+ * Si nada puntúa (post sin tags + único en su categoría), cae a los posts
+ * más recientes para que el bloque "Sigue leyendo" nunca quede vacío.
+ */
 export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
-  return getAllPosts()
-    .filter(
-      (p) =>
-        p.category === post.category &&
-        !(p.slug === post.slug && p.category === post.category),
-    )
-    .slice(0, limit);
+  const all = getAllPosts();
+  const ownTags = new Set((post.tags ?? []).map((t) => t.toLowerCase()));
+
+  const scored = all
+    .filter((p) => !(p.slug === post.slug && p.category === post.category))
+    .map((p) => {
+      const pTags = (p.tags ?? []).map((t) => t.toLowerCase());
+      let score = 0;
+      for (const t of pTags) if (ownTags.has(t)) score += 3;
+      if (p.category === post.category) score += 1;
+      return { post: p, score };
+    })
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return a.post.date < b.post.date ? 1 : -1;
+    });
+
+  const withScore = scored.filter((s) => s.score > 0).map((s) => s.post);
+  if (withScore.length >= limit) return withScore.slice(0, limit);
+
+  // Padding: rellenamos con los más recientes que aún no estén en la lista.
+  const seen = new Set(withScore.map((p) => `${p.category}/${p.slug}`));
+  for (const p of all) {
+    if (withScore.length >= limit) break;
+    const key = `${p.category}/${p.slug}`;
+    if (seen.has(key)) continue;
+    if (p.slug === post.slug && p.category === post.category) continue;
+    withScore.push(p);
+    seen.add(key);
+  }
+  return withScore.slice(0, limit);
 }
 
 /* ──────────────────────────────────────────────────────────────────────

@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 
 import { mdxComponents } from "@/mdx-components";
+import { ZoomableImages } from "@/components/blog/zoomable-image";
 import {
   categoryIcons,
   categoryLabels,
@@ -112,14 +113,39 @@ export default async function BlogPostPage({ params }: PageProps) {
           { name: post.title, path: post.href },
         ]}
       />
-      {/* Hero del artículo */}
+      {/* Hero del artículo — imagen como fondo (estilo editorial). Si el post
+          no tiene `image`, cae al gradient brand-navy con el aro de marca. */}
       <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.22]"
-        />
+        {post.image ? (
+          <>
+            <Image
+              src={post.image}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+              aria-hidden
+            />
+            {/* Overlay para legibilidad del título sobre la foto. Doble capa:
+                un velo navy plano y un degradado vertical denso por arriba. */}
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-brand-navy-deep/65"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-b from-brand-navy-deep/85 via-brand-navy/55 to-brand-navy/85"
+            />
+          </>
+        ) : (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.22]"
+          />
+        )}
 
-        <div className="relative mx-auto max-w-4xl px-4 pt-16 pb-16 md:px-6 md:pt-20 md:pb-20">
+        <div className="relative mx-auto max-w-4xl px-4 pt-16 pb-20 md:px-6 md:pt-20 md:pb-28">
           <Link
             href="/blog/"
             className="inline-flex items-center gap-2 text-sm font-medium text-white/70 transition-colors hover:text-white"
@@ -180,24 +206,6 @@ export default async function BlogPostPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Imagen hero del post — entre la cabecera oscura y el cuerpo. */}
-      {post.image && (
-        <section className="relative bg-background">
-          <div className="mx-auto max-w-5xl px-4 -mt-10 md:px-6 md:-mt-16">
-            <div className="relative aspect-[16/9] overflow-hidden rounded-3xl border border-border/70 bg-card shadow-[var(--shadow-bento)]">
-              <Image
-                src={post.image}
-                alt={post.title}
-                fill
-                sizes="(min-width: 1024px) 960px, 100vw"
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Cuerpo del artículo */}
       <section className="relative bg-background">
         <div className="mx-auto max-w-3xl px-4 py-16 md:px-6 md:py-20">
@@ -213,6 +221,8 @@ export default async function BlogPostPage({ params }: PageProps) {
               }}
             />
           </article>
+          {/* Activa medium-zoom sobre las <img> del artículo anterior. */}
+          <ZoomableImages />
 
           {post.tags && post.tags.length > 0 && (
             <div className="mt-12 flex flex-wrap items-center gap-2">

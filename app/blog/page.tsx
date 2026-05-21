@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 
 import { BlogHeroSection } from "@/components/sections/blog-hero";
 import { BlogFeaturedSection } from "@/components/sections/blog-featured";
-import { BlogPostsGridSection } from "@/components/sections/blog-posts-grid";
+import { BlogPostsGrid } from "@/components/sections/blog-posts-grid";
 import { BlogCtaSection } from "@/components/sections/blog-cta";
 import {
   BreadcrumbJsonLd,
   ItemListJsonLd,
   WebPageJsonLd,
 } from "@/components/seo/json-ld";
-import { getAllPosts } from "@/lib/content/blog";
+import { getAllPosts, getNonFeaturedPosts, paginatePosts } from "@/lib/content/blog";
 
 const TITLE = "Blog";
 const DESCRIPTION =
@@ -31,7 +31,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const all = getAllPosts();
+  const { page, totalPages, pageItems } = paginatePosts(getNonFeaturedPosts(), 1);
   return (
     <>
       <WebPageJsonLd
@@ -43,7 +44,7 @@ export default function BlogPage() {
       <BreadcrumbJsonLd items={[{ name: TITLE, path: "/blog/" }]} />
       <ItemListJsonLd
         name="Artículos del blog Fideltour"
-        items={posts.slice(0, 20).map((post) => ({
+        items={all.slice(0, 20).map((post) => ({
           name: post.title,
           path: post.href,
           description: post.excerpt,
@@ -51,7 +52,13 @@ export default function BlogPage() {
       />
       <BlogHeroSection />
       <BlogFeaturedSection />
-      <BlogPostsGridSection />
+      <BlogPostsGrid
+        posts={pageItems}
+        page={page}
+        totalPages={totalPages}
+        paginationBase="/blog/"
+        activeCategory="todos"
+      />
       <BlogCtaSection />
     </>
   );

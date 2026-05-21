@@ -1,10 +1,23 @@
+import { BlogSearch, type SearchablePost } from "@/components/sections/blog-search";
+import { categoryLabels, getAllPosts } from "@/lib/content/blog";
+
 export function BlogHeroSection() {
+  // Construimos el índice de búsqueda en el server; pasamos solo el subset
+  // serializable (sin `raw`, sin componentes) al cliente.
+  const searchIndex: SearchablePost[] = getAllPosts().map((post) => ({
+    title: post.title,
+    excerpt: post.excerpt,
+    href: post.href,
+    category: categoryLabels[post.category],
+    date: post.date,
+  }));
+
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.22]"
+        className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1440px] max-h-[1440px] rounded-full border-[130px] border-brand/[0.22]"
       />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">
@@ -24,6 +37,10 @@ export function BlogHeroSection() {
             dependencia de las OTAs, unificar el perfil del huésped y convertir
             el dato hotelero en venta directa.
           </p>
+
+          <div className="mt-2">
+            <BlogSearch posts={searchIndex} />
+          </div>
         </div>
       </div>
     </section>

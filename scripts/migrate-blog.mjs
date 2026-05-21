@@ -99,22 +99,30 @@ function categoryFromLink(link) {
   }
 }
 
+/**
+ * Decodifica TODAS las entidades HTML que WordPress mete en `title.rendered`,
+ * `excerpt.rendered`, tags, etc. Soporta:
+ *  - Entidades numéricas decimales (`&#215;` → ×, `&#8217;` → ’)
+ *  - Entidades numéricas hex (`&#x2713;` → ✓)
+ *  - Entidades nombradas más comunes (&amp; &lt; &gt; &quot; &apos; &nbsp;)
+ *
+ * Orden: numéricas primero (la fuente más habitual en WP/Yoast), después las
+ * nombradas — al revés desencriptaríamos sub-cadenas en bucle.
+ */
 function decodeEntities(html) {
   return html
-    .replace(/&amp;/g, "&")
-    .replace(/&#8217;/g, "’")
-    .replace(/&#8216;/g, "‘")
-    .replace(/&#8220;/g, "“")
-    .replace(/&#8221;/g, "”")
-    .replace(/&#8211;/g, "–")
-    .replace(/&#8212;/g, "—")
-    .replace(/&#8230;/g, "…")
-    .replace(/&#038;/g, "&")
+    .replace(/&#(\d+);/g, (_, n) =>
+      String.fromCodePoint(parseInt(n, 10)),
+    )
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, n) =>
+      String.fromCodePoint(parseInt(n, 16)),
+    )
     .replace(/&nbsp;/g, " ")
     .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
     .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
 }
 
 function stripHtml(html) {
