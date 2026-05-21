@@ -83,11 +83,17 @@ export type ModuleLanding = {
      */
     titleAccent?: string;
     lead: string;
-    /** Texto del CTA principal. Por defecto "Solicitar demo". */
+    /** Texto del CTA principal. Por defecto "Solicita una DEMO gratis". */
     ctaLabel?: string;
   };
   miniCards: ModuleMiniCard[];
   pillars: ModulePillar[];
   benefits: ModuleBenefit[];
   faq: ModuleFaqItem[];
+  /**
+   * Slug del caso de éxito (en `lib/content/casos.ts`) que se mostrará
+   * como prueba social entre los módulos relacionados y la FAQ. Opcional —
+   * si no se indica, la sección no se renderiza.
+   */
+  relatedCaso?: string;
 };

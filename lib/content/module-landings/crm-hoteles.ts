@@ -17,7 +17,6 @@ export const crmLanding: ModuleLanding = {
     titleAccent: "CDP del hotel",
     lead:
       "Un CRM clásico guarda contactos. Fideltour empieza ahí pero da el salto: identidad única, segmentación predictiva y activación en cada canal. La autovía de la venta directa.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -105,4 +104,5 @@ export const crmLanding: ModuleLanding = {
         "Un equipo medio arranca con el CRM operativo en 4 a 6 semanas: conexión al PMS, importación de histórico, primer ciclo de vida automatizado y dashboards iniciales.",
     },
   ],
+  relatedCaso: "hotel-urbano",
 };

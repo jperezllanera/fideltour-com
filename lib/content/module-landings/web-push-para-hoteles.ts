@@ -17,7 +17,6 @@ export const webPushLanding: ModuleLanding = {
     titleAccent: "Web Push",
     lead:
       "Impacta a tus huéspedes en tiempo real con notificaciones web personalizadas, desde la búsqueda inicial hasta después de la estancia.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

@@ -17,7 +17,6 @@ export const campaignsLanding: ModuleLanding = {
     titleAccent: "Campaigns",
     lead:
       "Crea, personaliza y automatiza tus campañas desde un único lugar. Fideltour Campaigns te permite conectar con tus huéspedes a través de estrategias multicanal que impulsan la fidelización y la venta directa.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -103,4 +102,5 @@ export const campaignsLanding: ModuleLanding = {
         "Sí. Campaigns está conectado con CRM, Automation y Rewards, garantizando un marketing 360º.",
     },
   ],
+  relatedCaso: "hotel-urbano",
 };

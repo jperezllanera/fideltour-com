@@ -17,7 +17,6 @@ export const experiencesLanding: ModuleLanding = {
     titleAccent: "experiencias",
     lead:
       "Acompaña a tu huésped antes, durante y después de su estancia con un asistente virtual inteligente que recomienda actividades y servicios en tiempo real.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

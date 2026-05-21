@@ -17,7 +17,6 @@ export const webLanding: ModuleLanding = {
     titleAccent: "página web",
     lead:
       "Convierte la navegación de tu web en una fuente continua de datos. Conecta la página web de tu hotel con Fideltour y transforma visitantes anónimos en conocimiento accionable dentro de tu CDP.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

@@ -52,7 +52,6 @@ export const metadata: Metadata = {
     canonical: "/",
     languages: {
       "es-ES": "/",
-      "x-default": "/",
     },
   },
   openGraph: {
@@ -73,8 +72,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: siteConfig.twitterHandle,
-    creator: siteConfig.twitterHandle,
     title: `${siteConfig.name} — ${siteConfig.category}`,
     description: siteConfig.description,
     images: ["/twitter-image"],

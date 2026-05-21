@@ -17,7 +17,6 @@ export const encuestasLanding: ModuleLanding = {
     titleAccent: "encuestas",
     lead:
       "Mide la satisfacción de tus huéspedes y mejora su experiencia con cada estancia. Con Fideltour Reviews, automatiza encuestas pre, durante y post-estancia para conocer opiniones reales y actuar a tiempo.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

@@ -17,7 +17,6 @@ export const biLanding: ModuleLanding = {
     titleAccent: "BI",
     lead:
       "Conecta Fideltour con tus herramientas de Business Intelligence favoritas (BigQuery, Power BI, Looker Studio, Tableau) y lleva la analítica hotelera a otro nivel. Importa y combina datos de huéspedes, reservas y campañas para tomar decisiones basadas en información real.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

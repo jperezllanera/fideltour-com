@@ -17,7 +17,6 @@ export const b2bLanding: ModuleLanding = {
     titleAccent: "Sales B2B",
     lead:
       "Centraliza y gestiona todas tus relaciones comerciales —agencias, TTOO, empresas y partners— en un único panel adaptado al sector hotelero. Convierte cada cuenta en una oportunidad medida y trazable.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -101,4 +100,5 @@ export const b2bLanding: ModuleLanding = {
         "Sales B2B y el CRM comparten la misma base de datos en el CDP. La cuenta corporativa y los huéspedes asociados quedan vinculados, sin duplicar fichas ni reportes.",
     },
   ],
+  relatedCaso: "hotel-vacacional",
 };

@@ -17,7 +17,6 @@ export const chatbotLanding: ModuleLanding = {
     titleAccent: "chatbot",
     lead:
       "Conecta tu chatbot con Fideltour y convierte cada conversación en datos accionables dentro del CRM. Centraliza interacciones, enriquece perfiles de huéspedes y activa campañas personalizadas en tiempo real.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

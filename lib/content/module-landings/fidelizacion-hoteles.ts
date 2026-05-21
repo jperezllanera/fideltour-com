@@ -17,7 +17,6 @@ export const rewardsLanding: ModuleLanding = {
     titleAccent: "Fideltour Rewards",
     lead:
       "Crea un programa de recompensas digital que convierta a tus huéspedes en clientes recurrentes. Diseña niveles, beneficios y reglas — sin licencias externas ni desarrollo a medida.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -104,4 +103,5 @@ export const rewardsLanding: ModuleLanding = {
         "Totalmente. Bienvenida, subidas de nivel o caducidad se envían automáticamente desde Automation.",
     },
   ],
+  relatedCaso: "hotel-vacacional",
 };

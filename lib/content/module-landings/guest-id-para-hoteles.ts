@@ -17,7 +17,6 @@ export const guestIdLanding: ModuleLanding = {
     titleAccent: "Fideltour Identity",
     lead:
       "Convierte visitantes anónimos de tu web en perfiles identificados dentro de tu CRM. Transforma la incertidumbre en datos valiosos para captar y fidelizar mejor.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

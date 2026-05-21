@@ -17,7 +17,6 @@ export const pmsLanding: ModuleLanding = {
     titleAccent: "CDP del hotel",
     lead:
       "Fideltour ingiere reservas, estancias y consumo desde tu PMS y los convierte en un perfil unificado por huésped. La base sobre la que se construye toda la activación.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -104,4 +103,5 @@ export const pmsLanding: ModuleLanding = {
         "Tú. El hotel es responsable del tratamiento; Fideltour actúa como encargado bajo contrato y RGPD. Si dejas la plataforma, te exportamos el histórico íntegro.",
     },
   ],
+  relatedCaso: "hotel-urbano-centrico",
 };

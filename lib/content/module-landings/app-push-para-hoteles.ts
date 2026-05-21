@@ -17,7 +17,6 @@ export const appPushLanding: ModuleLanding = {
     titleAccent: "App Push",
     lead:
       "Conecta con tus huéspedes a través de notificaciones directas en su móvil, el canal con mayor tasa de conversión para clientes que ya descargaron tu app.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

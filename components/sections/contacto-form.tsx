@@ -92,7 +92,7 @@ export function ContactoFormSection() {
                     name="nombre"
                     type="text"
                     autoComplete="name"
-                    placeholder="¿Cómo te llamas?"
+                    placeholder="Nombre y apellidos"
                     className={inputClass}
                   />
                 </div>

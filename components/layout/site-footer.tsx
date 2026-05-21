@@ -1,10 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Globe } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 
 /* Lucide eliminó los iconos de marcas comerciales por copyright.
-   Inline SVGs ligeros para LinkedIn, YouTube e Instagram. */
+   Inline SVGs ligeros para LinkedIn, YouTube, Instagram y Spotify. */
 function LinkedInIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
@@ -25,6 +24,13 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+function SpotifyIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34a.75.75 0 0 1-1.03.25c-2.82-1.72-6.36-2.11-10.54-1.16a.75.75 0 1 1-.33-1.46c4.56-1.04 8.49-.59 11.65 1.34.36.22.47.69.25 1.03zm1.47-3.27a.93.93 0 0 1-1.28.31c-3.23-1.98-8.15-2.56-11.96-1.4a.93.93 0 1 1-.54-1.78c4.36-1.32 9.78-.68 13.49 1.59.44.27.58.85.29 1.28zm.13-3.41C15.27 8.45 8.6 8.23 4.9 9.36a1.12 1.12 0 1 1-.65-2.14c4.25-1.29 11.6-1.04 16.18 1.68a1.12 1.12 0 0 1-1.16 1.92z" />
     </svg>
   );
 }
@@ -100,10 +106,10 @@ export function SiteFooter() {
               Conecta, conoce y fideliza a tu cliente.
             </p>
             <div className="flex items-center gap-3 pt-2">
-              <SocialIcon href="#" label="LinkedIn"><LinkedInIcon className="size-4" /></SocialIcon>
-              <SocialIcon href="#" label="YouTube"><YouTubeIcon className="size-4" /></SocialIcon>
-              <SocialIcon href="#" label="Instagram"><InstagramIcon className="size-4" /></SocialIcon>
-              <SocialIcon href="#" label="Web"><Globe className="size-4" /></SocialIcon>
+              <SocialIcon href="https://www.linkedin.com/company/fideltour/" label="Fideltour en LinkedIn"><LinkedInIcon className="size-4" /></SocialIcon>
+              <SocialIcon href="https://www.youtube.com/@fideltour" label="Fideltour en YouTube"><YouTubeIcon className="size-4" /></SocialIcon>
+              <SocialIcon href="https://www.instagram.com/fideltour/" label="Fideltour en Instagram"><InstagramIcon className="size-4" /></SocialIcon>
+              <SocialIcon href="https://open.spotify.com/show/0Y6gmQJ829f2pVq0sjv4En" label="Fideltalks en Spotify"><SpotifyIcon className="size-4" /></SocialIcon>
             </div>
           </div>
 
@@ -217,6 +223,8 @@ function SocialIcon({
     <a
       href={href}
       aria-label={label}
+      target="_blank"
+      rel="noopener noreferrer"
       className="inline-flex size-9 items-center justify-center rounded-full border border-border bg-background/60 text-foreground/70 transition-colors hover:bg-foreground hover:text-background"
     >
       {children}

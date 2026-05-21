@@ -17,7 +17,6 @@ export const motorReservasLanding: ModuleLanding = {
     titleAccent: "motor de reservas",
     lead:
       "Conecta tu motor de reservas con Fideltour y convierte cada reserva directa en un perfil enriquecido dentro del CRM. Centraliza la información y activa campañas automatizadas que aumentan la fidelización y el revenue.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -103,4 +102,5 @@ export const motorReservasLanding: ModuleLanding = {
         "Identificación del huésped, fechas de estancia, tarifa, canal y tipología de habitación, junto con cualquier campo opcional que el motor exponga vía API. Toda esa información alimenta la ficha de contacto y los segmentos del CDP.",
     },
   ],
+  relatedCaso: "hotel-urbano-centrico",
 };

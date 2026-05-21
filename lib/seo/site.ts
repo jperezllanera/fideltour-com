@@ -42,9 +42,6 @@ export const siteConfig = {
   /** Imagen OpenGraph por defecto (resuelta dinámicamente por opengraph-image.tsx). */
   ogImagePath: "/opengraph-image",
 
-  /** Twitter handle. TODO senior: confirmar el oficial. */
-  twitterHandle: "@fideltour",
-
   /** Palabras clave principales (keywords semánticas, no spam). */
   keywords: [
     "CDP para hoteles",
@@ -59,12 +56,13 @@ export const siteConfig = {
     "dependencia OTAs",
   ],
 
-  /** Perfiles sociales. Usado por sameAs de Organization JSON-LD. */
+  /** Perfiles sociales — los publicados en fideltour.com. Usado por sameAs
+   *  de Organization JSON-LD. */
   social: {
-    // TODO senior: confirmar URLs reales con marketing.
-    linkedin: "https://www.linkedin.com/company/fideltour",
-    twitter: "https://twitter.com/fideltour",
+    linkedin: "https://www.linkedin.com/company/fideltour/",
     youtube: "https://www.youtube.com/@fideltour",
+    instagram: "https://www.instagram.com/fideltour/",
+    spotify: "https://open.spotify.com/show/0Y6gmQJ829f2pVq0sjv4En",
   } as const,
 
   /** Email de contacto público. */

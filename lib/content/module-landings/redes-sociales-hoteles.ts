@@ -17,7 +17,6 @@ export const socialLanding: ModuleLanding = {
     titleAccent: "redes sociales",
     lead:
       "Gestiona, programa y analiza tus redes sociales desde un único lugar. Con Fideltour Social, centraliza tu estrategia social y conéctala con tus campañas y datos de huéspedes para potenciar tu marca hotelera.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

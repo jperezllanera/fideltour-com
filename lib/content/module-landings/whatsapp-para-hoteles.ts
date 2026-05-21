@@ -17,7 +17,6 @@ export const whatsappLanding: ModuleLanding = {
     titleAccent: "WhatsApp",
     lead:
       "Impacta a tu huésped donde siempre está disponible. WhatsApp es la nueva forma de conversar con tus huéspedes antes, durante y después de su estancia.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

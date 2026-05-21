@@ -17,7 +17,6 @@ export const smsLanding: ModuleLanding = {
     titleAccent: "SMS",
     lead:
       "Llega a tu huésped en el lugar donde siempre está: su móvil. Con SMS personalizados durante todo el guest journey refuerzas la relación, generas cercanía y conviertes cada estancia en una nueva oportunidad.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

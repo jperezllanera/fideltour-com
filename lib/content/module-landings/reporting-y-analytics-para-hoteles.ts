@@ -17,7 +17,6 @@ export const reportingLanding: ModuleLanding = {
     titleAccent: "Data Reporting",
     lead:
       "Centraliza todos tus datos en un sistema de BI pensado para hoteleros. Visualiza métricas clave, crea dashboards personalizados e integra tu información con las principales herramientas del mercado.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

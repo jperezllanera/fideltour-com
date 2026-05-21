@@ -17,7 +17,6 @@ export const automationLanding: ModuleLanding = {
     titleAccent: "Automation",
     lead:
       "Revoluciona tu e-mail marketing con un módulo diseñado para la creación y ejecución de campañas altamente personalizadas y automatizadas. Pre, in y post-stay activados por el comportamiento real del huésped.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -104,4 +103,5 @@ export const automationLanding: ModuleLanding = {
         "Bienvenida pre-estancia, upsell durante la estancia, recogida de feedback post-estancia, recuperación de huéspedes inactivos y reactivación con códigos personalizados.",
     },
   ],
+  relatedCaso: "hotel-vacacional",
 };

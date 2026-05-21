@@ -17,7 +17,6 @@ export const landingPagesLanding: ModuleLanding = {
     titleAccent: "landings",
     lead:
       "Crea páginas de campaña personalizadas, sin depender del equipo web. Con Fideltour Landings diseñas páginas de aterrizaje y formularios optimizados para convertir en minutos y sin conocimientos técnicos.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

@@ -17,7 +17,6 @@ export const emailLanding: ModuleLanding = {
     titleAccent: "email",
     lead:
       "Conecta con tus huéspedes a través del canal más versátil: campañas de email personalizadas y transaccionales en cada fase de la estancia.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {
@@ -103,4 +102,5 @@ export const emailLanding: ModuleLanding = {
         "Fideltour configura SPF, DKIM y DMARC en tu dominio, gestiona supresiones automáticas por bounce y aplica reglas de envío que evitan flagging por parte de los proveedores.",
     },
   ],
+  relatedCaso: "hotel-urbano",
 };

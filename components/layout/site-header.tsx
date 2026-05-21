@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, MenuIcon } from "lucide-react";
+import { ArrowRight, MenuIcon, PlayCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
@@ -72,10 +72,60 @@ export function SiteHeader() {
   );
 }
 
+/**
+ * Versión "lite" del FeaturedCard del desktop para el sheet móvil. NO
+ * embebe el iframe (sería un peso brutal en mobile); muestra el thumbnail
+ * estático de YouTube como hero y enlaza a la sección "Plataforma" de la
+ * home, donde el visitante puede continuar el journey.
+ */
+function MobileFeaturedCard() {
+  const thumb = `https://i.ytimg.com/vi/${platformFeatured.youtubeId}/hqdefault.jpg`;
+  return (
+    <Link
+      href={platformFeatured.ctaHref}
+      className="group mb-4 block overflow-hidden rounded-2xl bg-brand-navy text-white shadow-soft"
+    >
+      <div className="relative aspect-video w-full overflow-hidden bg-black/40">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={thumb}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 size-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-brand-navy/30 to-transparent"
+        />
+        <PlayCircle
+          aria-hidden
+          className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
+        />
+      </div>
+      <div className="p-4">
+        <div className="text-eyebrow text-white/80">
+          {platformFeatured.eyebrow}
+        </div>
+        <div className="mt-1 text-base font-bold text-white">
+          {platformFeatured.title}
+        </div>
+        <p className="mt-1 text-sm text-white/80">
+          {platformFeatured.description}
+        </p>
+        <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-mint">
+          {platformFeatured.ctaLabel}
+          <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </Link>
+  );
+}
+
 function FeaturedCard() {
   return (
     <div className="group col-span-3 flex flex-col rounded-lg bg-brand-navy p-5 text-white">
-      <div className="text-eyebrow text-white/70">
+      <div className="text-eyebrow text-white/80">
         {platformFeatured.eyebrow}
       </div>
       <h3 className="mt-2 text-white">{platformFeatured.title}</h3>
@@ -201,6 +251,7 @@ function MobileNav() {
           </SheetTitle>
         </SheetHeader>
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 pb-4">
+          <MobileFeaturedCard />
           <Accordion className="border-b border-border pb-2">
             <AccordionItem value="platform" className="border-0">
               <AccordionTrigger className="py-2 text-base font-medium">

@@ -190,6 +190,55 @@ export function SoftwareApplicationJsonLd() {
 }
 
 /* ──────────────────────────────────────────────────────────────────────
+   Service — para landings de módulo individuales
+
+   `SoftwareApplication` ya posiciona el producto a nivel global; este
+   schema enmarca cada módulo (CRM, Campaigns, WhatsApp…) como un servicio
+   ofrecido por la organización en los países donde operamos. Refuerza la
+   semántica de "servicio B2B vertical hotelero" y permite que Google
+   rinda mejor las landings en SERPs locales.
+   ────────────────────────────────────────────────────────────────────── */
+
+type ServiceProps = {
+  /** Path canónico del módulo, ej. "/crm-hoteles/". */
+  path: string;
+  /** Nombre del servicio, ej. "CRM para hoteles · Del CRM al CDP". */
+  name: string;
+  description: string;
+  /** Etiqueta de la categoría de módulo (Data Import, Multicanalidad…). */
+  serviceType: string;
+};
+
+export function ServiceJsonLd({
+  path,
+  name,
+  description,
+  serviceType,
+}: ServiceProps) {
+  const url = absoluteUrl(path);
+  const data: JsonLdObject = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name,
+    description,
+    serviceType,
+    url,
+    provider: { "@id": `${siteConfig.url}/#organization` },
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "Hoteles, cadenas hoteleras y grupos hoteleros",
+    },
+    areaServed: oficinas.map((oficina) => ({
+      "@type": "Country",
+      name: oficina.pais,
+    })),
+    isPartOf: { "@id": `${siteConfig.url}/#software` },
+  };
+  return <JsonLdScript data={data} />;
+}
+
+/* ──────────────────────────────────────────────────────────────────────
    BlogPosting
 
    Para artículos individuales. Acepta los campos derivados de

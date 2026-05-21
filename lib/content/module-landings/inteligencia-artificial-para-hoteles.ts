@@ -17,7 +17,6 @@ export const iaLanding: ModuleLanding = {
     titleAccent: "IA",
     lead:
       "Convierte tus datos en decisiones con un chat inteligente capaz de responder en lenguaje natural y darte insights estratégicos al instante.",
-    ctaLabel: "Solicitar demo",
   },
   miniCards: [
     {

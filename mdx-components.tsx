@@ -3,6 +3,7 @@ import Image, { type ImageProps } from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { RelatedModuleCta } from "@/components/blog/related-module-cta";
 
 /**
  * Componentes que `next-mdx-remote/rsc` usa para renderizar los `.mdx` del
@@ -181,4 +182,6 @@ export const mdxComponents: MDXComponents = {
       {children}
     </td>
   ),
+  // Custom — disponibles desde MDX para que los redactores enlacen módulos.
+  RelatedModuleCta,
 };
