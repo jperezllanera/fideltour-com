@@ -1,26 +1,268 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+
+/* ──────────────────────────────────────────────────────────────────────
+   Fideltour design system — "Aurora Bento" (modo claro)
+   Color de marca como ACENTO, neutros cálidos, mucho aire.
+   TODO: sustituir --brand-primary / --brand-secondary cuando llegue el logo.
+   ────────────────────────────────────────────────────────────────────── */
 
 @theme inline {
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-heading: var(--font-sans);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+
+  /* brand-* se declaran fuera de @theme inline con valores literales
+     (ver bloque @theme abajo), porque Tailwind v4 no genera utilities con
+     sufijos múltiples cuando el valor es var() no resoluble en build. */
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --shadow-soft: 0 1px 2px rgb(20 20 20 / 0.04), 0 0 0 1px rgb(20 20 20 / 0.04);
+  --shadow-bento: 0 18px 40px -20px rgb(20 20 20 / 0.12), 0 4px 12px -6px rgb(20 20 20 / 0.06);
+  --shadow-elevated: 0 24px 60px -24px rgb(20 20 20 / 0.18);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─── brand-* tokens con valores literales para que Tailwind v4 genere
+     utilities como bg-brand-navy, text-brand-mint, etc. ──────────────── */
+@theme {
+  --color-brand: #25cad2;
+  --color-brand-foreground: #ffffff;
+  --color-brand-mint: #46deb1;
+  --color-brand-mint-foreground: #0c1523;
+  --color-brand-navy: #22304a;
+  --color-brand-navy-deep: #003a5d;
+  --color-brand-ink: #575756;
+}
+
+:root {
+  /* ─── Paleta corporativa Fideltour (extraída del sitio en producción) ───
+     #25CAD2  cian del logo  → brand
+     #46DEB1  verde-menta CTA → brand-mint
+     #22304A  azul oscuro hero → brand-navy
+     #003A5D  azul medio        → brand-navy-deep
+     #2D60EC → #3CCFDA gradiente firma (brand-gradient)
+     #575756  gris del wordmark → brand-ink
+     ─────────────────────────────────────────────────────────────────────── */
+  --brand-primary: oklch(0.756 0.123 197);    /* cian #25CAD2 */
+  --brand-primary-foreground: oklch(0.99 0 0);
+  --brand-mint: oklch(0.84 0.13 168);          /* menta #46DEB1 */
+  --brand-mint-foreground: oklch(0.20 0.02 240);
+  --brand-navy: oklch(0.27 0.045 256);         /* navy hero #22304A */
+  --brand-navy-deep: oklch(0.38 0.10 235);     /* azul medio #003A5D */
+  --brand-ink: oklch(0.50 0.003 85);           /* gris wordmark #575756 */
+  --brand-gradient: linear-gradient(135deg, oklch(0.55 0.20 265) 0%, oklch(0.78 0.13 200) 100%);
+
+  /* Compat con tokens antiguos */
+  --brand-secondary: var(--brand-mint);
+
+  /* Neutros cálidos (stone-like) */
+  --neutral-50:  oklch(0.985 0.004 80);
+  --neutral-100: oklch(0.965 0.005 80);
+  --neutral-200: oklch(0.92 0.006 75);
+  --neutral-300: oklch(0.86 0.007 70);
+  --neutral-400: oklch(0.70 0.008 60);
+  --neutral-500: oklch(0.55 0.010 55);
+  --neutral-600: oklch(0.42 0.012 50);
+  --neutral-700: oklch(0.32 0.014 45);
+  --neutral-800: oklch(0.22 0.015 40);
+  --neutral-900: oklch(0.16 0.015 35);
+
+  /* Semánticos */
+  --background: var(--neutral-50);
+  --foreground: var(--neutral-900);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--neutral-900);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--neutral-900);
+
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--brand-primary-foreground);
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --accent: var(--neutral-100);
+  --accent-foreground: var(--neutral-900);
+  --destructive: oklch(0.58 0.22 27);
+
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: var(--brand-primary);
+
+  --chart-1: var(--brand-primary);
+  --chart-2: var(--brand-secondary);
+  --chart-3: var(--neutral-700);
+  --chart-4: var(--neutral-500);
+  --chart-5: var(--neutral-300);
+
+  --radius: 0.875rem;
+
+  /* Instrument Mono cargado vía <link> en layout (no next/font), por eso
+     la variable se declara aquí en lugar de inyectarla next/font. */
+  --font-mono: "Instrument Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --sidebar: var(--neutral-50);
+  --sidebar-foreground: var(--neutral-900);
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--brand-primary-foreground);
+  --sidebar-accent: var(--neutral-100);
+  --sidebar-accent-foreground: var(--neutral-900);
+  --sidebar-border: var(--neutral-200);
+  --sidebar-ring: var(--brand-primary);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground;
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Gradient mesh — capa de profundidad muy sutil, nunca dominante */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(60% 50% at 12% 8%,  color-mix(in oklch, var(--brand-primary) 14%, transparent), transparent 65%),
+      radial-gradient(50% 45% at 92% 22%, color-mix(in oklch, var(--brand-secondary) 10%, transparent), transparent 70%),
+      radial-gradient(55% 50% at 50% 110%, color-mix(in oklch, var(--neutral-300) 35%, transparent), transparent 70%);
+    opacity: 0.65;
+  }
+
+  /* Grain — textura discreta sobre todo el viewport */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.04;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection {
+    background: color-mix(in oklch, var(--brand-primary) 25%, transparent);
+    color: var(--neutral-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ──────────────────────────────────────────────────────────────────────
+   Bento utilities — reveal escalonado en CSS puro
+   ────────────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-auto-rows: minmax(140px, auto);
+    }
+  }
+  @media (min-width: 1200px) {
+    .bento-grid {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      grid-auto-rows: minmax(160px, auto);
+      gap: 1.25rem;
+    }
+  }
+
+  .bento-cell {
+    animation: bento-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+
+  @keyframes bento-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bento-cell,
+    .marquee {
+      animation: none !important;
+    }
+  }
 }
