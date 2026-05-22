@@ -83,24 +83,29 @@ export const pmsLanding: ModuleLanding = {
   ],
   faq: [
     {
-      question: "¿Qué PMS están integrados con Fideltour?",
+      question: "¿En qué consiste la integración entre un PMS y un CRM hotelero?",
       answer:
-        "Tenemos conectores validados con los principales PMS del sector. Si tu PMS no aparece en el listado público del marketplace, escríbenos y lo verificamos en una llamada técnica corta.",
+        "Es la capa que conecta la operativa del hotel (reservas, check-ins, consumo) con la capa comercial (huésped, segmentos, comunicaciones). El PMS sigue siendo la fuente operativa; el CRM —y el CDP por encima— consolida ese dato para activarlo en marketing, fidelización y venta directa.",
     },
     {
-      question: "¿Tengo que cambiar de PMS para usar Fideltour?",
+      question: "¿Qué datos se sincronizan entre el PMS y el CRM?",
       answer:
-        "No. Fideltour se acopla a tu PMS actual: lee los datos relevantes y los unifica en el CDP. Tu PMS sigue siendo la herramienta operativa del día a día del hotel.",
+        "Identificación y contactos del huésped, todas las reservas con fechas, ADR, LOS, canal, segmento y consumo asociado (F&B, spa, parking, extras). Esos campos alimentan la ficha 360º del huésped y los segmentos del CDP — sin que el equipo tenga que tocar una hoja de cálculo.",
     },
     {
-      question: "¿Los datos se actualizan en tiempo real o por lotes?",
+      question: "¿La integración es bidireccional o solo lectura?",
       answer:
-        "Depende del PMS. Cuando el sistema lo permite, la ingesta es en tiempo real vía API. En el resto de casos sincronizamos en ventanas cortas — minutos, no horas.",
+        "Por defecto leemos del PMS para alimentar el CDP. Cuando el PMS lo permite y el caso de uso lo justifica —preferencias del huésped, marcas de fidelidad, segmentos VIP— también escribimos. La política se acuerda con tu equipo durante el onboarding.",
     },
     {
-      question: "¿Quién es dueño de los datos una vez conectados al CDP?",
+      question: "¿Cómo se evita duplicar huéspedes que reservan varias veces con datos distintos?",
       answer:
-        "Tú. El hotel es responsable del tratamiento; Fideltour actúa como encargado bajo contrato y RGPD. Si dejas la plataforma, te exportamos el histórico íntegro.",
+        "El módulo Identity aplica reglas de matching probabilístico —email, teléfono, documento, nombre completo y fecha de nacimiento— y consolida las fichas en un único perfil persistente. El match-rate típico se sitúa sobre el 92 %; el resto se resuelve con un panel de revisión manual rápida.",
+    },
+    {
+      question: "¿Cuánto se tarda en poner la integración en producción?",
+      answer:
+        "Entre 4 y 6 semanas para un PMS conocido con API estándar — incluye conexión, importación del histórico, validación del matching y primer dashboard de revenue operativo. Cadenas con varias propiedades o jerarquía de marca pueden requerir hasta 8 semanas.",
     },
   ],
   relatedCaso: "hotel-urbano-centrico",

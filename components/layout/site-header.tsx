@@ -149,7 +149,7 @@ function FeaturedCard() {
         render={
           <Link
             href={platformFeatured.ctaHref}
-            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/90"
+            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-mint transition-colors hover:text-white"
           >
             {platformFeatured.ctaLabel}
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />

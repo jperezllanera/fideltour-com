@@ -157,6 +157,7 @@ export const mdxComponents: MDXComponents = {
         alt={alt ?? ""}
         width={typeof width === "number" ? width : 1280}
         height={typeof height === "number" ? height : 720}
+        sizes="(min-width: 768px) 768px, 100vw"
         className="mt-8 w-full rounded-2xl border border-border/70 shadow-[var(--shadow-soft)]"
         {...(props as Partial<ImageProps>)}
       />

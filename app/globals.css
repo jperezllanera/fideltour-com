@@ -391,4 +391,18 @@
       animation: none !important;
     }
   }
+
+  /* Iframe del formulario Zoho embebido en /contacto. La altura es mayor en
+     móvil porque los campos se apilan en una sola columna. */
+  .contacto-form-iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    height: 1200px;
+  }
+  @media (min-width: 768px) {
+    .contacto-form-iframe {
+      height: 1000px;
+    }
+  }
 }

@@ -27,6 +27,7 @@ export function LogosCarouselSection() {
               alt={c.alt}
               width={320}
               height={120}
+              sizes="(min-width: 1024px) 160px, (min-width: 640px) 200px, 45vw"
               className="h-20 w-auto object-contain md:h-24 lg:h-28"
             />
           ))}

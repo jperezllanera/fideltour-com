@@ -36,8 +36,8 @@ export const siteConfig = {
   /** Idioma raíz del documento. */
   defaultLanguage: "es",
 
-  /** Logo cuadrado (PNG) usado por JSON-LD Organization y manifest. */
-  logoPath: "/brand/fideltour-logo.png",
+  /** Wordmark Fideltour (WebP) usado por JSON-LD Organization. */
+  logoPath: "/brand/fideltour-logo.webp",
 
   /** Imagen OpenGraph por defecto (resuelta dinámicamente por opengraph-image.tsx). */
   ogImagePath: "/opengraph-image",

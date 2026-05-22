@@ -42,7 +42,7 @@ export function ModulePillars({
                   Pilar · 0{i + 1}
                 </span>
                 {metric && (
-                  <span className="text-2xs text-brand">{metric}</span>
+                  <span className="text-2xs text-brand-navy">{metric}</span>
                 )}
               </header>
 

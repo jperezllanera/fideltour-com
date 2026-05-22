@@ -45,7 +45,7 @@ export function RelatedModuleCta({
       </p>
       <Link
         href={`/${entry.slug}/`}
-        className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-primary/90"
+        className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy hover:text-brand"
       >
         Ver el módulo
         <ArrowRight className="size-4" />

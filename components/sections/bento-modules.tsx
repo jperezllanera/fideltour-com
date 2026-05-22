@@ -38,7 +38,7 @@ export function BentoModulesSection() {
                   {m.label}
                 </span>
                 {m.metric && (
-                  <span className="text-2xs text-brand">
+                  <span className="text-2xs text-brand-navy">
                     {m.metric}
                   </span>
                 )}

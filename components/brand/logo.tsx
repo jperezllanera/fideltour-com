@@ -11,8 +11,8 @@ type LogoProps = {
 };
 
 /**
- * Logo oficial Fideltour. PNG en /public/brand/logo.png (1614x262, paleta
- * #575756 + #25CAD2).
+ * Logo oficial Fideltour. WebP en /public/brand/fideltour-logo.webp
+ * (1614x262, paleta #575756 + #25CAD2).
  * TODO senior: cuando llegue la versión vectorial (SVG), sustituir el
  * <Image> por <svg> inline para escalar perfectamente y permitir recolor.
  */
@@ -48,11 +48,12 @@ export function Logo({ className, variant = "wordmark", height = 24 }: LogoProps
       )}
     >
       <Image
-        src="/brand/fideltour-logo.png"
+        src="/brand/fideltour-logo.webp"
         alt="Fideltour — CDP para hoteles"
         width={width}
         height={height}
         priority
+        sizes="(min-width: 768px) 160px, 144px"
         className="h-6 w-auto md:h-[26px]"
       />
     </Link>

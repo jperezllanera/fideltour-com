@@ -64,7 +64,7 @@ export function ModuleRelated({ currentSlug, category }: Props) {
                     {m.description}
                   </p>
                 </div>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-navy">
                   Ver módulo
                   <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
                 </span>

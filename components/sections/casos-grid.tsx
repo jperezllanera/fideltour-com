@@ -71,7 +71,7 @@ export function CasosGridSection() {
                   <div className="mt-2 grid grid-cols-3 gap-3 border-t border-border/60 pt-4">
                     {caso.metrics.map((metric) => (
                       <div key={metric.label} className="flex flex-col">
-                        <span className="text-lg font-bold text-brand">
+                        <span className="text-lg font-bold text-brand-navy">
                           {metric.value}
                         </span>
                         <span className="text-2xs text-muted-foreground">

@@ -28,7 +28,7 @@ export const bentoModules: BentoModule[] = [
     title: "Reservas y estancias",
     description: "Toda la actividad del PMS y booking engine en un solo timeline.",
     span: "xl:col-span-4",
-    metric: "PMS · BE · OTAs",
+    metric: "PMS · Booking Engine · OTAs",
   },
   {
     id: "03",
@@ -44,7 +44,7 @@ export const bentoModules: BentoModule[] = [
     title: "Scoring predictivo",
     description: "Probabilidad de reserva, riesgo de churn y potencial de upsell por huésped.",
     span: "xl:col-span-3",
-    metric: "P(reserva) · 0.87",
+    metric: "Score reserva · 0.87",
   },
   {
     id: "05",
@@ -60,7 +60,7 @@ export const bentoModules: BentoModule[] = [
     title: "WhatsApp & Push",
     description: "Conversación in-stay con orquestación contextual.",
     span: "xl:col-span-3",
-    metric: "Conversational · in-stay",
+    metric: "Conversación · in-stay",
   },
   {
     id: "07",
@@ -100,7 +100,7 @@ export const bentoModules: BentoModule[] = [
     title: "Inbox unificado",
     description: "Email, chat, WhatsApp y voz en una sola conversación por huésped.",
     span: "xl:col-span-4",
-    metric: "Omni · 1 thread",
+    metric: "Omnicanal · 1 hilo",
   },
   {
     id: "12",

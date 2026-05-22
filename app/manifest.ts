@@ -40,12 +40,6 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
         purpose: "any",
       },
-      {
-        src: "/brand/fideltour-logo.png",
-        sizes: "any",
-        type: "image/png",
-        purpose: "any",
-      },
     ],
   };
 }
