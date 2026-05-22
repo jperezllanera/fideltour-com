@@ -1,0 +1,16 @@
+Motivo,Fuente,Validación,Páginas
+Bloqueada por una solicitud no autorizada (401),Sitio web,No iniciada,191.0
+No se ha encontrado (404),Sitio web,No iniciada,101.0
+Bloqueada por robots.txt,Sitio web,No iniciada,65.0
+"Excluida por una etiqueta ""noindex""",Sitio web,No iniciada,41.0
+Página con redirección,Sitio web,No iniciada,33.0
+Página alternativa con etiqueta canónica adecuada,Sitio web,No iniciada,29.0
+Duplicada: el usuario no ha indicado ninguna versión canónica,Sitio web,No iniciada,24.0
+Error de servidor (5xx),Sitio web,No iniciada,6.0
+Soft 404,Sitio web,No iniciada,4.0
+Se ha bloqueado debido a que el acceso no está permitido (403),Sitio web,No iniciada,2.0
+Error de redirección,Sitio web,No iniciada,1.0
+Rastreada: actualmente sin indexar,Sistemas de Google,No iniciada,277.0
+Descubierta: actualmente sin indexar,Sistemas de Google,No iniciada,189.0
+Duplicada: Google ha elegido una versión canónica diferente a la del usuario,Sistemas de Google,No iniciada,1.0
+Se ha bloqueado debido a otro problema de tipo 4xx,Sitio web,N/D,0.0

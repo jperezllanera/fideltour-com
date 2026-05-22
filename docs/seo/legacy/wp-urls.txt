@@ -1,0 +1,183 @@
+# Inventario URLs WordPress legacy fideltour.com
+# Extraído via WebFetch del sitemap.xml + sub-sitemaps (Yoast SEO)
+# Fecha: 2026-05-22
+
+## PAGES (page-sitemap.xml)
+
+### ES (mantener)
+/
+/cdp-para-hoteles/
+/clientes/
+/casos-de-exito/
+/casos-de-exito/hotel-vacacional/
+/casos-de-exito/hotel-urbano-centrico/
+/casos-de-exito/hotel-urbano/
+/marketplace/
+/partners/
+/fideltour/
+/kit-digital-fideltour/
+/auditoria-gratuita-hotel/
+/integracion-portal-cautivo-para-hoteles/
+/recursos/nuestros-videos-crm-hotelero/
+/politica-de-privacidad/
+/politica-de-cookies/
+/terminos-y-condiciones/
+
+### ES — Sin equivalente en Next
+/perfil/             # login WP
+/registration/       # registro WP
+/registro/           # registro WP (duplicado)
+/tht/                # desconocido (landing técnica)
+
+### EN (a redirigir a ES)
+/en/
+/en/home/
+/en/cdp-for-hotels/
+/en/captive-portal-for-hotels/
+/en/marketplace/
+/en/partners/
+/en/fideltour/
+/en/fideltour-digital-kit/
+/en/free-audit/
+/en/our-customers/
+/en/success-stories/
+/en/success-stories/vacation-hotel/
+/en/success-stories/central-urban-hotel/
+/en/success-stories/urban-hotel/
+/en/resources/workshops/
+/en/resources/webinars/
+/en/resources/cursos/
+/en/resources/hotel-crm-training-videos/
+/en/perfil/
+/en/registration/
+/en/tht/
+/en/cookies-policy/
+/en/terms-and-conditions/
+/en/keytel-en/
+/en/keytel-it/
+/en/bookassist-lp-es/
+
+### PT-PT (a redirigir a ES o 410)
+/pt-pt/inicio-14/
+/pt-pt/inacio/
+/pt-pt/academia-fideltour-2/
+/pt-pt/redes-sociais-para-hoteis/
+/pt-pt/centralize-os-seus-dados-2/
+/pt-pt/keytel-lp-2/
+/pt-pt/keytel-lp-3/
+/pt-pt/keytel-lp-4/
+/pt-pt/keytel-lp-5/
+/pt-pt/keytel-lp-6/
+/pt-pt/keytel-lp-7/
+/pt-pt/mercado/
+
+## POSTS (post-sitemap.xml)
+
+### ES (mantener — verificar match MDX en repo)
+/blog/marketing/tendencias-marketing-hotelero/
+/blog/fideltour/fideltour-mejor-crm-de-europa/
+/blog/fideltour/whatsapp-para-hoteles-fideltour/
+/blog/marketing/campanas-otono-email-marketing/
+/blog/marketing/black-friday-promociones-hoteles-2/
+/blog/marketing/branding-hotelero-el-revenue-manager-silencioso/
+/blog/fidelizacion/fidelizacion-hotelera-claves-para-vender-mas/
+/blog/marketing/whatsapp-hoteles-canal-comunicacion-millenials/
+/blog/fideltour/soho-boutique-hotels/
+/blog/marketing/claves-pagina-web-hoteles-conversion/
+/blog/marketing/marketing-experiencial-hoteles/
+/blog/fideltour/fideltour-refineria-alianza-estrategica-sector-hotelero/
+/blog/fideltalks/fideltalks-refineria-como-mejorar-la-venta-directa/
+/blog/crm/big-data-en-el-sector-hotelero/
+/blog/fideltalks/fideltalks-rebeca-artidiello-cool-hotels/
+/blog/marketing/crm-para-hoteles-vs-crm-generico/
+/blog/marketing/estrategias-omnicanal-para-hoteles/
+/blog/marketing/claves-upselling-y-cross-selling-efectivo-hoteles/
+/blog/fideltalks/fideltalks-1x06-como-crear-empresa-tecnologica-hotelera/
+/blog/fidelizacion/inversion-tecnologica-hoteles-rentabilidad/
+/blog/fideltour/fideltour-empresa-tecnologica-mas-destacada-sector-turistico-sergestur/
+/blog/marketing/whatsapp-marketing-para-hoteles/
+/blog/fideltalks/fideltalks-videopodcast-fideltour/
+/blog/fideltalks/fideltalks-episodio5-inbound-marketing-para-hoteles/
+/blog/fidelizacion/estrategias-fidelizacion-hotelera/
+/blog/marketing/redes-sociales-para-hoteles/
+/blog/marketing/black-friday-promociones-hoteles/
+/blog/fidelizacion/auditoria-de-fidelizacion-para-hoteles/
+/blog/marketing/halloween-hoteles/
+/blog/fidelizacion/inteligencia-artificial-hoteles/
+/blog/marketing/estrategias-marketing-hoteles/
+/blog/fideltalks/fideltalks-episodio4-tendencias-marketing-hotelero/
+/blog/fidelizacion/como-la-venta-directa-empodera-a-los-hoteles-frente-a-otas/
+/blog/fideltalks/fideltalks-episodio3-email-marketing-para-hoteles/
+/blog/fidelizacion/como-fidelizar-hoteles-independientes/
+/blog/fideltalks/fideltalks-episodio1-abrirse-paso-entre-las-otas/
+/blog/fideltalks/fideltalks-episodio2-crear-embajadores-de-marca-para-tu-hotel/
+/blog/fidelizacion/como-fidelizar-al-huesped/
+/blog/crm/fideltour-mejor-crm-del-ano/
+/blog/marketing/social-proof-para-hoteles/
+/blog/marketing/como-crear-una-landing-page/
+/blog/marketing/tasa-baja-apertura-email-marketing/
+/blog/fideltour/fideltour-landings/
+/blog/marketing/fideltour-automation/
+/blog/marketing/como-crear-mapas-automatizados-efectivos/
+/blog/eventos/job-day-uib/
+/blog/eventos/feria-itb-berlin/
+/blog/eventos/tianguis-turistico-mexico/
+/blog/fidelizacion/fidelizacion-hotelera-tendencias/
+/blog/marketing/automatizacion-email-marketing-mejorar-guest-journey/
+/blog/crm/fideltour-social/
+/blog/eventos/fitur-2024/
+/blog/eventos/anato/
+/blog/marketing/errores-venta-directa-hotel/
+/blog/eventos/world-travel-market/
+/blog/fideltour/into-fideltour/
+/blog/fidelizacion/un-exhaustivo-analisis-del-turista-aleman/
+/blog/crm/crm-para-hoteles-que-es/
+/blog/marketing/segmentos-de-mercado-sector-hotelero/
+/blog/fideltour/estrategia-fidelizacion-hotelera/
+/blog/fideltour/updating-hotelero/
+
+### Posts en EN (todos a redirigir — ya cubierto por /en/blog/:rest* en next.config.ts)
+# Ver next.config.ts:11-27
+
+## CATEGORIES (category-sitemap.xml)
+
+### ES (todos a redirigir — formato distinto: /blog/category/X/ → /blog/X/)
+/blog/category/crm/                # → /blog/crm/
+/blog/category/eventos/             # → /blog/eventos/
+/blog/category/fidelizacion/        # → /blog/fidelizacion/
+/blog/category/fideltalks/          # → /blog/fideltalks/
+/blog/category/fideltour/           # → /blog/fideltour/
+/blog/category/marketing/           # → /blog/marketing/
+/blog/category/entrevistas/         # → /blog/fideltalks/ (consolidar)
+/blog/category/reviews/             # → /blog/ (sin equivalente)
+
+### EN
+# Ver next.config.ts:11-27
+
+## TAGS (post_tag-sitemap.xml)
+# El sitio Next.js NO implementa pages de tags. Todos los /blog/tag/X/ → /blog/
+
+/blog/tag/automatizacion/
+/blog/tag/caso-de-exito/
+/blog/tag/crm/
+/blog/tag/crm-para-hoteles/
+/blog/tag/encuestas-para-hoteles/
+/blog/tag/entrevistas/
+/blog/tag/eventos/
+/blog/tag/fidelizacion-hotelera/
+/blog/tag/fideltalks/
+/blog/tag/fideltour/
+/blog/tag/marketing/
+/blog/tag/marketing-automation/
+/blog/tag/marketing-para-hoteles/
+/blog/tag/partnership/
+/blog/tag/reputacion-hotelera/
+/blog/tag/turismo/
+/blog/tag/whatsapp-para-hoteles/
+
+## NOTAS
+
+- Total URLs WP estimadas: 200+ (incluyendo todas las EN, PT-PT, posts, categorías, tags).
+- El sub-sitemap de authors NO se ha extraído todavía (poco relevante para SEO).
+- Faltan los últimos posts ES (el sitemap fetch se truncó en el último). Re-fetch si necesario.
+- Las dates lastmod del WP están en futuro (2025-2026) — sugiere que el sitio sigue activo o las fechas se modificaron.

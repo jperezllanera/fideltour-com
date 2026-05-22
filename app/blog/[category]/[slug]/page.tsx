@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           { name: "Blog", path: "/blog/" },
           {
             name: categoryLabels[post.category],
-            path: `/blog/?categoria=${post.category}`,
+            path: `/blog/${post.category}/`,
           },
           { name: post.title, path: post.href },
         ]}
@@ -159,7 +159,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               <Icon className="size-5" />
             </span>
             <Link
-              href={`/blog/?categoria=${post.category}`}
+              href={`/blog/${post.category}/`}
               className="text-eyebrow text-white/80 transition-colors hover:text-brand-mint"
             >
               {categoryLabels[post.category]}
