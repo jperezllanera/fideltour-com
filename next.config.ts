@@ -124,7 +124,7 @@ const nextConfig: NextConfig = {
       { source: "/pt-pt/academia-fideltour-2/", destination: "/recursos/", permanent: true },
       { source: "/pt-pt/inicio-14/", destination: "/", permanent: true },
       { source: "/pt-pt/inacio/", destination: "/", permanent: true },
-      { source: "/pt-pt/keytel-lp-:rest*", destination: "/cdp-para-hoteles/", permanent: true },
+      { source: "/pt-pt/keytel-lp-:rest", destination: "/cdp-para-hoteles/", permanent: true },
 
       // Catch-all PT-PT
       { source: "/pt-pt/:rest*", destination: "/", permanent: true },
