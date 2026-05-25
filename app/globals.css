@@ -179,7 +179,7 @@
      .h-mega o .h-cta. Sobre fondos oscuros, añade text-white. */
   h1, h2, h3, h4 {
     font-family: var(--font-sans);
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: -0.025em;
     color: var(--brand-navy);
   }
