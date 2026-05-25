@@ -55,7 +55,7 @@ export function CrmToCdpSection() {
 
           {/* Bloque visual: gradiente de marca + tarjeta translúcida */}
           <div className="md:col-span-5">
-            <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-brand-gradient shadow-[var(--shadow-bento)]">
+            <div className="relative aspect-square w-full overflow-visible rounded-3xl bg-brand-gradient shadow-[var(--shadow-bento)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.18),transparent_60%)]" />
 
               {/* "O" del logo escalada — un único aro grueso */}

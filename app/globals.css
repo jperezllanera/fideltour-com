@@ -386,7 +386,7 @@
   }
 
   /* Aro de marca (eco de la "O" del logo) en el hero home.
-     Un solo aro, 25% de ancho, anclado a la derecha, *por encima* del
+     Un solo aro, 25% de ancho, anclado a la derecha, *detrás* del
      mockup con baja opacidad — el contenedor del grid es `relative` así
      que un absolute sin z-index queda detrás. Color aclarado con blanco
      porque a esa altura del degradado el fondo ya es cian mezclado. */
@@ -394,10 +394,10 @@
     position: absolute;
     top: 50%;
     right: 2%;
-    width: 30vw;
-    height: 30vw;
-    max-width: 576px;
-    max-height: 576px;
+    width: 25vw;
+    height: 25vw;
+    max-width: 480px;
+    max-height: 480px;
     min-width: 312px;
     min-height: 312px;
     transform: translateY(-50%);
@@ -405,7 +405,7 @@
     border: 36px solid
       color-mix(in oklch, var(--brand-primary) 65%, white 20%);
     opacity: 0.45;
-    z-index: 2;
+    z-index: 0;
     pointer-events: none;
   }
 

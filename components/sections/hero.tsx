@@ -38,7 +38,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="md:col-span-6 flex items-center">
+        <div className="md:col-span-6 flex items-center relative z-10">
           <Image
             src="/brand/hero-mockup-dispositivos.webp"
             alt="Mockup de Fideltour en escritorio, tablet y móvil"
