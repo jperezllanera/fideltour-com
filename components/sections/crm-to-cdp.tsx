@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -53,13 +54,27 @@ export function CrmToCdpSection() {
             </div>
           </div>
 
-          {/* Bloque visual: gradiente de marca + tarjeta translúcida */}
+          {/* Bloque visual: gradiente de marca + mockup del CRM + tarjeta translúcida */}
           <div className="md:col-span-5">
             <div className="relative aspect-square w-full overflow-visible rounded-3xl bg-brand-gradient shadow-[var(--shadow-bento)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.18),transparent_60%)]" />
 
               {/* "O" del logo escalada — un único aro grueso */}
               <div className="absolute -bottom-16 -right-16 size-[320px] rounded-full border-[56px] border-white/30" />
+
+              {/* Mockup del CRM flotando — la "puerta de entrada" al CDP.
+                  Ancho ~78% y anclado al tercio superior, deja libre la zona
+                  del titular de abajo (~38% del alto de la pastilla). */}
+              <div className="pointer-events-none absolute left-1/2 top-[14%] w-[78%] -translate-x-1/2">
+                <Image
+                  src="/brand/platform/crm-hoteles.webp"
+                  alt="Captura del CRM de Fideltour como puerta de entrada al CDP"
+                  width={520}
+                  height={400}
+                  sizes="(min-width: 1024px) 360px, 55vw"
+                  className="w-full h-auto drop-shadow-[0_22px_42px_rgba(0,0,0,0.35)]"
+                />
+              </div>
 
               <div className="relative flex h-full flex-col justify-between p-8 text-white">
                 <div className="text-eyebrow text-white/80">

@@ -4,7 +4,7 @@ export function LoyaltyLadderSection() {
   return (
     <section className="relative bg-muted/40">
       <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-28">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl text-center">
           <div className="text-eyebrow text-brand-navy-deep">
             Escalera de fidelización
           </div>
