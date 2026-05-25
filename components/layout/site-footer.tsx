@@ -172,7 +172,7 @@ export function SiteFooter() {
                   alt={s.alt}
                   width={s.width}
                   height={70}
-                  className="h-8 w-auto md:h-9 lg:h-10"
+                  className="h-cert-badge"
                 />
               </div>
             ))}

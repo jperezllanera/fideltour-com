@@ -29,7 +29,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { platformFeatured, platformGroups, topNavLinks } from "@/lib/content/nav";
+import { platformGroups, topNavLinks } from "@/lib/content/nav";
+import { platformFeatured } from "@/lib/content/site";
 
 export function SiteHeader() {
   return (
@@ -124,7 +125,7 @@ function MobileFeaturedCard() {
 
 function FeaturedCard() {
   return (
-    <div className="group col-span-3 flex flex-col rounded-lg bg-brand-navy p-5 text-white">
+    <div className="group flex flex-col rounded-lg bg-brand-navy p-5 text-white">
       <div className="text-eyebrow text-white/80">
         {platformFeatured.eyebrow}
       </div>
@@ -160,16 +161,31 @@ function FeaturedCard() {
   );
 }
 
+/**
+ * Mapeo nº-categorías → utility de grid. Permite que el mega-menú se
+ * adapte sin tocar este componente si añadimos/quitamos una categoría
+ * en `lib/content/module-landings/index.ts`. Si se supera 5, añadir
+ * `.grid-mega-N` en globals.css y la entrada aquí.
+ */
+const megaCols: Record<number, string> = {
+  3: "grid-mega-3",
+  4: "grid-mega-4",
+  5: "grid-mega-5",
+};
+
 function DesktopNav() {
+  const colsClass = megaCols[platformGroups.length] ?? "grid-mega-4";
   return (
     <NavigationMenu className="hidden lg:flex" fullBleed>
       <NavigationMenuList className="gap-1">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Plataforma</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid w-[min(96vw,1320px)] grid-cols-12 gap-6 p-6">
-              <FeaturedCard />
-              <div className="col-span-9 grid grid-cols-4 gap-6">
+            <div className="flex w-[min(96vw,1320px)] gap-6 p-6">
+              <div className="w-[22%] shrink-0">
+                <FeaturedCard />
+              </div>
+              <div className={cn("flex-1 grid gap-6", colsClass)}>
                 {platformGroups.map((group) => (
                   <div key={group.title} className="flex flex-col">
                     <div className="text-sm font-bold text-brand-navy">

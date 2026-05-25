@@ -34,19 +34,6 @@ export const platformGroups: {
   })),
 }));
 
-export const platformFeatured = {
-  eyebrow: "CDP para hoteles",
-  title: "Del CRM al CDP",
-  description:
-    "El hotelero que domina el dato, domina la venta directa.",
-  ctaLabel: "Ver plataforma",
-  ctaHref: "/#plataforma",
-  /* ID del vídeo de YouTube embebido en el mega-menú. Se usa el dominio
-     youtube-nocookie.com en el iframe para no setear cookies de tracking
-     hasta que el usuario reproduzca. */
-  youtubeId: "2nEg-0mQVyc",
-};
-
 export const topNavLinks: NavLink[] = [
   { label: "Clientes", href: "/clientes" },
   { label: "Recursos", href: "/recursos" },

@@ -1,3 +1,24 @@
+/**
+ * NavigationMenu — wrapper de shadcn sobre Base UI (NO Radix).
+ *
+ * Importante para futuras ediciones:
+ *   - shadcn `base-nova` style. Si añades primitives nuevos, importa de
+ *     `@base-ui/react/...`, no de `@radix-ui/...`.
+ *   - Densidad alta de clases con `data-*` attributes (data-popup-open,
+ *     data-activation-direction, data-motion=from-end, etc.). Cada una
+ *     viene del estado interno del primitive Base UI. NO inventes
+ *     atributos custom — consulta @base-ui/react/navigation-menu docs.
+ *   - `fullBleed` (custom prop nuestra, NO de Base UI): hace que el
+ *     mega-menú ignore el width del trigger y se extienda a todo el
+ *     viewport (`!w-screen !translate-x-0`). Lo usa SiteHeader para que
+ *     el dropdown "Plataforma" ocupe el ancho completo. Si llega un
+ *     segundo consumidor que quiera mismo comportamiento, no copies —
+ *     pasa `fullBleed`.
+ *   - `Positioner` + `Popup` + `Viewport` son obligatorios y van en este
+ *     orden (Base UI quiebra si los anidas mal).
+ *   - Transiciones a 0.35s con cubic-bezier(0.22,1,0.36,1) coinciden con
+ *     el resto del sistema Aurora Bento (ver `app/globals.css`).
+ */
 import { NavigationMenu as NavigationMenuPrimitive } from "@base-ui/react/navigation-menu"
 import { cva } from "class-variance-authority"
 

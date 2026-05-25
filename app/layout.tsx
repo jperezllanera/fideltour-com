@@ -15,6 +15,7 @@ import {
   WebsiteJsonLd,
 } from "@/components/seo/json-ld";
 import { siteConfig } from "@/lib/seo/site";
+import { env } from "@/lib/env";
 
 export { viewport } from "./viewport";
 
@@ -100,18 +101,17 @@ export const metadata: Metadata = {
   // en Google Search Console y Bing Webmaster Tools. Mientras tanto las
   // env vars actúan como interruptor — si están vacías, Next omite la
   // etiqueta meta correspondiente.
-  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
-  process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+  ...(env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+  env.NEXT_PUBLIC_BING_SITE_VERIFICATION
     ? {
         verification: {
-          ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-            ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+          ...(env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+            ? { google: env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
             : {}),
-          ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+          ...(env.NEXT_PUBLIC_BING_SITE_VERIFICATION
             ? {
                 other: {
-                  "msvalidate.01":
-                    process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+                  "msvalidate.01": env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
                 },
               }
             : {}),

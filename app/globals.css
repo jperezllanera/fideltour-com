@@ -296,6 +296,30 @@
     font-size: 0.5625rem;          /* 9 px */
     line-height: 1.55;
   }
+
+  /* ──────────────────────────────────────────────────────────────────
+     Grids del mega-menú — se eligen dinámicamente en site-header.tsx
+     según el número de categorías de `platformGroups` (3, 4 o 5).
+     Esto evita hardcodear `grid-cols-4` y permite añadir/quitar
+     categorías sin romper el layout. */
+  .grid-mega-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .grid-mega-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .grid-mega-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  /* Sello institucional del footer: normaliza la altura de logos
+     dispares (ENISA, CDTI, PRTR, UE…) para que se alineen sin
+     malabarismos en cada componente. Aplica object-contain. */
+  .h-cert-badge {
+    height: 2.5rem;                /* 40 px */
+    width: auto;
+    object-fit: contain;
+  }
 }
 
 /* ──────────────────────────────────────────────────────────────────────
@@ -357,7 +381,7 @@
       90deg,
       var(--brand-navy) 0%,
       var(--brand-navy) 18%,
-      color-mix(in oklch, var(--brand) 65%, var(--brand-navy) 35%) 100%
+      color-mix(in oklch, var(--brand-primary) 65%, var(--brand-navy) 35%) 100%
     );
   }
 
@@ -379,7 +403,7 @@
     transform: translateY(-50%);
     border-radius: 9999px;
     border: 36px solid
-      color-mix(in oklch, var(--brand) 65%, white 20%);
+      color-mix(in oklch, var(--brand-primary) 65%, white 20%);
     opacity: 0.45;
     z-index: 2;
     pointer-events: none;
