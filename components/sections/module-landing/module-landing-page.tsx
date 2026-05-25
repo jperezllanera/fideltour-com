@@ -54,7 +54,7 @@ export function ModuleLandingPage({ data }: Props) {
       />
       <FaqJsonLd items={data.faq} />
 
-      <ModuleHero hero={data.hero} category={data.category} />
+      <ModuleHero hero={data.hero} slug={data.slug} navLabel={data.navLabel} />
       <ModuleMiniCards cards={data.miniCards} />
       <ModulePillars pillars={data.pillars} />
       <ModuleBenefits benefits={data.benefits} />

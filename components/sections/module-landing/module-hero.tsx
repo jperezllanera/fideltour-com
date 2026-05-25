@@ -1,17 +1,16 @@
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import type { ModuleLanding } from "@/lib/content/module-landings/_types";
-import type { ModuleCategory } from "@/lib/content/module-landings";
-
-import { ModuleHeroVisual } from "./module-hero-visual";
 
 type Props = {
   hero: ModuleLanding["hero"];
-  category: ModuleCategory;
+  slug: string;
+  navLabel: string;
 };
 
-export function ModuleHero({ hero, category }: Props) {
+export function ModuleHero({ hero, slug, navLabel }: Props) {
   const ctaLabel = hero.ctaLabel ?? "Solicita una DEMO gratis";
 
   return (
@@ -52,7 +51,16 @@ export function ModuleHero({ hero, category }: Props) {
         </div>
 
         <div className="md:col-span-5 flex items-center justify-center">
-          <ModuleHeroVisual category={category} />
+          <div className="relative mx-auto aspect-square w-full max-w-md">
+            <Image
+              src={`/brand/platform/${slug}.webp`}
+              alt={`Vista del módulo ${navLabel} de la plataforma Fideltour CDP para hoteles`}
+              fill
+              priority
+              sizes="(min-width: 768px) 40vw, 90vw"
+              className="object-contain"
+            />
+          </div>
         </div>
       </div>
     </section>

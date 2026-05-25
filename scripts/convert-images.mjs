@@ -24,20 +24,24 @@ const PNG_WHITELIST = new Set([
 ]);
 
 // Presupuestos por familia. La primera entrada que matchea gana.
+// `pathMatch` se evalúa contra la ruta relativa (permite agrupar por subdir
+// como `public/brand/platform/...`); `match` se evalúa contra el basename.
 const families = [
-  { match: /^fideltour-logo/, name: "logo",         quality: 90, alpha: true,  budgetKB: 15 },
-  { match: /^cliente-/,        name: "cliente",     quality: 90, alpha: true,  budgetKB: 30 },
-  { match: /^sello-/,          name: "sello",       quality: 90, alpha: true,  budgetKB: 25 },
-  { match: /^caso-/,           name: "caso",        quality: 78, alpha: false, budgetKB: 80 },
-  { match: /^hero-/,           name: "hero",        quality: 82, alpha: true,  budgetKB: 200 },
-  { match: /^bloque-/,         name: "bloque",      quality: 82, alpha: true,  budgetKB: 200 },
-  { match: /^escalera-/,       name: "escalera",    quality: 85, alpha: true,  budgetKB: 80 },
-  { match: /.*/,               name: "marketplace", quality: 90, alpha: true,  budgetKB: 30 },
+  { pathMatch: /[\\/]platform[\\/]/, name: "platform",    quality: 80, alpha: true,  budgetKB: 200 },
+  { match: /^fideltour-logo/,         name: "logo",         quality: 90, alpha: true,  budgetKB: 15 },
+  { match: /^cliente-/,               name: "cliente",      quality: 90, alpha: true,  budgetKB: 30 },
+  { match: /^sello-/,                 name: "sello",        quality: 90, alpha: true,  budgetKB: 25 },
+  { match: /^caso-/,                  name: "caso",         quality: 78, alpha: false, budgetKB: 80 },
+  { match: /^hero-/,                  name: "hero",         quality: 82, alpha: true,  budgetKB: 200 },
+  { match: /^bloque-/,                name: "bloque",       quality: 82, alpha: true,  budgetKB: 200 },
+  { match: /^escalera-/,              name: "escalera",     quality: 85, alpha: true,  budgetKB: 80 },
+  { match: /.*/,                      name: "marketplace",  quality: 90, alpha: true,  budgetKB: 30 },
 ];
 
-function classify(basename) {
+function classify(basename, relPath = "") {
   for (const f of families) {
-    if (f.match.test(basename)) return f;
+    if (f.pathMatch && f.pathMatch.test(relPath)) return f;
+    if (f.match && f.match.test(basename)) return f;
   }
   return families.at(-1);
 }
@@ -78,7 +82,7 @@ if (AUDIT) {
         reason: `formato ${ext} pendiente de convertir a .webp (ejecuta: node scripts/convert-images.mjs)`,
       });
     } else if (ext === ".webp") {
-      const family = classify(basename);
+      const family = classify(basename, rel);
       const size = (await fs.stat(file)).size;
       if (size / 1024 > family.budgetKB) {
         auditFailures.push({
@@ -109,7 +113,8 @@ for (const file of all) {
   if (![".png", ".jpg", ".jpeg"].includes(ext)) continue;
 
   const basename = path.basename(file);
-  const family = classify(basename);
+  const rel = path.relative(process.cwd(), file);
+  const family = classify(basename, rel);
   const original = (await fs.stat(file)).size;
 
   const webpPath = file.replace(/\.(png|jpe?g)$/i, ".webp");
@@ -134,7 +139,7 @@ for (const file of all) {
 
   const overBudget = outSize / 1024 > family.budgetKB;
   rows.push({
-    file: path.relative(process.cwd(), file),
+    file: rel,
     family: family.name,
     before: original,
     after: outSize,
