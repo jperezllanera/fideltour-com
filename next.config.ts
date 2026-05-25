@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Output standalone para el Dockerfile multi-stage (deploy en Coolify):
+  // genera .next/standalone con server.js + node_modules mínimos, lo que
+  // produce una imagen de runtime pequeña. Mismo patrón que el otro proyecto.
+  output: "standalone",
+
   // El blog vivo en fideltour.com usa URLs con slash final
   // (p. ej. /blog/marketing/automatizaciones-esenciales-para-hoteles/).
   // Activamos trailingSlash global para no romper backlinks ni SEO tras migrar.

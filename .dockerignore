@@ -1,0 +1,34 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+build
+
+# Git
+.git
+.gitignore
+
+# Env (se inyectan en runtime desde Coolify)
+.env
+.env.*
+
+# Claude / memoria local
+.claude
+
+# IDE / OS
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
