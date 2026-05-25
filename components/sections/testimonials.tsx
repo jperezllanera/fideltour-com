@@ -42,7 +42,7 @@ export function TestimonialsSection() {
           {items.map((t) => (
             <Card
               key={t.org}
-              className="overflow-hidden rounded-2xl border-border/70 bg-card p-0 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-bento)]"
+              className="overflow-visible rounded-2xl border-border/70 bg-card p-0 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-bento)]"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image

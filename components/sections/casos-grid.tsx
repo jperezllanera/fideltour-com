@@ -28,7 +28,7 @@ export function CasosGridSection() {
               <article
                 key={caso.slug}
                 style={{ ["--i" as never]: i + 1 }}
-                className="bento-cell group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]"
+                className="bento-cell group relative flex flex-col overflow-visible rounded-2xl border border-border/70 bg-card shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]"
               >
                 <div
                   aria-hidden
