@@ -4,23 +4,26 @@ import { Card, CardContent } from "@/components/ui/card";
 const items = [
   {
     quote:
-      "Pasar del CRM al CDP de Fideltour nos permitió subir la venta directa un 28% en doce meses, sin contratar más equipo.",
-    author: "Director de eCommerce",
-    org: "Grupo hotelero nacional",
+      "Para nosotros, Fideltour ha fortalecido nuestra fidelización de clientes al permitirnos conocer sus preferencias y enviar newsletters segmentadas. Su interfaz fácil de usar ha mejorado la eficiencia del equipo y sin duda, recomendaría Fideltour para optimizar la comunicación con los clientes y brindarles un servicio personalizado de calidad.",
+    author: "Rosi Yáñez",
+    role: "Sales & Marketing",
+    org: "GF Hoteles",
     image: "/brand/caso-gf-costa-adeje.webp",
   },
   {
     quote:
-      "Por primera vez tenemos un único perfil por huésped que cruza reservas, estancias y comunicaciones. Cambia la forma de tomar decisiones.",
-    author: "CMO",
-    org: "Universal Hoteles",
+      "En Universal Beach Hotels valoramos la comunicación y relación con nuestros clientes de forma esencial y por ello consideramos a Fideltour como una herramienta útil y eficiente. Valoramos especialmente aspectos como una interfaz intuitiva, la capacidad de personalización, el cercano soporte técnico y su servicio al cliente así como el desarrollo constante de la plataforma.",
+    author: "Carla Pascual",
+    role: "Sales & Marketing",
+    org: "Universal Beach Hotels",
     image: "/brand/caso-universal-aquamarin.webp",
   },
   {
     quote:
-      "El equipo de marketing ya no le pide datos a IT. Crea sus segmentos, los activa y mide el revenue. Eso es transformación real.",
-    author: "Revenue Manager",
-    org: "Ohtels",
+      "Sin duda, la plataforma de Fideltour es completamente user friendly, fácil de usar y muy intuitiva. Estamos contentos con Fideltour y su soporte — siempre que lo hemos necesitado, ha funcionado de una forma rápida y eficiente. Nos gustan mucho las campañas automatizadas: prácticamente te olvidas y ahí siguen funcionando.",
+    author: "Nuria Lista",
+    role: "Resp. Marketing y Comunicación",
+    org: "Oh!tels",
     image: "/brand/caso-ohtels-gran-almeria.webp",
   },
 ];
@@ -64,11 +67,16 @@ export function TestimonialsSection() {
                 >
                   &ldquo;
                 </div>
-                <p className="text-sm leading-relaxed text-foreground/90">
+                <p className="text-sm leading-relaxed text-foreground">
                   {t.quote}
                 </p>
-                <div className="mt-auto border-t border-border/60 pt-4 text-sm font-medium text-foreground">
-                  {t.author}
+                <div className="mt-auto border-t border-border/60 pt-4">
+                  <div className="text-sm font-semibold text-foreground">
+                    {t.author}
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {t.role} · {t.org}
+                  </div>
                 </div>
               </CardContent>
             </Card>

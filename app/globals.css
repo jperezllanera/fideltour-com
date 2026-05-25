@@ -386,27 +386,37 @@
   }
 
   /* Aro de marca (eco de la "O" del logo) en el hero home.
-     Un solo aro, 25% de ancho, anclado a la derecha, *detrás* del
-     mockup con baja opacidad — el contenedor del grid es `relative` así
-     que un absolute sin z-index queda detrás. Color aclarado con blanco
-     porque a esa altura del degradado el fondo ya es cian mezclado. */
+     Replica la presencia del aro corporativo de fideltour.com: ocupa
+     ~45vw del hero, anclado a la derecha y *detrás* del mockup. El
+     contenedor del grid es `relative` así que un absolute sin z-index
+     queda detrás. Color aclarado con blanco porque a esa altura del
+     degradado el fondo ya es cian mezclado. */
   .hero-decor-ring {
     position: absolute;
     top: 50%;
-    right: 2%;
-    width: 25vw;
-    height: 25vw;
-    max-width: 480px;
-    max-height: 480px;
-    min-width: 312px;
-    min-height: 312px;
+    right: -6%;
+    width: 45vw;
+    height: 45vw;
+    max-width: 720px;
+    max-height: 720px;
+    min-width: 480px;
+    min-height: 480px;
     transform: translateY(-50%);
     border-radius: 9999px;
-    border: 36px solid
-      color-mix(in oklch, var(--brand-primary) 65%, white 20%);
-    opacity: 0.45;
+    border: 80px solid
+      color-mix(in oklch, var(--brand-primary) 70%, white 15%);
+    opacity: 0.5;
     z-index: 0;
     pointer-events: none;
+  }
+
+  /* Degradado firma de marca (azul cobalto → cian) para tarjetas
+     destacadas tipo bento ("Del CRM al CDP"). El token --brand-gradient
+     existe en :root, pero Tailwind v4 no genera utility bg-* a partir
+     de un --color-* que sea una función linear-gradient, así que la
+     exponemos como clase explícita. */
+  .bg-brand-gradient {
+    background-image: var(--brand-gradient);
   }
 
   @media (prefers-reduced-motion: reduce) {
