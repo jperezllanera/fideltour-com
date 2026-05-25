@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, UserCheck, Wifi } from "lucide-react";
 
@@ -75,6 +76,19 @@ export function PortalCautivoHeroSection() {
               </div>
             </li>
           </ul>
+        </div>
+
+        <div className="md:col-span-4 md:row-start-1 flex items-center">
+          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl">
+            <Image
+              src="/brand/platform/integracion-portal-cautivo-para-hoteles.webp"
+              alt="Vista del módulo Portal cautivo de la plataforma Fideltour CDP para hoteles"
+              fill
+              priority
+              sizes="(min-width: 768px) 33vw, 90vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>

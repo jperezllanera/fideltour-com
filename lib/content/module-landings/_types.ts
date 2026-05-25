@@ -18,13 +18,13 @@ export const moduleCategoryLabels: Record<ModuleCategory, string> = {
 
 export const moduleCategoryDescriptions: Record<ModuleCategory, string> = {
   "data-import":
-    "Conecta cualquier fuente del hotel — PMS, motor, web, chatbot — y unifica el dato en tiempo real.",
+    "Ingiere cada señal del hotel en una sola fuente de verdad, en tiempo real, sin ETLs ni copias entre herramientas.",
   "data-intelligence":
-    "Identidad única por huésped, segmentación y predicciones para decidir con criterio hotelero.",
+    "Identidad única por huésped, segmentación dinámica y predicción para decidir con criterio hotelero.",
   "data-activation":
-    "Activa el dato en campañas, automatización, fidelización y experiencias que generan venta directa.",
+    "Convierte el dato en venta directa con flujos que reducen la dependencia de las OTAs.",
   multicanalidad:
-    "Habla con el huésped en cada canal — email, WhatsApp, SMS, push web y app — desde un solo perfil.",
+    "Una conversación viva por huésped, coherente en todos los canales sin perder el contexto.",
 };
 
 /**

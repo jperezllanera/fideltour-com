@@ -51,7 +51,7 @@ export function ModuleHero({ hero, slug, navLabel }: Props) {
         </div>
 
         <div className="md:col-span-5 flex items-center justify-center">
-          <div className="relative mx-auto aspect-square w-full max-w-md">
+          <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl">
             <Image
               src={`/brand/platform/${slug}.webp`}
               alt={`Vista del módulo ${navLabel} de la plataforma Fideltour CDP para hoteles`}

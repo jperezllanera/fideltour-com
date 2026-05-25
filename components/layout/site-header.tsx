@@ -147,6 +147,7 @@ function FeaturedCard() {
       </div>
 
       <NavigationMenuLink
+        closeOnClick
         render={
           <Link
             href={platformFeatured.ctaHref}
@@ -200,6 +201,7 @@ function DesktopNav() {
                       {group.items.map((item) => (
                         <li key={item.label}>
                           <NavigationMenuLink
+                            closeOnClick
                             render={
                               <Link
                                 href={item.href}
