@@ -29,6 +29,6 @@ export const platformFeatured: PlatformFeatured = {
   description:
     "El hotelero que domina el dato, domina la venta directa.",
   ctaLabel: "Ver plataforma",
-  ctaHref: "/#plataforma",
+  ctaHref: "/cdp-para-hoteles/",
   youtubeId: "2nEg-0mQVyc",
 };

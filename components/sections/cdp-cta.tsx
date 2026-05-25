@@ -18,29 +18,54 @@ export function CdpCtaSection() {
             className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-brand to-transparent"
           />
 
-          <div className="relative flex flex-col items-start gap-6 md:max-w-3xl">
-            <div className="text-eyebrow text-white/70">Empieza hoy</div>
-            <h2 className="h-cta text-white">
-              Centraliza, activa y{" "}
-              <span className="text-brand">analiza el dato</span> de tus
-              huéspedes.
-            </h2>
-            <p className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-              Sabes lo importante que es tener los datos centralizados. Ahora
-              conviértelos en experiencias únicas y estrategias rentables con
-              Fideltour CDP.
-            </p>
+          <div className="relative grid gap-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-7 flex flex-col items-start gap-6">
+              <div className="text-eyebrow text-white/70">La cuenta atrás</div>
+              <h2 className="h-cta text-white">
+                El contexto no se enciende.{" "}
+                <span className="text-brand-mint">Se acumula.</span>
+              </h2>
+              <p className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+                El que empieza hoy llega armado a la ola agéntica. El que
+                espera, llega tarde. Conecta tu PMS y empieza a unir tu
+                contexto — cuando llegue la reserva agéntica, tu agente de
+                venta tendrá detrás todo lo que necesita para ganar la venta
+                directa.
+              </p>
 
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <Button
-                size="lg"
-                className="rounded-full bg-brand text-white hover:bg-brand/90 px-6 gap-1.5"
-                render={<Link href="/contacto" />}
-              >
-                Solicita una demo
-                <ArrowRight className="size-4" aria-hidden />
-              </Button>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <Button
+                  size="lg"
+                  className="rounded-full bg-brand text-white hover:bg-brand/90 px-6 gap-1.5"
+                  render={<Link href="/contacto" />}
+                >
+                  Solicita una DEMO gratis
+                  <ArrowRight className="size-4" aria-hidden />
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full border-white/30 bg-white/5 text-white hover:bg-white/15 hover:text-white px-6"
+                  render={<Link href="/casos-de-exito/" />}
+                >
+                  Ver casos de éxito
+                </Button>
+              </div>
             </div>
+
+            <aside className="md:col-span-5 relative rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur">
+              <div className="text-eyebrow text-brand-mint">
+                Por qué te importa
+              </div>
+              <p className="mt-3 text-base leading-relaxed text-white md:text-lg">
+                Tu motor de reservas conversará. Tus competidores ya lo están
+                preparando. La diferencia entre ganar y comisionar a la OTA
+                vivirá en el contexto que hayas acumulado.
+              </p>
+              <p className="mt-4 text-sm text-white/70">
+                Cada día sin CDP es un día de dato que no se acumula.
+              </p>
+            </aside>
           </div>
         </div>
       </div>
