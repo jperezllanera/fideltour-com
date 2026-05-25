@@ -80,14 +80,22 @@ export function CrmToCdpSection() {
                 <div className="text-eyebrow text-white/80">
                   Customer Data Platform
                 </div>
-                <div>
+                <div className="flex flex-col gap-4">
                   <div className="font-sans text-3xl font-bold leading-tight md:text-4xl">
                     De datos sueltos
                     <br />a venta directa
                   </div>
-                  <div className="mt-2 text-sm text-white/80">
-                    Fideltour · CDP para hoteles
-                  </div>
+                  <ul className="flex flex-wrap items-center gap-2 text-eyebrow-sm">
+                    <li className="rounded-full bg-white/15 px-2.5 py-1 text-white">
+                      Buscador 51% → 36%
+                    </li>
+                    <li className="rounded-full bg-brand-mint/25 px-2.5 py-1 text-white">
+                      IA 6% → 15%
+                    </li>
+                    <li className="rounded-full bg-white/15 px-2.5 py-1 text-white">
+                      80% tráfico anónimo
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

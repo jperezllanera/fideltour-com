@@ -15,13 +15,15 @@ export function FinalCtaSection() {
 
           <div className="relative grid gap-10 p-8 md:grid-cols-12 md:items-center md:gap-8 md:p-12 lg:p-16">
             <div className="md:col-span-7 flex flex-col items-start gap-6">
-              <h2 className="text-white">
-                El hotelero que domina el dato,{" "}
-                <span className="text-brand">domina la venta directa</span>.
+              <div className="text-eyebrow text-white/70">La cuenta atrás</div>
+              <h2 className="h-cta text-white">
+                El contexto no se enciende.{" "}
+                <span className="text-brand-mint">Se acumula.</span>
               </h2>
               <p className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
-                El primer paso es entender tus datos, tu nivel de madurez y qué
-                acciones tienen más sentido para tu negocio.
+                El que empieza hoy llega armado a la ola agéntica. El que
+                espera, llega tarde. Conecta tu PMS y empieza a unir tu
+                contexto del huésped.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -30,7 +32,7 @@ export function FinalCtaSection() {
                   className="rounded-full bg-brand text-white hover:bg-brand/90 px-7 gap-1.5"
                   render={<a href="/contacto" />}
                 >
-                  Hablar con un experto
+                  Empieza por tu PMS
                   <ArrowRight className="size-4" />
                 </Button>
               </div>

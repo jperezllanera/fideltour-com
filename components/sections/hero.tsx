@@ -15,15 +15,15 @@ export function HeroSection() {
             CDP para hoteles
           </span>
 
-          <h1 className="text-white">
-            Plataforma de marketing y ventas para hoteles
+          <h1 className="h-mega text-white">
+            El hotelero que domina el dato,{" "}
+            <span className="text-brand-mint">domina la venta directa</span>.
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
-            Durante años, el CRM fue suficiente. Hoy, para fidelizar y aumentar
-            la venta directa, es imprescindible un{" "}
-            <strong className="font-semibold text-white">CDP</strong> que
-            unifique datos, reservas, estancias y comunicaciones multicanal.
+            Plataforma de marketing y ventas para hoteles. Un CDP que unifica
+            datos, reservas, estancias y comunicaciones multicanal — y devuelve
+            al hotelero el control sobre su venta directa.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">

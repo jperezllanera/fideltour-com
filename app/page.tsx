@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { HeroSection } from "@/components/sections/hero";
 import { AwardsStrip } from "@/components/sections/awards-strip";
 import { CrmToCdpSection } from "@/components/sections/crm-to-cdp";
-import { LoyaltyLadderSection } from "@/components/sections/loyalty-ladder";
+import { CdpModulesSection } from "@/components/sections/cdp-modules";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { LogosCarouselSection } from "@/components/sections/logos-carousel";
 import { ResourcesSection } from "@/components/sections/resources";
@@ -43,7 +43,7 @@ export default function HomePage() {
       <HeroSection />
       <AwardsStrip />
       <CrmToCdpSection />
-      <LoyaltyLadderSection />
+      <CdpModulesSection />
       <TestimonialsSection />
       <LogosCarouselSection />
       <ResourcesSection />
