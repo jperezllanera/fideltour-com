@@ -14,13 +14,13 @@ export function CdpHeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-10 md:px-6 md:pt-28 md:pb-28">
         <div className="md:col-span-7 flex flex-col gap-6">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             CDP para hoteles · Fideltour ONE
           </span>
 
           <h1 className="text-white">
             La reserva de hotel está a punto de{" "}
-            <span className="text-brand-mint">cambiar</span>. Otra vez.
+            <span className="text-brand">cambiar</span>. Otra vez.
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
@@ -69,10 +69,10 @@ export function CdpHeroSection() {
               </p>
             </article>
 
-            <article className="rounded-2xl border border-brand-mint/40 bg-brand-mint/10 p-5 backdrop-blur">
-              <div className="text-eyebrow inline-flex items-center gap-1.5 text-brand-mint">
+            <article className="rounded-2xl border border-brand/40 bg-brand/10 p-5 backdrop-blur">
+              <div className="text-eyebrow inline-flex items-center gap-1.5 text-brand">
                 La IA generativa
-                <ArrowUp className="size-3.5 text-brand-mint" aria-hidden />
+                <ArrowUp className="size-3.5 text-brand" aria-hidden />
               </div>
               <div className="mt-2 font-sans text-3xl font-bold whitespace-nowrap text-white md:text-4xl">
                 <span className="text-white/55">6%</span> → 15%

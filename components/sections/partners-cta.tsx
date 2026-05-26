@@ -24,7 +24,7 @@ export function PartnersCtaSection() {
               </div>
               <h2 className="h-cta text-white">
                 Hablemos del encaje{" "}
-                <span className="text-brand-mint">de tu cartera con Fideltour</span>
+                <span className="text-brand">de tu cartera con Fideltour</span>
               </h2>
               <p className="text-base leading-relaxed text-white/80 md:text-lg">
                 Cuéntanos qué tipo de hoteles tienes como clientes y diseñamos

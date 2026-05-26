@@ -61,9 +61,9 @@ export function CdpSalesAgentSection() {
             <span className="text-eyebrow text-muted-foreground">Consulta</span>
           </div>
 
-          <article className="flex flex-col gap-4 rounded-2xl border border-brand-mint/40 bg-brand-navy-deep p-6 text-white shadow-[var(--shadow-bento)] md:p-7">
-            <span className="text-eyebrow text-brand-mint">Tu CDP · Fideltour</span>
-            <div className="inline-flex size-12 items-center justify-center rounded-full bg-brand-mint text-brand-navy-deep">
+          <article className="flex flex-col gap-4 rounded-2xl border border-brand/40 bg-brand-navy-deep p-6 text-white shadow-[var(--shadow-bento)] md:p-7">
+            <span className="text-eyebrow text-brand">Tu CDP · Fideltour</span>
+            <div className="inline-flex size-12 items-center justify-center rounded-full bg-brand text-brand-navy-deep">
               <Database className="size-5" aria-hidden />
             </div>
             <h3 className="text-white">Agente de contexto.</h3>

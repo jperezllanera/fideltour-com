@@ -59,7 +59,7 @@ export function BlogFeaturedSection() {
               />
               <div className="relative flex h-full flex-col justify-between gap-10 p-8 md:p-10">
                 <div className="flex items-center gap-3">
-                  <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15 backdrop-blur">
+                  <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
                     <Icon className="size-5" />
                   </span>
                   <span className="text-eyebrow text-white drop-shadow">

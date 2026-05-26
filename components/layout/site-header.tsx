@@ -2,7 +2,17 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { ArrowRight, MenuIcon, PlayCircle } from "lucide-react";
+import {
+  ArrowRight,
+  Bell,
+  Mail,
+  MenuIcon,
+  MessageCircle,
+  MessageSquare,
+  Smartphone,
+  type LucideIcon,
+} from "lucide-react";
+import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
@@ -74,58 +84,37 @@ export function SiteHeader() {
 }
 
 /**
- * Versión "lite" del FeaturedCard del desktop para el sheet móvil. NO
- * embebe el iframe (sería un peso brutal en mobile); muestra el thumbnail
- * estático de YouTube como hero y enlaza a la sección "Plataforma" de la
- * home, donde el visitante puede continuar el journey.
+ * Versión "lite" del FeaturedCard del desktop para el sheet móvil.
+ * Sin vídeo ni thumbnail — solo eyebrow + título + descripción + CTA
+ * píldora blanca sobre navy para que el botón sea el ancla visual sin
+ * recurrir al cian como fondo (es accent, no destacado — ver docs/brand-system.md).
  */
 function MobileFeaturedCard() {
-  const thumb = `https://i.ytimg.com/vi/${platformFeatured.youtubeId}/hqdefault.jpg`;
   return (
     <Link
       href={platformFeatured.ctaHref}
-      className="group mb-4 block overflow-hidden rounded-2xl bg-brand-navy text-white shadow-soft"
+      className="group mb-4 block rounded-2xl bg-brand-navy p-5 text-white shadow-soft"
     >
-      <div className="relative aspect-video w-full overflow-hidden bg-black/40">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={thumb}
-          alt=""
-          aria-hidden
-          loading="lazy"
-          className="absolute inset-0 size-full object-cover"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-brand-navy/30 to-transparent"
-        />
-        <PlayCircle
-          aria-hidden
-          className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.45)]"
-        />
+      <div className="text-eyebrow text-white/80">
+        {platformFeatured.eyebrow}
       </div>
-      <div className="p-4">
-        <div className="text-eyebrow text-white/80">
-          {platformFeatured.eyebrow}
-        </div>
-        <div className="mt-1 text-base font-bold text-white">
-          {platformFeatured.title}
-        </div>
-        <p className="mt-1 text-sm text-white/80">
-          {platformFeatured.description}
-        </p>
-        <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-mint">
-          {platformFeatured.ctaLabel}
-          <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-        </span>
+      <div className="mt-1 text-base font-bold text-white">
+        {platformFeatured.title}
       </div>
+      <p className="mt-1 text-sm text-white/80">
+        {platformFeatured.description}
+      </p>
+      <span className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand-navy transition-colors group-hover:bg-white/90">
+        {platformFeatured.ctaLabel}
+        <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+      </span>
     </Link>
   );
 }
 
 function FeaturedCard() {
   return (
-    <div className="group flex flex-col rounded-lg bg-brand-navy p-5 text-white">
+    <div className="flex flex-col rounded-lg bg-brand-navy p-5 text-white">
       <div className="text-eyebrow text-white/80">
         {platformFeatured.eyebrow}
       </div>
@@ -134,27 +123,16 @@ function FeaturedCard() {
         {platformFeatured.description}
       </p>
 
-      <div className="relative mt-4 aspect-video overflow-hidden rounded-md bg-black/40 ring-1 ring-white/10">
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${platformFeatured.youtubeId}?rel=0&modestbranding=1`}
-          title={`${platformFeatured.title} — vídeo`}
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-          className="absolute inset-0 size-full"
-        />
-      </div>
-
       <NavigationMenuLink
         closeOnClick
+        className="mt-5 p-0 hover:bg-transparent focus:bg-transparent"
         render={
           <Link
             href={platformFeatured.ctaHref}
-            className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-mint transition-colors hover:text-white"
+            className="group/cta inline-flex items-center justify-center gap-1.5 self-start rounded-full bg-white px-4 py-2 text-sm font-semibold text-brand-navy transition-colors hover:bg-white/90"
           >
             {platformFeatured.ctaLabel}
-            <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+            <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
           </Link>
         }
       />
@@ -174,30 +152,148 @@ const megaCols: Record<number, string> = {
   5: "grid-mega-5",
 };
 
+/**
+ * Overrides para que los fondos hover/open de Base UI no compitan con la
+ * pastilla animada (motion `layoutId="nav-hover-pill"`). Mantenemos el
+ * focus-visible:ring del primitive para teclado — solo neutralizamos el
+ * fondo. Si añades un estado data-* nuevo en `components/ui/navigation-menu.tsx`
+ * con bg propio, replícalo aquí o la pastilla se solapará.
+ */
+const navTriggerOverride =
+  "relative z-10 hover:bg-transparent focus:bg-transparent data-popup-open:bg-transparent data-popup-open:hover:bg-transparent data-open:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent";
+
+const navLinkOverride =
+  "relative z-10 px-2.5 py-1.5 text-sm font-medium text-foreground/80 hover:bg-transparent hover:text-foreground focus:bg-transparent data-active:bg-transparent";
+
+function NavHoverPill() {
+  return (
+    <motion.span
+      layoutId="nav-hover-pill"
+      aria-hidden
+      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+      className="pointer-events-none absolute inset-0 rounded-lg bg-primary/10"
+    />
+  );
+}
+
+/**
+ * Icono por canal de la franja Multicanalidad. Keyed por label (el mismo
+ * que viene de `module-landings/index.ts` → "Email", "Whatsapp", "SMS",
+ * "Web Push", "App Push"). Si renombras un label allí, actualiza también
+ * este mapa — si no hay match, el chip cae al fallback (MessageCircle).
+ */
+const channelIcons: Record<string, LucideIcon> = {
+  Email: Mail,
+  Whatsapp: MessageCircle,
+  SMS: MessageSquare,
+  "Web Push": Bell,
+  "App Push": Smartphone,
+};
+
+/**
+ * Multicanalidad en grid 2+2+1: si el grupo tiene un nº impar de items,
+ * el último ocupa las dos columnas y se centra en `w-1/2` para verse
+ * visualmente igual de ancho que las parejas de arriba.
+ */
+function MultichannelList({
+  group,
+}: {
+  group: (typeof platformGroups)[number];
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-background p-4 shadow-soft">
+      <div className="text-eyebrow text-brand-navy">{group.title}</div>
+      <ul className="mt-3 grid grid-cols-2 gap-1.5">
+        {group.items.map((item, idx) => {
+          const Icon = channelIcons[item.label] ?? MessageCircle;
+          const isLastOdd =
+            group.items.length % 2 === 1 &&
+            idx === group.items.length - 1;
+          return (
+            <li
+              key={item.label}
+              className={cn(isLastOdd && "col-span-2 flex justify-center")}
+            >
+              <NavigationMenuLink
+                closeOnClick
+                className="rounded-md p-0 hover:bg-transparent focus:bg-transparent"
+                render={
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "group/channel flex w-full items-center justify-center gap-2 rounded-md border border-border/60 bg-background px-2.5 py-2 text-xs font-medium text-foreground/85 transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary",
+                      isLastOdd && "w-1/2",
+                    )}
+                  >
+                    <Icon
+                      className="size-3.5 shrink-0 text-foreground/70 transition-colors group-hover/channel:text-primary"
+                      aria-hidden
+                    />
+                    <span>{item.label}</span>
+                  </Link>
+                }
+              />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
 function DesktopNav() {
-  const colsClass = megaCols[platformGroups.length] ?? "grid-mega-4";
+  const [hoveredKey, setHoveredKey] = React.useState<string | null>(null);
+  /**
+   * Layout del mega-menú:
+   *   - Izquierda: pastilla "Del CRM al CDP" con CTA píldora blanca (sin vídeo).
+   *   - Derecha (apilado): grid de 3 categorías + franja horizontal de
+   *     Multicanalidad con iconos por canal. Aprovecha el hueco que
+   *     dejaba la columna izquierda al perder el iframe.
+   */
+  const mainGroups = platformGroups.filter(
+    (g) => g.title !== "Multicanalidad",
+  );
+  const multichannel = platformGroups.find((g) => g.title === "Multicanalidad");
+  const colsClass = megaCols[mainGroups.length] ?? "grid-mega-3";
+
   return (
     <NavigationMenu className="hidden lg:flex" fullBleed>
-      <NavigationMenuList className="gap-1">
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Plataforma</NavigationMenuTrigger>
+      <NavigationMenuList
+        className="gap-0.5"
+        onMouseLeave={() => setHoveredKey(null)}
+      >
+        <NavigationMenuItem
+          className="relative"
+          onMouseEnter={() => setHoveredKey("platform")}
+        >
+          {hoveredKey === "platform" && <NavHoverPill />}
+          <NavigationMenuTrigger className={navTriggerOverride}>
+            Plataforma
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="flex w-[min(96vw,1320px)] gap-6 p-6">
-              <div className="w-[22%] shrink-0">
+            <div className="flex w-[min(96vw,1320px)] items-start gap-6 p-6">
+              <div className="flex w-[22%] shrink-0 flex-col gap-4">
                 <FeaturedCard />
+                {multichannel && <MultichannelList group={multichannel} />}
               </div>
-              <div className={cn("flex-1 grid gap-6", colsClass)}>
-                {platformGroups.map((group) => (
-                  <div key={group.title} className="flex flex-col">
+              <div
+                className={cn(
+                  "grid flex-1 grid-rows-[auto_auto_1fr] gap-x-6",
+                  colsClass,
+                )}
+              >
+                {mainGroups.map((group) => (
+                  <div
+                    key={group.title}
+                    className="row-span-3 grid grid-rows-subgrid"
+                  >
                     <div className="text-sm font-bold text-brand-navy">
                       {group.title}
                     </div>
-                    {group.description && (
-                      <p className="mt-1.5 text-xs text-muted-foreground">
-                        {group.description}
-                      </p>
-                    )}
-                    <ul className="mt-4 space-y-3">
+                    <p className="mt-1.5 text-xs text-muted-foreground">
+                      {group.description}
+                    </p>
+                    <ul className="mt-4 space-y-1">
                       {group.items.map((item) => (
                         <li key={item.label}>
                           <NavigationMenuLink
@@ -205,16 +301,9 @@ function DesktopNav() {
                             render={
                               <Link
                                 href={item.href}
-                                className="group/item flex-col items-start gap-0 transition-colors"
+                                className="text-sm font-medium text-foreground/90 transition-colors hover:text-primary"
                               >
-                                <span className="text-sm font-medium text-foreground/90 transition-colors group-hover/item:text-primary">
-                                  {item.label}
-                                </span>
-                                {item.description && (
-                                  <span className="mt-0.5 block text-xs text-muted-foreground">
-                                    {item.description}
-                                  </span>
-                                )}
+                                {item.label}
                               </Link>
                             }
                           />
@@ -229,13 +318,16 @@ function DesktopNav() {
         </NavigationMenuItem>
 
         {topNavLinks.map((link) => (
-          <NavigationMenuItem key={link.label}>
+          <NavigationMenuItem
+            key={link.label}
+            className="relative"
+            onMouseEnter={() => setHoveredKey(link.label)}
+          >
+            {hoveredKey === link.label && <NavHoverPill />}
             <NavigationMenuLink
+              className="hover:bg-transparent focus:bg-transparent"
               render={
-                <Link
-                  href={link.href}
-                  className="px-2.5 py-1.5 text-sm font-medium text-foreground/80 hover:text-foreground"
-                >
+                <Link href={link.href} className={navLinkOverride}>
                   {link.label}
                 </Link>
               }

@@ -55,11 +55,11 @@ export function CdpEcosystemSection() {
           </div>
 
           {/* CDP central */}
-          <article className="relative flex flex-col items-center gap-4 rounded-3xl border border-brand-mint/40 bg-brand-navy-deep p-8 text-center text-white shadow-[var(--shadow-elevated)]">
-            <span className="inline-flex size-14 items-center justify-center rounded-full bg-brand-mint text-brand-navy-deep">
+          <article className="relative flex flex-col items-center gap-4 rounded-3xl border border-brand/40 bg-brand-navy-deep p-8 text-center text-white shadow-[var(--shadow-elevated)]">
+            <span className="inline-flex size-14 items-center justify-center rounded-full bg-brand text-brand-navy-deep">
               <Database className="size-6" aria-hidden />
             </span>
-            <div className="text-eyebrow text-brand-mint">El centro</div>
+            <div className="text-eyebrow text-brand">El centro</div>
             <div className="font-sans text-2xl font-bold text-white md:text-3xl">
               CDP para hoteles.
             </div>

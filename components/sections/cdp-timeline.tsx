@@ -37,7 +37,7 @@ export function CdpTimelineSection() {
                     className={cn(
                       "inline-flex size-6 items-center justify-center rounded-full ring-4",
                       step.current
-                        ? "bg-brand-mint ring-brand-mint/30"
+                        ? "bg-brand ring-brand/30"
                         : step.future
                           ? "bg-card ring-border border-2 border-dashed border-brand"
                           : "bg-brand-navy-deep ring-card",
@@ -68,7 +68,7 @@ export function CdpTimelineSection() {
                     {step.description}
                   </span>
                   {step.current && (
-                    <span className="text-eyebrow mt-1 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-mint/15 px-2 py-0.5 text-brand-navy-deep">
+                    <span className="text-eyebrow mt-1 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand/15 px-2 py-0.5 text-brand-navy-deep">
                       Ahora · tú
                     </span>
                   )}

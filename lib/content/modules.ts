@@ -7,6 +7,14 @@ export type BentoModule = {
   span: string;
   /** Etiqueta-dato corta en el área visual (Instrument Mono) */
   metric?: string;
+  /**
+   * Slug de la landing de módulo a la que apunta la card cuando se hace
+   * clic. Si no se aporta, la card queda inerte (sin link). Mapping a
+   * los 23 slugs vive en `lib/content/module-landings/index.ts`; tocar
+   * aquí cuando reorganicemos qué módulo abstracto del bento aterriza
+   * en qué landing concreta.
+   */
+  href?: string;
 };
 
 /**
@@ -21,6 +29,7 @@ export const bentoModules: BentoModule[] = [
     description: "Identidad única por huésped y hogar, con histórico de reservas y estancias consolidado.",
     span: "xl:col-span-5 xl:row-span-2",
     metric: "1 huésped · n estancias",
+    href: "/guest-id-para-hoteles/",
   },
   {
     id: "02",
@@ -29,6 +38,7 @@ export const bentoModules: BentoModule[] = [
     description: "Toda la actividad del PMS y booking engine en un solo timeline.",
     span: "xl:col-span-4",
     metric: "PMS · Booking Engine · OTAs",
+    href: "/integracion-pms-para-hoteles/",
   },
   {
     id: "03",
@@ -37,6 +47,7 @@ export const bentoModules: BentoModule[] = [
     description: "Audiencias que se recalculan en tiempo real cuando cambia el comportamiento.",
     span: "xl:col-span-3",
     metric: "Recompute · 60 s",
+    href: "/crm-hoteles/",
   },
   {
     id: "04",
@@ -45,6 +56,7 @@ export const bentoModules: BentoModule[] = [
     description: "Probabilidad de reserva, riesgo de churn y potencial de upsell por huésped.",
     span: "xl:col-span-3",
     metric: "Score reserva · 0.87",
+    href: "/inteligencia-artificial-para-hoteles/",
   },
   {
     id: "05",
@@ -53,6 +65,7 @@ export const bentoModules: BentoModule[] = [
     description: "Ciclos de vida del huésped antes, durante y después de la estancia.",
     span: "xl:col-span-3",
     metric: "Lifecycle · 12 pasos",
+    href: "/marketing-hoteles/",
   },
   {
     id: "06",
@@ -61,6 +74,7 @@ export const bentoModules: BentoModule[] = [
     description: "Conversación in-stay con orquestación contextual.",
     span: "xl:col-span-3",
     metric: "Conversación · in-stay",
+    href: "/whatsapp-para-hoteles/",
   },
   {
     id: "07",
@@ -69,6 +83,7 @@ export const bentoModules: BentoModule[] = [
     description: "Contenido, ofertas y precios adaptados al perfil del visitante en directo.",
     span: "xl:col-span-3",
     metric: "On-site · real-time",
+    href: "/integracion-pagina-web-para-hoteles/",
   },
   {
     id: "08",
@@ -77,6 +92,7 @@ export const bentoModules: BentoModule[] = [
     description: "Sincroniza segmentos a Meta, Google y The Trade Desk con consentimiento.",
     span: "xl:col-span-4 xl:row-span-2",
     metric: "Meta · Google · TTD",
+    href: "/redes-sociales-hoteles/",
   },
   {
     id: "09",
@@ -85,6 +101,7 @@ export const bentoModules: BentoModule[] = [
     description: "Del touchpoint al ingreso confirmado, por canal y campaña.",
     span: "xl:col-span-4",
     metric: "€ por canal",
+    href: "/reporting-y-analytics-para-hoteles/",
   },
   {
     id: "10",
@@ -93,6 +110,7 @@ export const bentoModules: BentoModule[] = [
     description: "Centro de preferencias y gobierno del dato por huésped.",
     span: "xl:col-span-4",
     metric: "GDPR · opt-in granular",
+    // Sin landing dedicada — la card queda inerte hasta que exista una.
   },
   {
     id: "11",
@@ -101,6 +119,7 @@ export const bentoModules: BentoModule[] = [
     description: "Email, chat, WhatsApp y voz en una sola conversación por huésped.",
     span: "xl:col-span-4",
     metric: "Omnicanal · 1 hilo",
+    href: "/integracion-chatbot-hoteles/",
   },
   {
     id: "12",
@@ -109,5 +128,6 @@ export const bentoModules: BentoModule[] = [
     description: "Dashboards listos para revenue, marketing y operaciones.",
     span: "xl:col-span-4",
     metric: "Dashboards · live",
+    href: "/reporting-y-analytics-para-hoteles/",
   },
 ];

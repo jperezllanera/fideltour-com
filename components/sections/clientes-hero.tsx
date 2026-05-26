@@ -10,13 +10,13 @@ export function ClientesHeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">
         <div className="md:col-span-8 flex flex-col gap-6">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             Clientes · CDP para hoteles
           </span>
 
           <h1 className="text-white">
             Clientes que confían en{" "}
-            <span className="text-brand-mint">Fideltour</span>
+            <span className="text-brand">Fideltour</span>
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">

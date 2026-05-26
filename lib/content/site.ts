@@ -15,12 +15,6 @@ export type PlatformFeatured = {
   description: string;
   ctaLabel: string;
   ctaHref: string;
-  /**
-   * ID del vídeo de YouTube embebido en el mega-menú. Se usa el
-   * dominio youtube-nocookie.com en el iframe para no setear cookies
-   * de tracking hasta que el usuario reproduzca.
-   */
-  youtubeId: string;
 };
 
 export const platformFeatured: PlatformFeatured = {
@@ -30,5 +24,4 @@ export const platformFeatured: PlatformFeatured = {
     "El hotelero que domina el dato, domina la venta directa.",
   ctaLabel: "Ver plataforma",
   ctaHref: "/cdp-para-hoteles/",
-  youtubeId: "2nEg-0mQVyc",
 };

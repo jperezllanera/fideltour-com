@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { cn } from "@/lib/utils";
 import { bentoModules } from "@/lib/content/modules";
 
@@ -45,13 +47,22 @@ export function BentoModulesSection() {
               </header>
 
               <div className="mt-6">
-                <h3>
-                  {m.title}
-                </h3>
+                <h3>{m.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                   {m.description}
                 </p>
               </div>
+
+              {/* Stretched link: cubre toda la card sin romper la
+                  semántica de <article>. Solo se renderiza cuando hay
+                  landing destino — si falta `href`, la card queda inerte. */}
+              {m.href && (
+                <Link
+                  href={m.href}
+                  aria-label={`Ver módulo ${m.title}`}
+                  className="absolute inset-0 z-10 rounded-2xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none"
+                />
+              )}
             </article>
           ))}
         </div>

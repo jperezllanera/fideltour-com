@@ -19,7 +19,7 @@ export function LegalHero({ eyebrow, title, intro, lastUpdated }: LegalHeroProps
       <div className="relative mx-auto max-w-4xl px-4 pt-20 pb-16 md:px-6 md:pt-24 md:pb-20">
         <div className="flex flex-col gap-5">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             {eyebrow}
           </span>
 

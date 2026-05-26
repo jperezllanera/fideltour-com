@@ -10,13 +10,13 @@ export function VideosHubHeroSection() {
       <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-6 md:pt-24 md:pb-24">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center">
           <span className="text-eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             Vídeos · CDP para hoteles
           </span>
 
           <h1 className="text-white">
             Descubre cómo trabajar con{" "}
-            <span className="text-brand-mint">nuestro CDP hotelero</span>
+            <span className="text-brand">nuestro CDP hotelero</span>
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">

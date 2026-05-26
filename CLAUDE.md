@@ -45,8 +45,15 @@ repositorio. Léelo antes de tocar código.
 
 - **Modo claro por defecto** con neutros cálidos (stone-like) y mucho aire.
 - El **color de marca es ACENTO**, no fondo dominante: úsalo en CTAs (`bg-primary`), bordes activos, métricas y detalles del bento.
+- **El único accent es el cian de la anilla** (`--brand` / `bg-brand` /
+  `text-brand` / `border-brand`). **No hay verde / lime / mint** en el
+  sistema — el token `--brand-mint` se eliminó el 2026-05-26 al adoptar
+  el design system oficial. Si necesitas resaltar una palabra en un
+  titular usa `text-brand` (cian), no `text-brand-mint` (no existe). El
+  manifiesto de marca vive en [`docs/brand-system.md`](docs/brand-system.md).
 - **Prohibido**: degradados morados genéricos, color de marca como fondo de
-  secciones grandes, dark mode prematuro.
+  secciones grandes, dark mode prematuro, **verde / lime / mint en
+  cualquier rol** (ni texto, ni fondo, ni borde).
 - **Profundidad sutil**: gradient mesh en `body::before` y grain SVG en
   `body::after`, ambos definidos en `app/globals.css`.
 - **Radios generosos**: `--radius: 0.875rem` (≈ 14px), escalado en `xl`/`2xl`.
@@ -58,8 +65,13 @@ repositorio. Léelo antes de tocar código.
 
 Todos en `app/globals.css`:
 
-- `--brand-primary` / `--brand-primary-foreground` / `--brand-secondary`
-  (provisional, **TODO** sustituir con HEX/OKLCH del logo real).
+- `--brand-primary` / `--brand-primary-foreground` (cian de la anilla,
+  #25CAD2 — único accent). `--brand-secondary` es alias de
+  `--brand-primary` por compat (charts, mesh).
+- `--brand-navy` / `--brand-navy-deep` (cobalto y cobalto profundo,
+  fondos dominantes).
+- ~~`--brand-mint`~~ retirado el 2026-05-26 (ver
+  [`docs/brand-system.md`](docs/brand-system.md)).
 - Escala `--neutral-50` … `--neutral-900` cálida.
 - Variables semánticas shadcn (`--primary`, `--muted`, etc.) mapeadas a las
   anteriores.

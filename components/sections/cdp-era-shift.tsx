@@ -30,14 +30,14 @@ export function CdpEraShiftSection() {
                   "relative flex flex-col gap-6 rounded-2xl border p-6 md:p-8",
                   "shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]",
                   highlight
-                    ? "border-brand-mint/40 bg-brand-navy-deep text-white"
+                    ? "border-brand/40 bg-brand-navy-deep text-white"
                     : "border-border/70 bg-card",
                 )}
               >
                 <div
                   className={cn(
                     "text-eyebrow",
-                    highlight ? "text-brand-mint" : "text-muted-foreground",
+                    highlight ? "text-brand" : "text-muted-foreground",
                   )}
                 >
                   {era.kicker}
@@ -75,7 +75,7 @@ export function CdpEraShiftSection() {
                   <div
                     className={cn(
                       "mt-1 font-sans text-xl font-bold uppercase tracking-tight",
-                      highlight ? "text-brand-mint" : "text-brand-navy",
+                      highlight ? "text-brand" : "text-brand-navy",
                     )}
                   >
                     {era.asset}

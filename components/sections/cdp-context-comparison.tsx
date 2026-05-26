@@ -51,17 +51,17 @@ export function CdpContextComparisonSection() {
           </article>
 
           {/* Con contexto */}
-          <article className="flex flex-col gap-5 rounded-2xl border border-brand-mint/40 bg-brand-navy-deep p-6 text-white shadow-[var(--shadow-bento)] md:p-8">
+          <article className="flex flex-col gap-5 rounded-2xl border border-brand/40 bg-brand-navy-deep p-6 text-white shadow-[var(--shadow-bento)] md:p-8">
             <div className="flex items-center gap-3">
-              <span className="size-2 rounded-full bg-brand-mint" aria-hidden />
-              <span className="text-eyebrow text-brand-mint">
+              <span className="size-2 rounded-full bg-brand" aria-hidden />
+              <span className="text-eyebrow text-brand">
                 IA con contexto
               </span>
             </div>
             <h3 className="text-white">Reconocible.</h3>
 
             <div className="flex items-start gap-3">
-              <div className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-mint text-brand-navy-deep">
+              <div className="inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-brand text-brand-navy-deep">
                 <Sparkles className="size-4" aria-hidden />
               </div>
               <div className="flex flex-col gap-2">
@@ -71,17 +71,17 @@ export function CdpContextComparisonSection() {
                     Alba · 4ª visita
                   </span>
                 </div>
-                <div className="max-w-md rounded-2xl rounded-tl-sm bg-brand-mint/20 px-4 py-3 text-sm leading-relaxed text-white ring-1 ring-brand-mint/30">
+                <div className="max-w-md rounded-2xl rounded-tl-sm bg-brand/20 px-4 py-3 text-sm leading-relaxed text-white ring-1 ring-brand/30">
                   Hola{" "}
-                  <span className="rounded-md bg-brand-mint/30 px-1.5 py-0.5 font-semibold">
+                  <span className="rounded-md bg-brand/30 px-1.5 py-0.5 font-semibold">
                     Alba
                   </span>
                   , en tu última estancia reservaste{" "}
-                  <span className="rounded-md bg-brand-mint/30 px-1.5 py-0.5 font-semibold">
+                  <span className="rounded-md bg-brand/30 px-1.5 py-0.5 font-semibold">
                     spa
                   </span>
                   . ¿Te lo dejo a las{" "}
-                  <span className="rounded-md bg-brand-mint/30 px-1.5 py-0.5 font-semibold">
+                  <span className="rounded-md bg-brand/30 px-1.5 py-0.5 font-semibold">
                     18 h
                   </span>
                   , como la otra vez?
@@ -91,7 +91,7 @@ export function CdpContextComparisonSection() {
 
             <div className="mt-auto border-t border-white/15 pt-4">
               <div className="text-eyebrow text-white/70">Resultado</div>
-              <p className="mt-1 text-sm font-semibold text-brand-mint">
+              <p className="mt-1 text-sm font-semibold text-brand">
                 Reconocimiento real. Venta directa que crece.
               </p>
             </div>

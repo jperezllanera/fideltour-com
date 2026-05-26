@@ -11,13 +11,13 @@ export function EmpresaHeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">
         <div className="md:col-span-7 flex flex-col gap-6">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             Sobre Fideltour
           </span>
 
           <h1 className="text-white">
             Nacimos para que el hotelero{" "}
-            <span className="text-brand-mint">domine su dato</span>
+            <span className="text-brand">domine su dato</span>
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
@@ -31,7 +31,7 @@ export function EmpresaHeroSection() {
           {empresaMetrics.map((metric) => (
             <div key={metric.label} className="flex flex-col gap-1">
               <dt className="text-eyebrow text-white/70">{metric.label}</dt>
-              <dd className="text-3xl font-bold text-brand-mint md:text-4xl">
+              <dd className="text-3xl font-bold text-brand md:text-4xl">
                 {metric.value}
               </dd>
             </div>

@@ -23,7 +23,7 @@ export function CdpCtaSection() {
               <div className="text-eyebrow text-white/70">La cuenta atrás</div>
               <h2 className="h-cta text-white">
                 El contexto no se enciende.{" "}
-                <span className="text-brand-mint">Se acumula.</span>
+                <span className="text-brand">Se acumula.</span>
               </h2>
               <p className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
                 El que empieza hoy llega armado a la ola agéntica. El que
@@ -54,7 +54,7 @@ export function CdpCtaSection() {
             </div>
 
             <aside className="md:col-span-5 relative rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur">
-              <div className="text-eyebrow text-brand-mint">
+              <div className="text-eyebrow text-brand">
                 Por qué te importa
               </div>
               <p className="mt-3 text-base leading-relaxed text-white md:text-lg">

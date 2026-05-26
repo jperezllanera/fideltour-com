@@ -24,7 +24,7 @@ export function EmpresaCtaSection() {
               </div>
               <h2 className="h-cta text-white">
                 Si el hotelero domina el dato,{" "}
-                <span className="text-brand-mint">domina la venta directa</span>
+                <span className="text-brand">domina la venta directa</span>
               </h2>
               <p className="text-base leading-relaxed text-white/80 md:text-lg">
                 Cuéntanos en qué punto está tu hotel y en 30 minutos vemos si

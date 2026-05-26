@@ -27,10 +27,10 @@ export function CdpAnonymousTrafficSection() {
             </p>
           </article>
 
-          <article className="md:col-span-3 flex flex-col gap-4 rounded-2xl border border-brand-mint/40 bg-brand-navy-deep p-6 text-white shadow-[var(--shadow-bento)] md:p-8">
-            <div className="text-eyebrow text-brand-mint">Tu CRM · ciego</div>
+          <article className="md:col-span-3 flex flex-col gap-4 rounded-2xl border border-brand/40 bg-brand-navy-deep p-6 text-white shadow-[var(--shadow-bento)] md:p-8">
+            <div className="text-eyebrow text-brand">Tu CRM · ciego</div>
             <h3 className="text-white">No lo ve.</h3>
-            <div className="h-mega text-brand-mint">80%</div>
+            <div className="h-mega text-brand">80%</div>
             <p className="mt-auto text-sm leading-relaxed text-white/85 md:text-base">
               El dato de intención — qué miró, qué fechas buscó, dónde dudó.
               El más valioso para vender. Un CRM no puede hacer nada con

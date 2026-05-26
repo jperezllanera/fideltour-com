@@ -155,12 +155,12 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
 
           <div className="mt-8 flex items-center gap-3">
-            <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15 backdrop-blur">
+            <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
               <Icon className="size-5" />
             </span>
             <Link
               href={`/blog/${post.category}/`}
-              className="text-eyebrow text-white/80 transition-colors hover:text-brand-mint"
+              className="text-eyebrow text-white/80 transition-colors hover:text-brand"
             >
               {categoryLabels[post.category]}
             </Link>
@@ -268,7 +268,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                         aria-hidden
                         className="pointer-events-none absolute -right-8 -bottom-8 size-[160px] rounded-full border-[28px] border-brand/25"
                       />
-                      <span className="relative inline-flex size-12 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15 backdrop-blur">
+                      <span className="relative inline-flex size-12 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
                         <RelIcon className="size-5" />
                       </span>
                     </div>

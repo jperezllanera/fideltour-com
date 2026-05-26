@@ -18,7 +18,7 @@ export function ModuleHero({ hero, slug, navLabel }: Props) {
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-20 pb-16 md:grid-cols-12 md:gap-8 md:px-6 md:pt-28 md:pb-20">
         <div className="md:col-span-7 flex flex-col gap-6">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             {hero.eyebrow}
           </span>
 
@@ -76,7 +76,7 @@ function renderTitleWithAccent(title: string, accent?: string) {
   return (
     <>
       {before}
-      <span className="text-brand-mint">{accent}</span>
+      <span className="text-brand">{accent}</span>
       {after}
     </>
   );

@@ -89,7 +89,7 @@ export function CrmToCdpSection() {
                     <li className="rounded-full bg-white/15 px-2.5 py-1 text-white">
                       Buscador 51% → 36%
                     </li>
-                    <li className="rounded-full bg-brand-mint/25 px-2.5 py-1 text-white">
+                    <li className="rounded-full bg-brand/25 px-2.5 py-1 text-white">
                       IA 6% → 15%
                     </li>
                     <li className="rounded-full bg-white/15 px-2.5 py-1 text-white">

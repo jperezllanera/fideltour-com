@@ -36,9 +36,9 @@ export function ModuleCaseProof({ casoSlug }: Props) {
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-12 md:gap-8 md:px-6 md:py-24">
         <div className="md:col-span-7 flex flex-col gap-5">
-          <div className="text-eyebrow text-brand-mint">Así lo usa un hotel real</div>
+          <div className="text-eyebrow text-brand">Así lo usa un hotel real</div>
           <div className="flex items-center gap-3 text-sm text-white/70">
-            <span className="inline-flex size-10 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15">
+            <span className="inline-flex size-10 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15">
               <SegmentIcon className="size-4" />
             </span>
             <span>{caso.hotelTagline}</span>
@@ -54,7 +54,7 @@ export function ModuleCaseProof({ casoSlug }: Props) {
 
           <Link
             href={`/casos-de-exito/${caso.slug}/`}
-            className="mt-2 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-brand-mint hover:text-white"
+            className="mt-2 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-brand hover:text-white"
           >
             Leer el caso completo
             <ArrowRight className="size-4" />
@@ -64,7 +64,7 @@ export function ModuleCaseProof({ casoSlug }: Props) {
         <div className="md:col-span-5 flex items-center justify-center">
           <div className="w-full max-w-sm rounded-2xl bg-white/5 p-6 text-center ring-1 ring-white/15 backdrop-blur">
             <div className="text-eyebrow text-white/60">{headline.label}</div>
-            <div className="mt-3 h-mega text-brand-mint">{headline.value}</div>
+            <div className="mt-3 h-mega text-brand">{headline.value}</div>
             {headline.description && (
               <p className="mt-3 text-sm text-white/80">
                 {headline.description}

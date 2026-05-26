@@ -16,13 +16,13 @@ export function PortalCautivoHeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">
         <div className="md:col-span-8 md:col-start-5 flex flex-col gap-6 md:items-end md:text-right">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             Portal cautivo · Convierte tu WiFi en fidelización
           </span>
 
           <h1 className="text-white">
             Integra tu portal cautivo con{" "}
-            <span className="text-brand-mint">Fideltour</span>.
+            <span className="text-brand">Fideltour</span>.
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
@@ -54,7 +54,7 @@ export function PortalCautivoHeroSection() {
 
           <ul className="grid w-full gap-3 sm:grid-cols-2 pt-4">
             <li className="flex items-start gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur text-left">
-              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15">
+              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15">
                 <Wifi className="size-5" aria-hidden />
               </span>
               <div className="flex flex-col gap-1">
@@ -65,7 +65,7 @@ export function PortalCautivoHeroSection() {
               </div>
             </li>
             <li className="flex items-start gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur text-left">
-              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15">
+              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15">
                 <UserCheck className="size-5" aria-hidden />
               </span>
               <div className="flex flex-col gap-1">

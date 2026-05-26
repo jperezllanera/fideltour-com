@@ -12,7 +12,7 @@ export function MarketplaceHeroSection() {
       <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-6 md:pt-24 md:pb-24">
         <div className="mx-auto flex max-w-3xl flex-col items-center gap-7 text-center">
           <span className="text-eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             Marketplace · CDP para hoteles
           </span>
 
@@ -23,7 +23,7 @@ export function MarketplaceHeroSection() {
           {/* Contador animado — réplica del widget Elementor de la web actual */}
           <div className="flex items-baseline gap-2 text-2xl text-white/90 md:text-3xl">
             <span className="text-white/60">Más de</span>
-            <span className="text-4xl font-bold text-brand-mint md:text-5xl">
+            <span className="text-4xl font-bold text-brand md:text-5xl">
               <MarketplaceCounter to={150} />
             </span>
             <span className="text-white/60">conexiones</span>
@@ -36,7 +36,7 @@ export function MarketplaceHeroSection() {
             siguiente paso.
           </p>
 
-          <p className="text-sm uppercase tracking-wider text-brand-mint">
+          <p className="text-sm uppercase tracking-wider text-brand">
             ¡Es hora de empezar!
           </p>
         </div>

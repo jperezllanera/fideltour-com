@@ -44,7 +44,7 @@ export function CasosGridSection() {
                     aria-hidden
                     className="pointer-events-none absolute -right-10 -bottom-10 size-[200px] rounded-full border-[36px] border-brand/25"
                   />
-                  <span className="relative inline-flex size-14 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15 backdrop-blur">
+                  <span className="relative inline-flex size-14 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
                     <Icon className="size-6" aria-hidden />
                   </span>
                   <span className="text-eyebrow absolute left-5 top-5 rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-white/85 backdrop-blur">

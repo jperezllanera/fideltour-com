@@ -24,7 +24,7 @@ export function RecursosCtaSection() {
             </div>
             <h2 className="h-cta text-white">
               Convierte la formación en{" "}
-              <span className="text-brand-mint">resultados reales</span>
+              <span className="text-brand">resultados reales</span>
             </h2>
             <p className="text-base leading-relaxed text-white/80 md:text-lg">
               Cada hotel es distinto. El siguiente paso es adaptar todo este

@@ -121,20 +121,26 @@ export type CdpModule = {
   name: string;
   description: string;
   icon: LucideIcon;
+  /**
+   * Slug de la landing del módulo. Si no existe (caso "Agents"), la card
+   * queda inerte. El resto del catálogo Fideltour ONE mapea 1:1 a las
+   * 23 landings vivas en `lib/content/module-landings/index.ts`.
+   */
+  href?: string;
 };
 
 export const cdpModules: CdpModule[] = [
-  { id: "01", name: "CRM", description: "El huésped, centralizado.", icon: UserCheck },
-  { id: "02", name: "Campañas", description: "Comunicación segmentada multicanal.", icon: Send },
-  { id: "03", name: "Automation", description: "Journeys automáticos pre, durante y post.", icon: Workflow },
-  { id: "04", name: "Landings", description: "Páginas y captive portals personalizados.", icon: Layers },
-  { id: "05", name: "Reviews", description: "Reputación gestionada en un solo sitio.", icon: Star },
-  { id: "06", name: "Identity", description: "Identidad unificada online y offline.", icon: BadgeCheck },
-  { id: "07", name: "B2B", description: "Cuentas corporativas y MICE.", icon: Building2 },
-  { id: "08", name: "Social", description: "Redes y conversación, en flujo.", icon: MessageCircle },
-  { id: "09", name: "Loyalty", description: "Fidelización y rewards dinámicos.", icon: Gift },
-  { id: "10", name: "Insights", description: "Analítica y predicción accionable.", icon: BarChart3 },
-  { id: "11", name: "Connect", description: "Integraciones nativas con tu stack.", icon: Plug2 },
+  { id: "01", name: "CRM", description: "El huésped, centralizado.", icon: UserCheck, href: "/crm-hoteles/" },
+  { id: "02", name: "Campañas", description: "Comunicación segmentada multicanal.", icon: Send, href: "/marketing-hoteles/" },
+  { id: "03", name: "Automation", description: "Journeys automáticos pre, durante y post.", icon: Workflow, href: "/marketing-automation-para-hoteles/" },
+  { id: "04", name: "Landings", description: "Páginas y captive portals personalizados.", icon: Layers, href: "/landing-page-hoteles/" },
+  { id: "05", name: "Reviews", description: "Reputación gestionada en un solo sitio.", icon: Star, href: "/encuestas-hoteles/" },
+  { id: "06", name: "Identity", description: "Identidad unificada online y offline.", icon: BadgeCheck, href: "/guest-id-para-hoteles/" },
+  { id: "07", name: "B2B", description: "Cuentas corporativas y MICE.", icon: Building2, href: "/b2b-para-hoteles/" },
+  { id: "08", name: "Social", description: "Redes y conversación, en flujo.", icon: MessageCircle, href: "/redes-sociales-hoteles/" },
+  { id: "09", name: "Loyalty", description: "Fidelización y rewards dinámicos.", icon: Gift, href: "/fidelizacion-hoteles/" },
+  { id: "10", name: "Insights", description: "Analítica y predicción accionable.", icon: BarChart3, href: "/reporting-y-analytics-para-hoteles/" },
+  { id: "11", name: "Connect", description: "Integraciones nativas con tu stack.", icon: Plug2, href: "/marketplace/" },
   { id: "12", name: "Agents", description: "Control de los agentes de IA.", icon: Bot },
 ];
 

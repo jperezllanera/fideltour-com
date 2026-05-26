@@ -40,7 +40,7 @@ export function CdpModulesSection() {
             return (
               <li
                 key={mod.id}
-                className="group flex flex-col gap-3 rounded-2xl border border-border/70 bg-card p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]"
+                className="group relative flex flex-col gap-3 rounded-2xl border border-border/70 bg-card p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]"
               >
                 <div className="flex items-center justify-between gap-3">
                   <span className="inline-flex size-9 items-center justify-center rounded-full bg-brand-navy text-white">
@@ -54,6 +54,16 @@ export function CdpModulesSection() {
                 <p className="text-sm leading-relaxed text-muted-foreground">
                   {mod.description}
                 </p>
+
+                {/* Stretched link: la card entera es clicable cuando
+                    existe landing. Agents no la tiene aún. */}
+                {mod.href && (
+                  <Link
+                    href={mod.href}
+                    aria-label={`Ver módulo ${mod.name}`}
+                    className="absolute inset-0 z-10 rounded-2xl focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:outline-none"
+                  />
+                )}
               </li>
             );
           })}

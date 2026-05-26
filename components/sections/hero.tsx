@@ -11,13 +11,13 @@ export function HeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-16 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-28">
         <div className="md:col-span-6 flex flex-col gap-7">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             CDP para hoteles
           </span>
 
           <h1 className="h-mega text-white">
             El hotelero que domina el dato,{" "}
-            <span className="text-brand-mint">domina la venta directa</span>.
+            <span className="text-brand">domina la venta directa</span>.
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">

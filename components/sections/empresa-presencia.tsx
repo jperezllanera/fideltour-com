@@ -48,7 +48,7 @@ export function EmpresaPresenciaSection() {
                   className="flex items-center justify-between rounded-xl border border-border/70 bg-card px-4 py-3 text-sm font-semibold text-brand-navy shadow-[var(--shadow-soft)]"
                 >
                   <span>{country}</span>
-                  <span aria-hidden className="size-1.5 rounded-full bg-brand-mint" />
+                  <span aria-hidden className="size-1.5 rounded-full bg-brand" />
                 </li>
               ))}
             </ul>

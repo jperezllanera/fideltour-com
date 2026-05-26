@@ -7,7 +7,8 @@
 /* ──────────────────────────────────────────────────────────────────────
    Fideltour design system — "Aurora Bento" (modo claro)
    Color de marca como ACENTO, neutros cálidos, mucho aire.
-   TODO: sustituir --brand-primary / --brand-secondary cuando llegue el logo.
+   Paleta congelada con la oficial: el único accent es el cian de la
+   anilla (`--brand`). Nada de verde/lime/mint — ver docs/brand-system.md.
    ────────────────────────────────────────────────────────────────────── */
 
 @theme inline {
@@ -70,12 +71,10 @@
 }
 
 /* ─── brand-* tokens con valores literales para que Tailwind v4 genere
-     utilities como bg-brand-navy, text-brand-mint, etc. ──────────────── */
+     utilities como bg-brand, bg-brand-navy, text-brand-ink, etc. ─────── */
 @theme {
   --color-brand: #25cad2;
   --color-brand-foreground: #ffffff;
-  --color-brand-mint: #46deb1;
-  --color-brand-mint-foreground: #0c1523;
   --color-brand-navy: #1a4a7e;
   --color-brand-navy-deep: #0f3560;
   --color-brand-ink: #575756;
@@ -83,24 +82,28 @@
 
 :root {
   /* ─── Paleta corporativa Fideltour ────────────────────────────────────
-     #25CAD2  cian del logo  → brand
-     #46DEB1  verde-menta CTA → brand-mint
+     #25CAD2  cian/turquesa del logo (la anilla) → brand   [ACENTO único]
      #1A4A7E  cobalto hero/background → brand-navy (azul vibrante, no slate)
      #0F3560  cobalto profundo (acentos)  → brand-navy-deep
      #2D60EC → #3CCFDA gradiente firma (brand-gradient)
      #575756  gris del wordmark → brand-ink
+
+     Regla operativa (ver docs/brand-system.md y CLAUDE.md): el ÚNICO
+     accent permitido es `--brand` (cian). Nada de verde/lime/mint —
+     no hay token para eso en el repo (eliminado el 2026-05-26 al
+     adoptar el design system oficial).
      ─────────────────────────────────────────────────────────────────────── */
   --brand-primary: oklch(0.756 0.123 197);    /* cian #25CAD2 */
   --brand-primary-foreground: oklch(0.99 0 0);
-  --brand-mint: oklch(0.84 0.13 168);          /* menta #46DEB1 */
-  --brand-mint-foreground: oklch(0.20 0.02 240);
   --brand-navy: oklch(0.385 0.105 248);        /* cobalto #1A4A7E */
   --brand-navy-deep: oklch(0.295 0.095 248);   /* cobalto profundo #0F3560 */
   --brand-ink: oklch(0.50 0.003 85);           /* gris wordmark #575756 */
   --brand-gradient: linear-gradient(135deg, oklch(0.55 0.20 265) 0%, oklch(0.78 0.13 200) 100%);
 
-  /* Compat con tokens antiguos */
-  --brand-secondary: var(--brand-mint);
+  /* Alias semántico — `--brand-secondary` apunta al mismo cian que
+     `--brand-primary`. Se mantiene por compatibilidad con tokens que
+     leyeron el nombre antes de la migración (charts, mesh). */
+  --brand-secondary: var(--brand-primary);
 
   /* Neutros cálidos (stone-like) */
   --neutral-50:  oklch(0.985 0.004 80);

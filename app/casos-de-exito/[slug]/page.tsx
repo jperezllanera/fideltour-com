@@ -85,7 +85,7 @@ export default async function CasoDeExitoPage({ params }: CasoPageProps) {
 
           <div className="mt-8 flex flex-col gap-6">
             <div className="flex items-center gap-3">
-              <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15 backdrop-blur">
+              <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
                 <Icon className="size-5" aria-hidden />
               </span>
               <span className="text-eyebrow text-white/80">
@@ -105,7 +105,7 @@ export default async function CasoDeExitoPage({ params }: CasoPageProps) {
                   <dt className="text-eyebrow text-white/70">
                     {metric.label}
                   </dt>
-                  <dd className="text-3xl font-bold text-brand-mint">
+                  <dd className="text-3xl font-bold text-brand">
                     {metric.value}
                   </dd>
                   {metric.description && (
@@ -166,7 +166,7 @@ export default async function CasoDeExitoPage({ params }: CasoPageProps) {
               </div>
               <h2 className="h-cta text-white">
                 Cuéntanos tu caso y{" "}
-                <span className="text-brand-mint">lo analizamos contigo</span>
+                <span className="text-brand">lo analizamos contigo</span>
               </h2>
               <p className="text-base leading-relaxed text-white/80 md:text-lg">
                 En 30 minutos vemos si Fideltour encaja con tu PMS, tu equipo y

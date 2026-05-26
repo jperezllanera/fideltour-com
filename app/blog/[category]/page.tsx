@@ -96,7 +96,7 @@ export default async function BlogCategoryPage({ params }: PageProps) {
           </Link>
 
           <div className="mt-8 flex items-center gap-3">
-            <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15 backdrop-blur">
+            <span className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
               <Icon className="size-5" />
             </span>
             <span className="text-eyebrow text-white/80">

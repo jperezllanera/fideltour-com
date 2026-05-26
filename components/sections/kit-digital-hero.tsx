@@ -15,13 +15,13 @@ export function KitDigitalHeroSection() {
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">
         <div className="md:col-span-8 flex flex-col gap-6">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">
-            <span className="size-1.5 rounded-full bg-brand-mint" aria-hidden />
+            <span className="size-1.5 rounded-full bg-brand" aria-hidden />
             Kit Digital · CDP para hoteles
           </span>
 
           <h1 className="text-white">
             Kit Digital{" "}
-            <span className="text-brand-mint">Next Generation EU</span>
+            <span className="text-brand">Next Generation EU</span>
           </h1>
 
           <p className="max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">
@@ -59,7 +59,7 @@ export function KitDigitalHeroSection() {
 
         <ul className="md:col-span-4 flex flex-col gap-3 self-end">
           <li className="flex items-start gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
-            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15">
+            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15">
               <Euro className="size-5" aria-hidden />
             </span>
             <div className="flex flex-col gap-1">
@@ -70,7 +70,7 @@ export function KitDigitalHeroSection() {
             </div>
           </li>
           <li className="flex items-start gap-4 rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur">
-            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand-mint ring-1 ring-white/15">
+            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15">
               <ShieldCheck className="size-5" aria-hidden />
             </span>
             <div className="flex flex-col gap-1">

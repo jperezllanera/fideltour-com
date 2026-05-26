@@ -23,7 +23,7 @@ export function CasosCtaSection() {
             </div>
             <h2 className="h-cta text-white">
               Ahora que conoces estos casos reales,{" "}
-              <span className="text-brand-mint">decide qué necesita tu hotel</span>
+              <span className="text-brand">decide qué necesita tu hotel</span>
             </h2>
             <p className="text-base leading-relaxed text-white/80 md:text-lg">
               Cuéntanos tu contexto y lo analizamos contigo. Si encaja, en

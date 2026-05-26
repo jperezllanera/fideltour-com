@@ -23,7 +23,7 @@ export function VideosHubCtaSection() {
             </div>
             <h2 className="h-cta text-white">
               Si alguno de estos vídeos te abrió preguntas,{" "}
-              <span className="text-brand-mint">hablemos</span>
+              <span className="text-brand">hablemos</span>
             </h2>
             <p className="text-base leading-relaxed text-white/80 md:text-lg">
               Podemos llevar cualquiera de estos conceptos a tu realidad
