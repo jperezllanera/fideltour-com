@@ -22,8 +22,8 @@ export function FinalCtaSection() {
               </h2>
               <p className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
                 El que empieza hoy llega armado a la ola agéntica. El que
-                espera, llega tarde. Conecta tu PMS y empieza a unir tu
-                contexto del huésped.
+                espera, llega tarde. Empieza a unir el contexto de tu
+                huésped, hoy.
               </p>
 
               <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -32,7 +32,7 @@ export function FinalCtaSection() {
                   className="rounded-full bg-brand text-white hover:bg-brand/90 px-7 gap-1.5"
                   render={<a href="/contacto" />}
                 >
-                  Empieza por tu PMS
+                  Empezar ahora
                   <ArrowRight className="size-4" />
                 </Button>
               </div>

@@ -46,7 +46,7 @@ export function CrmToCdpSection() {
               <Button
                 size="lg"
                 className="rounded-full bg-brand-navy text-white hover:bg-brand-navy/90 px-6 gap-1.5"
-                render={<a href="#plataforma" />}
+                render={<a href="/cdp-para-hoteles/" />}
               >
                 Conoce la plataforma
                 <ArrowRight className="size-4" />
