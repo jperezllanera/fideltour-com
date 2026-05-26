@@ -31,6 +31,44 @@ fragmentadas.
 
 ---
 
+## 2026-05-26 · Sesión 5 — Mobile-first home: módulos compactos y carrusel de testimoniales
+
+**Lo que se hizo**
+
+- **Módulos del CDP (sección `CdpModulesSection` en la home) compactados
+  en mobile**. Antes cada card era un bloque stacked de ~180 px (icono
+  arriba + id, h3, descripción de 2 líneas) × 12 módulos = scroll
+  infinito en móvil. Ahora en `<sm` la card es una fila: icono `size-9`
+  a la izquierda + nombre del módulo a la derecha, sin descripción ni
+  id, con `p-4`. En `sm+` vuelve al layout actual stacked sin tocar
+  desktop. Resultado: la sección pasa de ~2200 px a ~840 px de scroll.
+- **Carrusel horizontal nativo en `TestimonialsSection`** para mobile.
+  Antes los 3 testimoniales se apilaban (grid 1 col) y arrastraban
+  mucho scroll. Ahora en `<md` se renderizan como scroll-snap track
+  horizontal con peek (~15 %) de la siguiente card; en `md+` vuelve al
+  grid de 3 columnas existente.
+- Nueva utility `.carousel-mobile-track` en `app/globals.css` para no
+  meter arbitrary values al JSX (CLAUDE.md prohíbe `w-[85%]` y similar
+  fuera de `components/ui/`). Incluye `scroll-snap-type: x mandatory`,
+  `scrollbar-width: none`, hide del scrollbar de WebKit, y un media
+  query que la reconvierte a grid en `≥768 px`.
+
+**Lo descubierto**
+- Nada nuevo de entorno. Patrón reutilizable: cualquier sección con
+  3-4 cards stacked en mobile puede pasar a `.carousel-mobile-track`
+  con `-mx-4 px-4 md:mx-0 md:px-0` para sangrar a los bordes.
+
+**Parqueado / próxima sesión**
+- Revisar el resto de secciones de la home en mobile (hero, awards,
+  crm→cdp, logos, resources, final-cta) por si alguna también pide
+  recorte de scroll.
+- El bento de `BentoModulesSection` (sección `#plataforma`, **no
+  visible en la home actual** — vive en otra ruta o está sin
+  enrutar) tiene el mismo problema potencial; si vuelve a la home
+  aplicarle el mismo tratamiento.
+
+---
+
 ## 2026-05-26 · Sesión 4 — 13 logos de cliente repartidos en los 4 segmentos de /clientes
 
 **Lo que se hizo**

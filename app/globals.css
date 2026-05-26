@@ -452,6 +452,40 @@
     }
   }
 
+  /* Carrusel horizontal con scroll-snap nativo. En móvil las cards se
+     alinean en una sola fila con peek de la siguiente (~15%) y snap al
+     inicio. A partir de md vuelve a ser un grid de 3 columnas. Lo usa
+     la sección de testimoniales en la home. */
+  .carousel-mobile-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+  }
+  .carousel-mobile-track::-webkit-scrollbar {
+    display: none;
+  }
+  .carousel-mobile-track > * {
+    flex-shrink: 0;
+    width: 85%;
+    scroll-snap-align: start;
+  }
+  @media (min-width: 768px) {
+    .carousel-mobile-track {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      overflow: visible;
+      padding-bottom: 0;
+    }
+    .carousel-mobile-track > * {
+      width: auto;
+      flex-shrink: initial;
+    }
+  }
+
   /* Iframe del formulario Zoho embebido en /contacto. La altura es mayor en
      móvil porque los campos se apilan en una sola columna. */
   .contacto-form-iframe {

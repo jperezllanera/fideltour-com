@@ -41,7 +41,7 @@ export function TestimonialsSection() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="carousel-mobile-track mt-12 -mx-4 px-4 md:mx-0 md:px-0">
           {items.map((t) => (
             <Card
               key={t.org}

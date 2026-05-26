@@ -40,18 +40,18 @@ export function CdpModulesSection() {
             return (
               <li
                 key={mod.id}
-                className="group relative flex flex-col gap-3 rounded-2xl border border-border/70 bg-card p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]"
+                className="group relative flex items-center gap-3 rounded-2xl border border-border/70 bg-card p-4 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)] sm:flex-col sm:items-stretch sm:gap-3 sm:p-5"
               >
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex shrink-0 items-center justify-between gap-3 sm:w-full">
                   <span className="inline-flex size-9 items-center justify-center rounded-full bg-brand-navy text-white">
                     <Icon className="size-4" aria-hidden />
                   </span>
-                  <span className="text-eyebrow text-muted-foreground">
+                  <span className="hidden text-eyebrow text-muted-foreground sm:inline">
                     {mod.id}
                   </span>
                 </div>
                 <h3 className="text-brand-navy">{mod.name}.</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="hidden text-sm leading-relaxed text-muted-foreground sm:block">
                   {mod.description}
                 </p>
 
