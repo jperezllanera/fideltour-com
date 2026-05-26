@@ -23,7 +23,19 @@ export function RecursosEbooksSection() {
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
           {recursosEbooks.map(
-            ({ slug, eyebrow, title, description, pages, cover, coverAlt }, i) => (
+            (
+              {
+                slug,
+                eyebrow,
+                title,
+                description,
+                pages,
+                cover,
+                coverAlt,
+                assetUrl,
+              },
+              i,
+            ) => (
               <article
                 key={slug}
                 style={{ ["--i" as never]: i + 1 }}
@@ -37,17 +49,16 @@ export function RecursosEbooksSection() {
                 {/* Portada del ebook como cabecera del card. Las artes están
                     en /public/ebooks/ con nombres SEO-friendly; senior puede
                     sustituirlas sin cambiar el código. */}
-                <div className="relative isolate aspect-[16/10] overflow-hidden bg-brand-navy">
+                <div className="relative isolate aspect-square overflow-hidden bg-brand-navy">
+                  {/* Los mockups son tablets 3D con padding alrededor, así que
+                      `object-contain` evita que el bisel se pierda. El fondo
+                      `bg-brand-navy` enmarca el tablet sobre azul. */}
                   <Image
                     src={cover}
                     alt={coverAlt}
                     fill
                     sizes="(min-width: 1024px) 360px, (min-width: 768px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/50 via-brand-navy-deep/10 to-transparent"
+                    className="object-contain transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-x-5 bottom-5 flex items-end justify-between gap-3">
                     <span className="text-eyebrow rounded-full border border-white/15 bg-brand-navy-deep/70 px-2.5 py-1 text-white backdrop-blur">
@@ -70,6 +81,7 @@ export function RecursosEbooksSection() {
                       pieza pidió el lead cuando senior conecte el endpoint. */}
                   <LeadMagnetTrigger
                     ebookSlug={slug}
+                    assetUrl={assetUrl}
                     className="mt-auto self-start"
                   >
                     Acceder al ebook

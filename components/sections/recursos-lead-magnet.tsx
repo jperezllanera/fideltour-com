@@ -16,36 +16,105 @@ import { cn } from "@/lib/utils";
    alimenta la base de datos de marketing — replicar fielmente.
 
    Comportamiento:
-   - Cada CTA "Acceder al ebook" abre este modal.
-   - El modal pasa el slug del ebook como `ebookSlug` para que, cuando
-     senior conecte el endpoint real, se sepa qué pieza pidió el lead.
-   - El form es **placeholder visual** (action="#", noValidate, sin
-     persistencia). NO se envía nada hasta que se decida la stack de
-     marketing (HubSpot, Brevo, custom).
+   - Cada CTA "Acceder al ebook" llama a `request({ slug, assetUrl })`.
+   - Si el lead **ya rellenó el form** alguna vez en este navegador
+     (flag en localStorage), se salta el modal y se dispara directamente
+     la descarga del asset si la URL existe.
+   - Si no, se abre el modal. Al hacer submit:
+       1) se marca el flag en localStorage,
+       2) se cierra el modal,
+       3) se abre el asset solicitado (si hay URL).
+   - El form sigue siendo **placeholder visual** (action="#", noValidate).
+     NO se envía nada al backend hasta que senior conecte la stack de
+     marketing (HubSpot, Brevo, custom). El handler local solo recuerda
+     la captura en el navegador para no volver a pedirla.
 
-   TODO senior: enchufar endpoint real + tracking + entrega del PDF.
+   TODO senior:
+   - Reemplazar el handler local por una llamada real al endpoint de
+     captura (con `ebook` slug y el resto de campos).
+   - Rellenar `assetUrl` en lib/content/recursos.ts (URLs firmadas, CDN,
+     HubSpot file… lo que decida marketing).
+   - Considerar mover el flag a cookie httpOnly servidor-side cuando exista
+     backend, en lugar de localStorage cliente.
    ────────────────────────────────────────────────────────────────────── */
 
+const SUBMITTED_STORAGE_KEY = "fideltour:lead-magnet:captured";
+
+type LeadMagnetRequest = {
+  slug?: string;
+  assetUrl?: string;
+};
+
 type LeadMagnetContextValue = {
-  open: (ebookSlug?: string) => void;
+  request: (params: LeadMagnetRequest) => void;
 };
 
 const LeadMagnetContext = React.createContext<LeadMagnetContextValue | null>(
   null,
 );
 
+/**
+ * Abre el asset en una pestaña nueva. Pensado para PDFs servidos por CDN
+ * o URLs firmadas; el `noopener,noreferrer` evita que el destino acceda
+ * a `window.opener`.
+ */
+function openAsset(assetUrl?: string) {
+  if (!assetUrl || typeof window === "undefined") return;
+  window.open(assetUrl, "_blank", "noopener,noreferrer");
+}
+
+function hasCapturedLead() {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem(SUBMITTED_STORAGE_KEY) === "true";
+  } catch {
+    // Safari en modo privado puede lanzar al leer localStorage.
+    return false;
+  }
+}
+
+function markLeadCaptured() {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(SUBMITTED_STORAGE_KEY, "true");
+  } catch {
+    // Si el storage está bloqueado, perdemos la memoria entre visitas
+    // pero el flujo de esta sesión sigue funcionando vía el state local.
+  }
+}
+
 export function LeadMagnetProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [requestedEbook, setRequestedEbook] = React.useState<string | undefined>(
     undefined,
   );
+  const [pendingAssetUrl, setPendingAssetUrl] = React.useState<
+    string | undefined
+  >(undefined);
 
-  const open = React.useCallback((ebookSlug?: string) => {
-    setRequestedEbook(ebookSlug);
-    setIsOpen(true);
-  }, []);
+  const request = React.useCallback(
+    ({ slug, assetUrl }: LeadMagnetRequest) => {
+      if (hasCapturedLead()) {
+        openAsset(assetUrl);
+        return;
+      }
+      setRequestedEbook(slug);
+      setPendingAssetUrl(assetUrl);
+      setIsOpen(true);
+    },
+    [],
+  );
 
-  const value = React.useMemo<LeadMagnetContextValue>(() => ({ open }), [open]);
+  const handleSubmitted = React.useCallback(() => {
+    markLeadCaptured();
+    setIsOpen(false);
+    openAsset(pendingAssetUrl);
+  }, [pendingAssetUrl]);
+
+  const value = React.useMemo<LeadMagnetContextValue>(
+    () => ({ request }),
+    [request],
+  );
 
   return (
     <LeadMagnetContext.Provider value={value}>
@@ -54,6 +123,7 @@ export function LeadMagnetProvider({ children }: { children: React.ReactNode }) 
         open={isOpen}
         onOpenChange={setIsOpen}
         requestedEbook={requestedEbook}
+        onSubmitted={handleSubmitted}
       />
     </LeadMagnetContext.Provider>
   );
@@ -75,19 +145,21 @@ function useLeadMagnet() {
  */
 export function LeadMagnetTrigger({
   ebookSlug,
+  assetUrl,
   className,
   children,
 }: {
   ebookSlug?: string;
+  assetUrl?: string;
   className?: string;
   children?: React.ReactNode;
 }) {
-  const { open } = useLeadMagnet();
+  const { request } = useLeadMagnet();
   return (
     <Button
       type="button"
       size="lg"
-      onClick={() => open(ebookSlug)}
+      onClick={() => request({ slug: ebookSlug, assetUrl })}
       className={cn(
         "rounded-full bg-brand text-white hover:bg-brand/90 px-5 gap-1.5",
         className,
@@ -104,11 +176,25 @@ function LeadMagnetDialog({
   open,
   onOpenChange,
   requestedEbook,
+  onSubmitted,
 }: {
   open: boolean;
   onOpenChange: (next: boolean) => void;
   requestedEbook?: string;
+  onSubmitted: () => void;
 }) {
+  const handleSubmit = React.useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      // TODO senior: aquí va el envío real al CRM/marketing stack. De
+      // momento prevenimos el submit nativo, marcamos el flag local y
+      // disparamos la descarga del asset (si la URL ya está rellena).
+      event.preventDefault();
+      onSubmitted();
+    },
+    [onSubmitted],
+  );
+
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
@@ -139,13 +225,15 @@ function LeadMagnetDialog({
             </Dialog.Close>
           </div>
 
-          {/* TODO senior: enchufar endpoint real de lead capture + entrega
-              del PDF correspondiente a `requestedEbook`. De momento es un
-              form placeholder sin envío (action="#", noValidate). */}
+          {/* TODO senior: enchufar endpoint real de lead capture aquí. El
+              handler local solo marca el flag en localStorage para no
+              volver a pedir el form y dispara la descarga del asset si
+              `assetUrl` ya está rellena en lib/content/recursos.ts. */}
           <form
             action="#"
             method="post"
             noValidate
+            onSubmit={handleSubmit}
             className="flex flex-col gap-4"
           >
             {requestedEbook && (

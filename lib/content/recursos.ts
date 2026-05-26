@@ -88,41 +88,68 @@ export type RecursosEbook = {
    */
   cover: string;
   coverAlt: string;
+  /**
+   * URL del PDF (u otro asset) que se entrega cuando el lead ya rellenó
+   * el formulario. Vacío hoy: cuando senior conecte la entrega real
+   * (S3 firmado, HubSpot file, etc.), basta con pegar aquí la URL y el
+   * trigger de descarga se activa solo.
+   *
+   * TODO senior: rellenar con la URL real de cada ebook.
+   */
+  assetUrl?: string;
 };
 
+/* TODO copy: las descripciones son placeholders inferidos del título del PDF.
+   Repásalas con marketing y reescribe para que cada una venda la pieza con
+   honestidad (qué resuelve, a quién va dirigida, qué se lleva el lead). */
 export const recursosEbooks: RecursosEbook[] = [
   {
     slug: "guest-journey",
     eyebrow: "Ebook · 01",
-    title: "Guest Journey: del primer clic al recurring guest",
+    title: "Mapa del Guest Journey",
     description:
-      "Mapea las 7 etapas del recorrido del huésped y descubre dónde se pierde valor cuando el dato no fluye entre canales.",
-    pages: 38,
+      "Mapea las etapas del recorrido del huésped y descubre dónde se pierde valor cuando el dato no fluye entre canales.",
+    pages: 30,
     cover: "/ebooks/ebook-guest-journey-cover.webp",
     coverAlt:
-      "Portada del ebook Guest Journey de Fideltour: del primer clic al recurring guest",
+      "Portada del ebook Mapa del Guest Journey de Fideltour Academy",
+    assetUrl: "/ebooks/ebook-guest-journey.pdf",
   },
   {
-    slug: "tendencias-sector",
+    slug: "reputacion-online",
     eyebrow: "Ebook · 02",
-    title: "Tendencias del sector hotelero",
+    title: "Guía para mejorar y mantener tu reputación online",
     description:
-      "Los movimientos que están marcando el próximo ciclo: dato propio, automatización con criterio y venta directa rentable.",
-    pages: 32,
-    cover: "/ebooks/ebook-tendencias-sector-cover.webp",
+      "Cómo escuchar, responder y aprender de las reseñas para que tu reputación trabaje a favor del directo en vez de en contra.",
+    pages: 31,
+    cover: "/ebooks/ebook-reputacion-online-cover.webp",
     coverAlt:
-      "Portada del ebook Tendencias del sector hotelero por Fideltour",
+      "Portada del ebook Guía para mejorar y mantener tu reputación online de Fideltour Academy",
+    assetUrl: "/ebooks/ebook-reputacion-online.pdf",
   },
   {
-    slug: "planificacion-estrategica",
+    slug: "venta-directa",
     eyebrow: "Ebook · 03",
-    title: "Planificación estratégica para hoteleros",
+    title: "Acciones para incentivar la venta directa",
     description:
-      "Cómo aterrizar una hoja de ruta de fidelización realista: de los datos que ya tienes a los segmentos que mueven la cuenta de explotación.",
-    pages: 44,
-    cover: "/ebooks/ebook-planificacion-estrategica-cover.webp",
+      "Tácticas concretas para mover al huésped del clic en una OTA al clic en tu motor: incentivos, contenido y momentos clave.",
+    pages: 18,
+    cover: "/ebooks/ebook-venta-directa-cover.webp",
     coverAlt:
-      "Portada del ebook Planificación estratégica para hoteleros por Fideltour",
+      "Portada del ebook Acciones para incentivar la venta directa de Fideltour Academy",
+    assetUrl: "/ebooks/ebook-venta-directa.pdf",
+  },
+  {
+    slug: "calendario-comunicaciones-2026",
+    eyebrow: "Recurso · 04",
+    title: "Calendario de comunicaciones 2026",
+    description:
+      "El plan editorial del año en un solo documento: fechas clave, campañas y temas para que el equipo de marketing del hotel no improvise.",
+    pages: 15,
+    cover: "/ebooks/ebook-calendario-comunicaciones-2026-cover.webp",
+    coverAlt:
+      "Portada del Calendario de comunicaciones 2026 de Fideltour Academy",
+    assetUrl: "/ebooks/ebook-calendario-comunicaciones-2026.pdf",
   },
 ];
 
