@@ -58,7 +58,7 @@ export function AwardsStrip() {
           Galardonados por la industria
         </div>
 
-        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-14">
+        <ul className="awards-mobile-track mt-8 -mx-4 px-4 md:mx-0 md:px-0">
           {awards.map((award) => (
             <li
               key={award.src}
