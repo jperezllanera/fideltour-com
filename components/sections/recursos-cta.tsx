@@ -28,8 +28,8 @@ export function RecursosCtaSection() {
             </h2>
             <p className="text-base leading-relaxed text-white/80 md:text-lg">
               Cada hotel es distinto. El siguiente paso es adaptar todo este
-              conocimiento a tu contexto real, tu PMS y tus prioridades del
-              próximo trimestre.
+              conocimiento a tu contexto real, tus sistemas y tus prioridades
+              del próximo trimestre.
             </p>
 
             <Button

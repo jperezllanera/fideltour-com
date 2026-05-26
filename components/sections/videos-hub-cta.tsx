@@ -27,7 +27,7 @@ export function VideosHubCtaSection() {
             </h2>
             <p className="text-base leading-relaxed text-white/80 md:text-lg">
               Podemos llevar cualquiera de estos conceptos a tu realidad
-              hotelera: tu PMS, tu motor de reservas, tu equipo y tus
+              hotelera: tus sistemas, tu motor de reservas, tu equipo y tus
               prioridades del próximo trimestre.
             </p>
 

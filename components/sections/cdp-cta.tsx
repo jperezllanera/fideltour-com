@@ -27,8 +27,8 @@ export function CdpCtaSection() {
               </h2>
               <p className="max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
                 El que empieza hoy llega armado a la ola agéntica. El que
-                espera, llega tarde. Conecta tu PMS y empieza a unir tu
-                contexto — cuando llegue la reserva agéntica, tu agente de
+                espera, llega tarde. Empieza a unir tu contexto del
+                huésped — cuando llegue la reserva agéntica, tu agente de
                 venta tendrá detrás todo lo que necesita para ganar la venta
                 directa.
               </p>
