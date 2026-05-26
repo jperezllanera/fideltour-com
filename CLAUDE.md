@@ -25,16 +25,21 @@ repositorio. Léelo antes de tocar código.
 1. La categoría literal es **"CDP para hoteles"** o **"CDP del sector hotelero"**.
 2. **Prohibido** usar "CBP", "Customer Business Platform" o acrónimos inventados.
 3. **"Agéntico"** solo aparece como atributo táctico puntual, **nunca** como
-   identidad ni categoría.
-4. La narrativa central es **"Del CRM al CDP"** y la idea **"el hotelero que
+   identidad ni categoría. Permitido: `agente de venta`, `agente de contexto`,
+   `era agéntica`, `ola agéntica`, `reserva agéntica`. Prohibido: `CDP
+   agéntico`, `plataforma agéntica`, `Fideltour es agéntico`. Regla bisturí:
+   si la frase puede reescribirse sin "agéntico" sin perder sentido,
+   "agéntico" sobra.
+4. **"Fideltour ONE"** es el nombre del **plan/producto** que une los 12
+   módulos del CDP en una sola tarifa. Convive con "Fideltour CDP". Se puede
+   usar como marca de producto en hero, mega-menú y secciones de módulos.
+   No sustituye a "CDP para hoteles" como categoría — la decisión vive en
+   [`docs/adr/0004-fideltour-one-y-cdp-pillar.md`](docs/adr/0004-fideltour-one-y-cdp-pillar.md).
+5. La narrativa central es **"Del CRM al CDP"** y la idea **"el hotelero que
    domina el dato, domina la venta directa"** (menos dependencia de OTAs).
-5. Antes de hacer commit de copy nuevo, comprueba:
-
-   ```bash
-   grep -r "CBP\|Customer Business Platform" . --exclude-dir=node_modules --exclude-dir=.next
-   ```
-
-   Debe devolver vacío.
+6. Antes de hacer commit de copy nuevo, ejecuta `npm run brand-guard` —
+   bloquea términos prohibidos y "agéntico como categoría", y emite WARN
+   sobre menciones a revisar manualmente.
 
 ## Sistema de diseño — "Aurora Bento"
 
@@ -58,6 +63,14 @@ Todos en `app/globals.css`:
 - Escala `--neutral-50` … `--neutral-900` cálida.
 - Variables semánticas shadcn (`--primary`, `--muted`, etc.) mapeadas a las
   anteriores.
+- `--brand-gradient` (linear-gradient 135° azul cobalto → cian).
+
+**Gradientes como clases hand-written, no utilities Tailwind.** Tailwind v4
+no genera utilities `bg-*` desde tokens cuyo valor es una función
+`linear-gradient(...)`. Por eso `.bg-hero-gradient` y `.bg-brand-gradient`
+están definidas a mano en `globals.css` (dentro de `@layer utilities`).
+Si añades un gradiente token nuevo, replica ese patrón — no esperes que
+Tailwind te genere la utility.
 
 ### Tipografía
 
@@ -165,25 +178,70 @@ escribir/editar.
 
 ```
 app/
-  layout.tsx           # fonts globales, SiteHeader + SiteFooter
-  page.tsx             # home compuesta de secciones
-  globals.css          # tokens, mesh, grain, bento utilities
+  layout.tsx                          # fonts globales, SiteHeader + SiteFooter
+  page.tsx                            # home compuesta de secciones
+  globals.css                         # tokens, mesh, grain, bento utilities
+  cdp-para-hoteles/page.tsx           # pillar de categoría (11 secciones, dossier-driven)
+  {slug-de-modulo}/page.tsx           # 22 landings de módulo (usan ModuleLandingPage)
+  integracion-portal-cautivo-…/       # EXCEPCIÓN: hero bespoke, no usa ModuleLandingPage
 components/
-  ui/                  # shadcn/ui (auto-generado, no editar a mano sin motivo)
-  brand/logo.tsx       # wordmark placeholder hasta tener SVG real
+  ui/                                 # shadcn/ui (auto-generado, no editar a mano sin motivo)
+  brand/logo.tsx                      # wordmark placeholder hasta tener SVG real
   layout/
-    site-header.tsx    # sticky, mega-menú Plataforma, sheet móvil
+    site-header.tsx                   # sticky, mega-menú Plataforma, sheet móvil
     site-footer.tsx
-    locale-toggle.tsx  # UI ES/EN sin enrutado (TODO i18n)
-  sections/            # cada bloque de la home es un componente aislado
+    locale-toggle.tsx                 # UI ES/EN sin enrutado (TODO i18n)
+  sections/                           # cada bloque de página es un componente aislado
+    cdp-*.tsx                         # secciones de /cdp-para-hoteles/
+    portal-cautivo-*.tsx              # secciones bespoke de portal-cautivo
+    module-landing/                   # plantilla compartida de las 22 landings de módulo
+      module-landing-page.tsx         #   orquestador
+      module-hero.tsx                 #   hero con mockup convencional
 lib/
-  utils.ts             # cn() de shadcn
+  utils.ts                            # cn() de shadcn
   content/
-    nav.ts             # mega-menú + top links
-    modules.ts         # 12 módulos del bento
+    nav.ts                            # mega-menú + top links
+    modules.ts                        # 12 módulos del bento (home)
+    cdp.ts                            # datos de /cdp-para-hoteles/
+    module-landings/                  # datos de las 22 landings de módulo
+    site.ts                           # FeaturedCard del mega-menú, banners globales
 public/
-  brand/               # logos reales (pendiente)
+  brand/                              # logos, casos, sellos, awards
+    platform/                         # mockups de las landings de módulo (1 por slug)
 ```
+
+### Convención `ModuleHero` ↔ mockup
+
+`components/sections/module-landing/module-hero.tsx` lee el mockup por
+convención desde `public/brand/platform/{slug}.webp` — el slug es el
+nombre del directorio bajo `app/`. Si añades una nueva landing de
+módulo usando `ModuleLandingPage`, el hero buscará ese archivo
+automáticamente. El contenedor envuelve la imagen en
+`overflow-hidden rounded-2xl` — fotos 1:1 muestran las esquinas
+redondeadas, mockups con fondo transparente (devices) no muestran
+nada porque el recorte cae sobre el letterbox vacío.
+
+### Excepciones a `ModuleLandingPage`
+
+- **Portal cautivo** (`/integracion-portal-cautivo-para-hoteles/`) usa un
+  hero bespoke (`PortalCautivoHeroSection`) y sus propias secciones
+  (`PortalCautivoBeneficiosSection`, etc.). Sigue teniendo su mockup en
+  `public/brand/platform/integracion-portal-cautivo-para-hoteles.webp`
+  pero se referencia manualmente, no por convención.
+
+### Mega-menú · `FeaturedCard`
+
+El destino de la card destacada del mega-menú "Plataforma" (la del vídeo
+con eyebrow "CDP para hoteles") se configura en
+[`lib/content/site.ts`](lib/content/site.ts) → `platformFeatured.ctaHref`.
+Apunta a `/cdp-para-hoteles/`, **no** a `/#plataforma`.
+
+### Cierre del mega-menú al click (Base UI)
+
+`NavigationMenuLink` de Base UI tiene una prop `closeOnClick` con default
+`false`. Sin esa prop, hacer click en un link del mega-menú navega pero
+deja el dropdown abierto. Todos los links del mega-menú deben llevar
+`closeOnClick`. Si añades una entrada nueva, no la olvides.
 
 ## Componentes shadcn disponibles
 
@@ -240,3 +298,17 @@ npm run check-images   # auditoría de imágenes (formato + budget por familia)
 - Cambio de paleta cuando llegue el logo definitivo.
 - Adición de dark mode (no es prioridad).
 - CMS / fuente de contenido para blog, ebooks, casos.
+
+## Para ubicarte rápido al volver al proyecto
+
+Si esta es tu primera sesión o llevas días fuera, lee en este orden:
+
+1. **[`docs/journal.md`](docs/journal.md)** — memoria viva por sesión. Te
+   dice **dónde estamos hoy** y qué quedó parqueado.
+2. **[`docs/dev-notes.md`](docs/dev-notes.md)** — gotchas de entorno
+   (NEXT_PUBLIC_SITE_URL, Turbopack cache, IPv4/IPv6 con HealthScore…).
+   Lee antes de arrancar el dev server si algo va raro.
+3. **[`docs/adr/`](docs/adr/)** — decisiones de arquitectura/marca con
+   contexto. Lee si tocas algo grande y dudas por qué se hizo así.
+4. **Este archivo (`CLAUDE.md`)** — reglas inviolables. Es el "no
+   negociable".

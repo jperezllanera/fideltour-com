@@ -17,6 +17,7 @@ EXCLUDES=(
   --exclude-dir=public
   --exclude-dir=.claude
   --exclude-dir=scripts
+  --exclude-dir=docs
   --exclude=CLAUDE.md
   --exclude=AGENTS.md
   --exclude=package-lock.json
