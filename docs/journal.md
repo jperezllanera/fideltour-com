@@ -31,6 +31,75 @@ fragmentadas.
 
 ---
 
+## 2026-05-26 · Sesión 4 — Wall de 13 logos en /clientes y limpieza de Ohtels
+
+**Lo que se hizo**
+
+- **Wall de logos de /clientes alineado con el live**. Hasta ahora la
+  página reutilizaba el `LogosCarouselSection` del home (7 logos). La
+  source of truth (https://www.fideltour.com/clientes/) muestra 13:
+  El Palace · Hotel Acapulco · Bancal · Valparaíso · Sirenis · HM
+  Hotels · Soho Boutique · Universal Beach · Zafiro · Oasis · Diestra
+  · Hipotels · Eurostars. Misma order que el HTML del live.
+- **8 logos nuevos pulled de live** (cliente-el-palace, hotel-acapulco,
+  bancal, valparaiso, hm-hotels, soho-boutique, universal-beach,
+  zafiro). 5 existentes (sirenis, diestra, hipotels, oasis, eurostars)
+  reemplazados por la versión del live para consistencia. Convertidos
+  a WebP via convert-images (familia `cliente`, ≤30 KB, q=90 alpha).
+- **Componente nuevo** `ClientesLogosWallSection` en
+  `components/sections/clientes-logos-wall.tsx`. Grid 2/3/4/5 cols
+  responsive, 13 entradas tipadas con `slug` + `name`. `LogosCarouselSection`
+  del home queda intacto (sigue usándose ahí con 6 logos).
+- **Ohtels quitado**. Sale del array de la home (live tampoco lo
+  incluye en el wall — solo aparece como avatar del testimonio de
+  Nuria Lista, vía `caso-ohtels-gran-almeria.webp`). El asset
+  `cliente-ohtels.webp` queda borrado, recuperable desde git si
+  marketing pide volver.
+
+**Lo decidido**
+
+- **Dos componentes de logos en lugar de uno parametrizado**. Home
+  tiene 6 logos en orden compacto centrado con CTA; /clientes tiene
+  13 en wall 5-col. Los layouts y copy difieren demasiado para que
+  un mismo componente con prop `clients` sirva sin volverse
+  espagueti.
+- **Naming `cliente-{slug}` con slug humano**, no con el filename
+  del live (que en su mayoría son numéricos `1-1.png`, `2-1.png`).
+  Resuelve la opacidad del live para futuras consultas — `1-1.png`
+  no le dice nada a nadie, `cliente-hipotels.webp` sí.
+
+**Lo descubierto**
+
+- **El live /clientes esconde el 13º logo** detrás de un alt poco
+  obvio: `iconos-hoteles-2026.png` con alt `valparaiso hoteles 2`
+  resultó ser GPRO Valparaíso Palace & Spa. La primera pasada del
+  parser lo filtró por el prefijo `iconos-` (sonaba a UI icons,
+  no a logo). Si en el futuro hay que volver a sincronizar logos,
+  no filtrar agresivamente por filename — confiar más en el alt.
+- **WebP no siempre comprime más que PNG** para logos muy simples.
+  cliente-hm-hotels.png era 910 B; su .webp pasó a 1.5 KB. Mismo
+  caso con eurostars (7.8 KB PNG → 12.5 KB WebP). Aún así, queda
+  bajo el budget de la familia `cliente` (30 KB) y el repo se
+  mantiene en un solo formato. Si esto se repite con docenas de
+  logos, evaluar el `PNG_WHITELIST` del convert script.
+- **`LogosCarouselSection` se usaba en dos sitios** (home y
+  /clientes); cambiar uno afectaba al otro. Separar en dos
+  componentes desbloquea poder iterar cada página independiente.
+
+**Parqueado / próxima sesión**
+
+- **Asignación a segmentos** en `ClientesSegmentsSection`: las 4
+  cards (Hotel independiente / Cadenas hoteleras / Grupos
+  corporativos / Enterprise) listan algunos clientes por nombre.
+  Verificar que las asignaciones cuadran con el live — la última
+  card (Enterprise) parece vacía visualmente en la captura.
+- **THB Hotels** no está en el live /clientes (sí en el live home).
+  Local home lo mantiene en `LogosCarouselSection`. Si el equipo
+  prefiere paridad con live también ahí, quitar THB del home — pero
+  hoy se queda porque el live home sí lo muestra.
+
+---
+
 ## 2026-05-26 · Sesión 3 — ContainerScroll en /cdp-para-hoteles y rename de módulos
 
 **Lo que se hizo**

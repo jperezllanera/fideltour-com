@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { ClientesHeroSection } from "@/components/sections/clientes-hero";
 import { ClientesSegmentsSection } from "@/components/sections/clientes-segments";
-import { LogosCarouselSection } from "@/components/sections/logos-carousel";
+import { ClientesLogosWallSection } from "@/components/sections/clientes-logos-wall";
 import { ClientesCtaSection } from "@/components/sections/clientes-cta";
 import {
   BreadcrumbJsonLd,
@@ -40,7 +40,7 @@ export default function ClientesPage() {
       <BreadcrumbJsonLd items={[{ name: TITLE, path: "/clientes/" }]} />
       <ClientesHeroSection />
       <ClientesSegmentsSection />
-      <LogosCarouselSection />
+      <ClientesLogosWallSection />
       <ClientesCtaSection />
     </>
   );

@@ -4,6 +4,15 @@ import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
+/**
+ * Set de 6 logos que muestra la home — alineado con el orden que aparece
+ * en https://www.fideltour.com/ (source order: Sirenis, Diestra, Hipotels,
+ * Eurostars, Oasis, THB). Ohtels se quitó: en el live solo aparece como
+ * avatar del testimonio de Nuria Lista, no en el wall de logos.
+ *
+ * El wall completo de 13 marcas (subset distinto, sin THB) vive en
+ * `clientes-logos-wall.tsx` y se usa en `/clientes/`.
+ */
 const clients = [
   { src: "/brand/cliente-sirenis.webp", alt: "Sirenis Hotels & Resorts" },
   { src: "/brand/cliente-diestra.webp", alt: "Diestra Hoteles" },
@@ -11,7 +20,6 @@ const clients = [
   { src: "/brand/cliente-eurostars.webp", alt: "Eurostars Hotel Company" },
   { src: "/brand/cliente-oasis.webp", alt: "Oasis Hotels & Resorts" },
   { src: "/brand/cliente-thb-hotels.webp", alt: "THB Hotels" },
-  { src: "/brand/cliente-ohtels.webp", alt: "Ohtels" },
 ];
 
 export function LogosCarouselSection() {
