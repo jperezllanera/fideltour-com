@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 import { clienteSegments } from "@/lib/content/clientes";
 
@@ -57,39 +59,26 @@ export function ClientesSegmentsSection() {
                 </header>
 
                 <div className="md:col-span-7 lg:col-span-8 flex flex-col gap-4">
-                  {customers.length > 0 ? (
-                    <>
-                      <div className="text-eyebrow text-muted-foreground">
-                        Algunos clientes
-                      </div>
-                      {/*
-                        TODO senior: sustituir las "logo cards" tipográficas por
-                        los SVG/PNG reales de cada cliente cuando lleguen los
-                        assets (la web actual los lista pero no tenemos sus
-                        logotipos en el repo).
-                      */}
-                      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                        {customers.map((name) => (
-                          <li
-                            key={name}
-                            className="flex h-20 items-center justify-center rounded-xl border border-border/60 bg-background px-3 text-center text-sm font-semibold text-brand-navy shadow-[var(--shadow-soft)]"
-                          >
-                            {name}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <div className="flex h-full min-h-[140px] flex-col justify-center rounded-xl border border-dashed border-border/70 bg-muted/30 p-6">
-                      <div className="text-eyebrow text-brand-navy-deep">
-                        Operaciones globales
-                      </div>
-                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground md:text-base">
-                        Gobernanza de datos, orquestación cross-marca y modelos
-                        de identidad únicos para portfolios internacionales.
-                      </p>
-                    </div>
-                  )}
+                  <div className="text-eyebrow text-muted-foreground">
+                    Algunos clientes
+                  </div>
+                  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                    {customers.map((customer) => (
+                      <li
+                        key={customer.slug}
+                        className="flex h-20 items-center justify-center rounded-xl border border-border/60 bg-background px-4 shadow-[var(--shadow-soft)]"
+                      >
+                        <Image
+                          src={`/brand/cliente-${customer.slug}.webp`}
+                          alt={`${customer.name} — cliente Fideltour`}
+                          width={240}
+                          height={120}
+                          sizes="(min-width: 1024px) 140px, (min-width: 640px) 160px, 40vw"
+                          className="max-h-12 w-auto object-contain md:max-h-14"
+                        />
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             </article>

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { ClientesHeroSection } from "@/components/sections/clientes-hero";
 import { ClientesSegmentsSection } from "@/components/sections/clientes-segments";
-import { ClientesLogosWallSection } from "@/components/sections/clientes-logos-wall";
 import { ClientesCtaSection } from "@/components/sections/clientes-cta";
 import {
   BreadcrumbJsonLd,
@@ -40,7 +39,6 @@ export default function ClientesPage() {
       <BreadcrumbJsonLd items={[{ name: TITLE, path: "/clientes/" }]} />
       <ClientesHeroSection />
       <ClientesSegmentsSection />
-      <ClientesLogosWallSection />
       <ClientesCtaSection />
     </>
   );

@@ -31,42 +31,45 @@ fragmentadas.
 
 ---
 
-## 2026-05-26 · Sesión 4 — Wall de 13 logos en /clientes y limpieza de Ohtels
+## 2026-05-26 · Sesión 4 — 13 logos de cliente repartidos en los 4 segmentos de /clientes
 
 **Lo que se hizo**
 
-- **Wall de logos de /clientes alineado con el live**. Hasta ahora la
-  página reutilizaba el `LogosCarouselSection` del home (7 logos). La
-  source of truth (https://www.fideltour.com/clientes/) muestra 13:
-  El Palace · Hotel Acapulco · Bancal · Valparaíso · Sirenis · HM
-  Hotels · Soho Boutique · Universal Beach · Zafiro · Oasis · Diestra
-  · Hipotels · Eurostars. Misma order que el HTML del live.
-- **8 logos nuevos pulled de live** (cliente-el-palace, hotel-acapulco,
-  bancal, valparaiso, hm-hotels, soho-boutique, universal-beach,
-  zafiro). 5 existentes (sirenis, diestra, hipotels, oasis, eurostars)
-  reemplazados por la versión del live para consistencia. Convertidos
-  a WebP via convert-images (familia `cliente`, ≤30 KB, q=90 alpha).
-- **Componente nuevo** `ClientesLogosWallSection` en
-  `components/sections/clientes-logos-wall.tsx`. Grid 2/3/4/5 cols
-  responsive, 13 entradas tipadas con `slug` + `name`. `LogosCarouselSection`
-  del home queda intacto (sigue usándose ahí con 6 logos).
-- **Ohtels quitado**. Sale del array de la home (live tampoco lo
-  incluye en el wall — solo aparece como avatar del testimonio de
-  Nuria Lista, vía `caso-ohtels-gran-almeria.webp`). El asset
-  `cliente-ohtels.webp` queda borrado, recuperable desde git si
-  marketing pide volver.
+- **13 logos pulled del live y convertidos a WebP**. 8 nuevos
+  (el-palace, hotel-acapulco, bancal, valparaiso, hm-hotels,
+  soho-boutique, universal-beach, zafiro) + 5 reemplazados por la
+  versión live para consistencia (sirenis, diestra, hipotels, oasis,
+  eurostars). Familia `cliente` (q=90 alpha, ≤30 KB) — todos pasan
+  audit.
+- **Distribución 4+4+4+1 en los 4 segmentos** de
+  `ClientesSegmentsSection`, espejo del live /clientes:
+  - Segmento 01 · Hotel independiente: El Palace, Hotel Acapulco,
+    Bancal, Valparaíso.
+  - Segmento 02 · Cadenas hoteleras: Sirenis, HM Hotels,
+    Soho Boutique, Universal Beach.
+  - Segmento 03 · Grupos corporativos: Zafiro, Oasis, Diestra,
+    Hipotels.
+  - Segmento 04 · Enterprise: Eurostars (único).
+- **Tipo `ClienteSegment.customers` cambió** de `string[]` a
+  `{ slug, name }[]` para referenciar el asset por slug. El
+  componente renderiza ahora `<Image>` real en lugar de las pills
+  de texto (cierra el `TODO senior:` que vivía en el JSX).
+- **Ohtels quitado** del `LogosCarouselSection` del home — en el
+  live solo aparece como avatar del testimonio de Nuria Lista
+  (`caso-ohtels-gran-almeria.webp`), no en walls de logos. Asset
+  `cliente-ohtels.webp` borrado (recuperable desde git).
 
 **Lo decidido**
 
-- **Dos componentes de logos en lugar de uno parametrizado**. Home
-  tiene 6 logos en orden compacto centrado con CTA; /clientes tiene
-  13 en wall 5-col. Los layouts y copy difieren demasiado para que
-  un mismo componente con prop `clients` sirva sin volverse
-  espagueti.
+- **Los logos viven dentro de las cards de segmento, no en un wall
+  aparte.** Primera iteración añadía un `ClientesLogosWallSection`
+  con los 13 logos en un row centrado — descartado: el live
+  distribuye los logos a través de los segmentos para mostrar
+  qué tipo de hotel opera cada uno, no como afirmación general.
+  El componente del wall queda borrado.
 - **Naming `cliente-{slug}` con slug humano**, no con el filename
-  del live (que en su mayoría son numéricos `1-1.png`, `2-1.png`).
-  Resuelve la opacidad del live para futuras consultas — `1-1.png`
-  no le dice nada a nadie, `cliente-hipotels.webp` sí.
+  del live (`1-1.png`, `2-1.png`, etc.). `cliente-hipotels.webp`
+  le dice algo a quien lo lea en seis meses; `1-1.png` no.
 
 **Lo descubierto**
 
@@ -78,21 +81,17 @@ fragmentadas.
   no filtrar agresivamente por filename — confiar más en el alt.
 - **WebP no siempre comprime más que PNG** para logos muy simples.
   cliente-hm-hotels.png era 910 B; su .webp pasó a 1.5 KB. Mismo
-  caso con eurostars (7.8 KB PNG → 12.5 KB WebP). Aún así, queda
-  bajo el budget de la familia `cliente` (30 KB) y el repo se
-  mantiene en un solo formato. Si esto se repite con docenas de
-  logos, evaluar el `PNG_WHITELIST` del convert script.
-- **`LogosCarouselSection` se usaba en dos sitios** (home y
-  /clientes); cambiar uno afectaba al otro. Separar en dos
-  componentes desbloquea poder iterar cada página independiente.
+  caso con eurostars. Aún así, queda bajo el budget de la familia
+  `cliente` (30 KB). Si esto se repite con docenas de logos,
+  evaluar `PNG_WHITELIST` del convert script.
 
 **Parqueado / próxima sesión**
 
-- **Asignación a segmentos** en `ClientesSegmentsSection`: las 4
-  cards (Hotel independiente / Cadenas hoteleras / Grupos
-  corporativos / Enterprise) listan algunos clientes por nombre.
-  Verificar que las asignaciones cuadran con el live — la última
-  card (Enterprise) parece vacía visualmente en la captura.
+- **Segmento 04 · Enterprise con 1 solo logo** queda visualmente
+  pobre (la card tiene 1 logo y 3 cells vacíos en el grid
+  4-col). Si el equipo añade más enterprise customers, fluye
+  natural; si no, considerar centrar el logo único o reducir el
+  grid a 1-col solo para ese segmento.
 - **THB Hotels** no está en el live /clientes (sí en el live home).
   Local home lo mantiene en `LogosCarouselSection`. Si el equipo
   prefiere paridad con live también ahí, quitar THB del home — pero

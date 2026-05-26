@@ -1,4 +1,11 @@
-import { Building2, Layers3, Network, Globe2, type LucideIcon } from "lucide-react";
+import { Building2, Globe2, Layers3, Network, type LucideIcon } from "lucide-react";
+
+export type ClienteLogo = {
+  /** Slug del logo en `public/brand/cliente-{slug}.webp`. */
+  slug: string;
+  /** Nombre humano (alt + tooltip). */
+  name: string;
+};
 
 export type ClienteSegment = {
   id: string;
@@ -6,7 +13,13 @@ export type ClienteSegment = {
   title: string;
   description: string;
   icon: LucideIcon;
-  customers: string[];
+  /**
+   * Logos de cliente asignados al segmento, en el orden en que
+   * aparecen en https://www.fideltour.com/clientes/ (4 + 4 + 4 + 1).
+   * Si llega un cliente nuevo, métase en su segmento por orden de
+   * incorporación.
+   */
+  customers: ClienteLogo[];
 };
 
 export const clienteSegments: ClienteSegment[] = [
@@ -17,7 +30,12 @@ export const clienteSegments: ClienteSegment[] = [
     description:
       "Tecnología de fidelización diseñada para vender más directo, sin complejidad operativa.",
     icon: Building2,
-    customers: ["El Palace", "Hotel Acapulco", "Bancal Hotel y Spa", "Valparaiso Hoteles"],
+    customers: [
+      { slug: "el-palace", name: "El Palace Barcelona" },
+      { slug: "hotel-acapulco", name: "Hotel Acapulco Lloret de Mar" },
+      { slug: "bancal", name: "Bancal Hotel & Spa" },
+      { slug: "valparaiso", name: "GPRO Valparaíso Palace & Spa" },
+    ],
   },
   {
     id: "cadenas",
@@ -26,7 +44,12 @@ export const clienteSegments: ClienteSegment[] = [
     description:
       "Unifica datos, automatiza el marketing y escala la venta directa en todos tus hoteles.",
     icon: Layers3,
-    customers: ["H&M Hotels", "Soho Boutique", "Universal Hotels"],
+    customers: [
+      { slug: "sirenis", name: "Sirenis Hotels & Resorts" },
+      { slug: "hm-hotels", name: "HM Hotels" },
+      { slug: "soho-boutique", name: "Soho Boutique Hotels" },
+      { slug: "universal-beach", name: "Universal Beach Hotels" },
+    ],
   },
   {
     id: "grupos",
@@ -35,7 +58,12 @@ export const clienteSegments: ClienteSegment[] = [
     description:
       "Gobierno del dato, personalización avanzada y activación multicanal a escala de grupo.",
     icon: Network,
-    customers: ["Zafiro Hotels"],
+    customers: [
+      { slug: "zafiro", name: "Zafiro Hotels" },
+      { slug: "oasis", name: "Oasis Hotels & Resorts" },
+      { slug: "diestra", name: "Diestra Hoteles" },
+      { slug: "hipotels", name: "Hipotels Hotels & Resorts" },
+    ],
   },
   {
     id: "enterprise",
@@ -44,6 +72,8 @@ export const clienteSegments: ClienteSegment[] = [
     description:
       "Arquitectura enterprise para ecosistemas hoteleros complejos y operaciones globales.",
     icon: Globe2,
-    customers: [],
+    customers: [
+      { slug: "eurostars", name: "Eurostars Hotel Company" },
+    ],
   },
 ];
