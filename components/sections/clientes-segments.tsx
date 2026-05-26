@@ -62,19 +62,19 @@ export function ClientesSegmentsSection() {
                   <div className="text-eyebrow text-muted-foreground">
                     Algunos clientes
                   </div>
-                  <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                  <ul className="grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-10">
                     {customers.map((customer) => (
                       <li
                         key={customer.slug}
-                        className="flex h-20 items-center justify-center rounded-xl border border-border/60 bg-background px-4 shadow-[var(--shadow-soft)]"
+                        className="flex items-center justify-center"
                       >
                         <Image
                           src={`/brand/cliente-${customer.slug}.webp`}
                           alt={`${customer.name} — cliente Fideltour`}
-                          width={240}
-                          height={120}
-                          sizes="(min-width: 1024px) 140px, (min-width: 640px) 160px, 40vw"
-                          className="max-h-12 w-auto object-contain md:max-h-14"
+                          width={320}
+                          height={160}
+                          sizes="(min-width: 1024px) 200px, (min-width: 640px) 220px, 45vw"
+                          className="max-h-24 w-auto object-contain md:max-h-28"
                         />
                       </li>
                     ))}
