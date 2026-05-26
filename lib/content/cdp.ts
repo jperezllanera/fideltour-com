@@ -77,45 +77,6 @@ export const cdpEras: CdpEra[] = [
   },
 ];
 
-export type CdpSource = {
-  number: string;
-  kicker: string;
-  title: string;
-  description: string;
-  label: string;
-  icon: LucideIcon;
-};
-
-export const cdpSources: CdpSource[] = [
-  {
-    number: "01",
-    kicker: "Conectividad",
-    title: "Integraciones.",
-    description:
-      "Web, PMS, chatbot, contact center, motor, channel manager. El mayor marketplace de conectividad del sector hotelero.",
-    label: "Dónde vive el dato",
-    icon: Plug2,
-  },
-  {
-    number: "02",
-    kicker: "Producto",
-    title: "Aplicaciones.",
-    description:
-      "Los 12 módulos de Fideltour ONE. Cada uno captura un tipo de dato: Reviews sabe si quedó contento, CRM qué reservó, Rewards cuánto vale.",
-    label: "Qué tipo de dato",
-    icon: Layers,
-  },
-  {
-    number: "03",
-    kicker: "Conversación",
-    title: "Canales.",
-    description:
-      "Chat, WhatsApp, voz, email, redes. Cada conversación es dato vivo de intención en el momento que sucede.",
-    label: "Cómo entra el dato",
-    icon: MessagesSquare,
-  },
-];
-
 export type CdpModule = {
   id: string;
   name: string;

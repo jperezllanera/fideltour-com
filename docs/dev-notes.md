@@ -116,6 +116,47 @@ orden de menor a mayor cambio:
 2. Redimensionar (ver receta en `.claude/skills/seo-assets/SKILL.md`).
 3. Re-categorizar (renombrar para caer en una familia con budget mayor).
 
+## Motion / framer-motion
+
+### Imports vienen de `motion/react`, no `motion` ni `framer-motion`
+
+El paquete instalado es `motion` v12 (rebrand de framer-motion). Pero
+los exports de React (hooks como `useScroll`, `useTransform`, y el
+componente `motion`) viven en `motion/react`:
+
+```tsx
+import { motion, useScroll, useTransform, type MotionValue } from "motion/react";
+```
+
+Si copias snippets de tutoriales o de Aceternity con
+`import { motion } from "framer-motion"`, cambialo a `motion/react`.
+El paquete `framer-motion` no está en `package.json`.
+
+### `drop-shadow` filter respeta el alpha del PNG
+
+Para mockups de dispositivos con fondo transparente (la mayoría de
+los `.webp` en `public/brand/platform/`), `drop-shadow` filter es
+mejor que `box-shadow` — la sombra sigue el contorno del device en
+vez de la caja rectangular del elemento. Pattern usado en
+`.scroll-card-shadow` en `globals.css`.
+
+### Aceternity components vienen con arbitrary values agresivos
+
+Si copiás un snippet de [ui.aceternity.com](https://ui.aceternity.com)
+o similar, espera ver: HEX literales (`#222222`), `h-[60rem]`,
+`style={{perspective}}` inline, sombras multi-stop inline. Todo eso
+rompe las reglas de markup hygiene del repo y los hooks de pre-commit
+lo bloquean. Pattern de adaptación:
+
+1. Mover dimensiones y valores arbitrarios a `globals.css` como
+   utility classes (`@layer utilities`).
+2. Sustituir HEX por tokens (`var(--neutral-900)`,
+   `var(--brand-navy)`...).
+3. Mover `style={{ literal }}` a la utility class. Solo dejar `style`
+   con MotionValues (animación) o variables CSS calculadas en runtime.
+
+Ejemplo aplicado: `components/ui/container-scroll-animation.tsx`.
+
 ## Formularios y endpoints
 
 **Todo lo que envía datos está pendiente.** Hoy casi todos los formularios

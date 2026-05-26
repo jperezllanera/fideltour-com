@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { CdpHeroSection } from "@/components/sections/cdp-hero";
 import { CdpEraShiftSection } from "@/components/sections/cdp-era-shift";
 import { CdpSalesAgentSection } from "@/components/sections/cdp-sales-agent";
-import { CdpThreeSourcesSection } from "@/components/sections/cdp-three-sources";
+import { CdpAgenticEraSection } from "@/components/sections/cdp-agentic-era";
 import { CdpAnonymousTrafficSection } from "@/components/sections/cdp-anonymous-traffic";
 import { CdpContextComparisonSection } from "@/components/sections/cdp-context-comparison";
 import { CdpEcosystemSection } from "@/components/sections/cdp-ecosystem";
@@ -52,7 +52,7 @@ export default function CdpParaHotelesPage() {
       <CdpHeroSection />
       <CdpEraShiftSection />
       <CdpSalesAgentSection />
-      <CdpThreeSourcesSection />
+      <CdpAgenticEraSection />
       <CdpAnonymousTrafficSection />
       <CdpContextComparisonSection />
       <CdpEcosystemSection />

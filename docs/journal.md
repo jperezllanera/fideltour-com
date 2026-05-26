@@ -31,6 +31,90 @@ fragmentadas.
 
 ---
 
+## 2026-05-26 · Sesión 3 — ContainerScroll en /cdp-para-hoteles y rename de módulos
+
+**Lo que se hizo**
+
+- **Renombrados 2 módulos** en `lib/content/cdp.ts` para alinear con el
+  naming del mega-menú: `Campañas → Campaigns`, `Loyalty → Rewards`.
+  Actualizada también la descripción de Aplicaciones ("Loyalty cuánto
+  vale" → "Rewards cuánto vale") y el FAQ que enumera los 12 módulos.
+  El cambio se propaga automáticamente a las dos secciones que
+  consumen `cdpModules`: /cdp-para-hoteles y la home (sesión 1
+  sustituyó LoyaltyLadderSection por CdpModulesSection).
+- **Sustituida la sección "Tres fuentes"** de /cdp-para-hoteles por
+  un scroll-driven reveal estilo Aceternity. Nueva sección
+  `CdpAgenticEraSection` con titular "Bienvenido a la era agéntica"
+  y un mockup laptop del dashboard de Identity rotando/escalando
+  según el progreso de scroll. La imagen viene de la live
+  (`identity-fideltour-crm-img01-copia.png` → `hero-identity-crm.webp`,
+  48 KB).
+- **ContainerScroll componente nuevo** en
+  `components/ui/container-scroll-animation.tsx`. NO es shadcn — el
+  comentario de cabecera lo aclara. Los arbitrary values del Aceternity
+  original (`h-[60rem]`, `bg-[#222222]`, `rounded-[30px]`, sombra
+  multi-stop inline) se movieron a `globals.css` como `.scroll-stage`,
+  `.scroll-stage-perspective`, `.scroll-card-shadow` para cumplir la
+  regla de markup hygiene.
+- **Sin chrome de laptop** en la implementación final. Tras una primera
+  iteración con marco oscuro, descartado: el children es ya un mockup
+  con su propio device chrome, ponerlo dentro de otro daba "laptop
+  dentro de laptop". El children flota directamente con `drop-shadow`
+  que respeta el alpha del PNG y rota con la transform.
+- **Cleanup**: borrado `components/sections/cdp-three-sources.tsx` y la
+  data `cdpSources` de `lib/content/cdp.ts` — eran sus únicos
+  consumidores.
+
+**Lo decidido**
+
+- **ContainerScroll vive en `components/ui/` a pesar de no ser shadcn.**
+  La convención del repo era que `components/ui/` es "auto-generado
+  shadcn, no editar a mano". Excepción permitida: efectos genéricos
+  reutilizables tipo Aceternity, con comentario de cabecera explícito.
+  Alternativa descartada: carpeta `components/effects/`. Razón: el
+  componente se importa exactamente como un primitive shadcn (un
+  efecto envolvente), no como una sección de página.
+- **Import del motor de animación: `motion/react`** (rebrand de
+  framer-motion v12). El proyecto no usa el paquete `framer-motion`
+  directamente. Si en el futuro alguien copia un snippet de Aceternity
+  con `import { motion } from "framer-motion"`, hay que cambiarlo.
+
+**Lo descubierto**
+
+- **`drop-shadow` filter respeta el canal alpha** del PNG, así que la
+  sombra sigue el contorno del laptop en vez de ser una caja
+  rectangular. Importante para mockups de dispositivos con fondo
+  transparente. Aplicado en `.scroll-card-shadow` en globals.css.
+- **El paquete `motion` v12 exporta hooks desde `motion/react`**, no
+  desde `motion` ni desde `framer-motion`. Documentado en
+  `dev-notes.md` para futuras integraciones.
+- **Aceternity components vienen con arbitrary values agresivos** que
+  rompen las reglas de markup hygiene del repo: HEX literales,
+  `h-[60rem]`, `style={{perspective}}`, sombras multi-stop inline.
+  Patrón: moverlo todo a utilities en `globals.css` antes de usarlo.
+  Tarda 5 min y queda limpio.
+- **El asset corporativo de Identity** vivía en la live como
+  `2026/03/identity-fideltour-crm-img01-copia.png` — el sufijo "copia"
+  por flujo editorial de WordPress, no por estar duplicado. Misma
+  técnica que con motor-reservas en sesión 1 para pull-from-live.
+
+**Parqueado / próxima sesión**
+
+- **Verificar el efecto de scroll en navegador real** — el headless
+  no captura la rotación animada, solo un estado estático. Si Raiko
+  reporta que sigue sin verse movimiento en su Chrome, posibles
+  causas a debuggear: `prefers-reduced-motion`, hidratación tardía
+  del client component, viewport demasiado alto vs altura de stage.
+- **Whitespace alrededor de la sección** — la stage es alta (50-65rem)
+  por necesidad del scroll-range. Si visualmente queda demasiado
+  vacía, alternativas: añadir copy lateral, reducir stage y comprimir
+  el rango de rotación, o intercalar otra sección breve dentro.
+- **(De sesiones anteriores, sigue parqueado)**: WhatsApp QR demo del
+  slide 14 del dossier, stats 50M/20M+/10M confirmar con marketing,
+  rotar credenciales SMTP de SES, descripciones de los 4 ebooks.
+
+---
+
 ## 2026-05-26 · Sesión 2 — Lead magnet de /recursos/, newsletter SMTP y fix de DX
 
 **Lo que se hizo**

@@ -422,6 +422,29 @@
     background-image: var(--brand-gradient);
   }
 
+  /* ContainerScroll (estilo Aceternity) — scroll-driven reveal: el
+     contenido rota en X y se escala según el progress de scroll dentro
+     de la stage. Sin chrome de laptop — la imagen flota con sombra
+     suave, evita "device dentro de device" cuando el children ya trae
+     su propio chrome. Lo usa `cdp-agentic-era.tsx`. */
+  .scroll-stage {
+    height: 50rem;
+  }
+  @media (min-width: 768px) {
+    .scroll-stage {
+      height: 65rem;
+    }
+  }
+  .scroll-stage-perspective {
+    perspective: 1000px;
+  }
+  .scroll-card-shadow {
+    /* drop-shadow respeta el alpha del PNG — la sombra sigue el contorno
+       del laptop y no la caja rectangular alrededor. Filter se aplica
+       antes que transform, así que la sombra rota con el children. */
+    filter: drop-shadow(0 24px 32px rgb(0 0 0 / 0.18));
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .bento-cell,
     .marquee {
