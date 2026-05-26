@@ -16,7 +16,8 @@ import { motion } from "motion/react";
 
 import { cn } from "@/lib/utils";
 import { Logo } from "@/components/brand/logo";
-import { LocaleToggle } from "@/components/layout/locale-toggle";
+// LocaleToggle oculto temporalmente hasta tener traducciones reales.
+// import { LocaleToggle } from "@/components/layout/locale-toggle";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -59,7 +60,7 @@ export function SiteHeader() {
         <DesktopNav />
 
         <div className="hidden md:flex flex-1 items-center justify-end gap-2">
-          <LocaleToggle />
+          {/* TODO i18n: re-habilitar <LocaleToggle /> cuando exista traducción real. */}
           <Button
             variant="outline"
             size="sm"
@@ -404,7 +405,7 @@ function MobileNav() {
           ))}
         </nav>
         <div className="flex flex-col gap-2 border-t border-border p-4">
-          <LocaleToggle className="self-start" />
+          {/* TODO i18n: re-habilitar <LocaleToggle className="self-start" /> cuando exista traducción real. */}
           <Button
             variant="outline"
             size="sm"
