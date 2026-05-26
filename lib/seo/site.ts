@@ -12,7 +12,7 @@
 
 export const siteConfig = {
   /** URL canónica de producción (sin slash final). */
-  url: "https://fideltour.com",
+  url: "https://www.fideltour.com",
 
   /** Nombre legal de la empresa (titular del dominio). */
   legalName: "Fideltour SL",

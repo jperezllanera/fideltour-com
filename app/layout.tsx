@@ -27,7 +27,7 @@ export { viewport } from "./viewport";
  *
  * `alternates.canonical: "/"` declara que la home es la URL canónica raíz;
  * Next combina automáticamente con `metadataBase` para emitir
- * https://fideltour.com/.
+ * https://www.fideltour.com/.
  */
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
