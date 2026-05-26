@@ -2,10 +2,12 @@ import Link from "next/link";
 import { ArrowRight, ArrowDown, ArrowUp } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { HeroShapes } from "@/components/ui/hero-shapes";
 
 export function CdpHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[18%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1380px] max-h-[1380px] rounded-full border-[125px] border-brand/[0.22]"

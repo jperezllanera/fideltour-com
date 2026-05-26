@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { HeroShapes } from "@/components/ui/hero-shapes";
 import type { ModuleLanding } from "@/lib/content/module-landings/_types";
 
 type Props = {
@@ -15,6 +16,7 @@ export function ModuleHero({ hero, slug, navLabel }: Props) {
 
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pt-20 pb-16 md:grid-cols-12 md:gap-8 md:px-6 md:pt-28 md:pb-20">
         <div className="md:col-span-7 flex flex-col gap-6">
           <span className="text-eyebrow inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-white/80 backdrop-blur">

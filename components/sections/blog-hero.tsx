@@ -1,4 +1,5 @@
 import { BlogSearch, type SearchablePost } from "@/components/sections/blog-search";
+import { HeroShapes } from "@/components/ui/hero-shapes";
 import { categoryLabels, getAllPosts } from "@/lib/content/blog";
 
 export function BlogHeroSection() {
@@ -14,6 +15,7 @@ export function BlogHeroSection() {
 
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden

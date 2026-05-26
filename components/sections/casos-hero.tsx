@@ -1,6 +1,9 @@
+import { HeroShapes } from "@/components/ui/hero-shapes";
+
 export function CasosHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1440px] max-h-[1440px] rounded-full border-[130px] border-brand/[0.22]"

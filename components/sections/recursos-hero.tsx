@@ -1,8 +1,10 @@
+import { HeroShapes } from "@/components/ui/hero-shapes";
 import { recursosValues } from "@/lib/content/recursos";
 
 export function RecursosHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden

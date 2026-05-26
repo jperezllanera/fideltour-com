@@ -3,10 +3,12 @@ import Link from "next/link";
 import { ArrowRight, UserCheck, Wifi } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { HeroShapes } from "@/components/ui/hero-shapes";
 
 export function PortalCautivoHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden

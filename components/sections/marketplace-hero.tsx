@@ -1,8 +1,11 @@
+import { HeroShapes } from "@/components/ui/hero-shapes";
+
 import { MarketplaceCounter } from "./marketplace-counter";
 
 export function MarketplaceHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       {/* "O" del logo enlarged — un único anillo ancho centrado */}
       <div
         aria-hidden

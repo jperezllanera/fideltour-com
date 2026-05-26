@@ -1,8 +1,10 @@
+import { HeroShapes } from "@/components/ui/hero-shapes";
 import { empresaMetrics } from "@/lib/content/empresa";
 
 export function EmpresaHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       <div
         aria-hidden
         className="pointer-events-none absolute -left-[18%] top-1/2 -translate-y-1/2 size-[138vw] max-w-[1380px] max-h-[1380px] rounded-full border-[120px] border-brand/[0.22]"

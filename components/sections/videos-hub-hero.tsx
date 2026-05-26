@@ -1,6 +1,9 @@
+import { HeroShapes } from "@/components/ui/hero-shapes";
+
 export function VideosHubHeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       {/* Aro de marca centrado — réplica del patrón hero del resto del sitio */}
       <div
         aria-hidden

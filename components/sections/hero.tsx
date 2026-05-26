@@ -1,10 +1,13 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { HeroShapes } from "@/components/ui/hero-shapes";
 
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
+      <HeroShapes />
       {/* Aro de marca — 25% ancho, derecha, decorativo encima del mockup */}
       <div aria-hidden className="hero-decor-ring" />
 
