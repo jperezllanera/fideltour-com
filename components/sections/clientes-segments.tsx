@@ -74,7 +74,7 @@ export function ClientesSegmentsSection() {
                           width={320}
                           height={160}
                           sizes="(min-width: 1024px) 200px, (min-width: 640px) 220px, 45vw"
-                          className="max-h-24 w-auto object-contain md:max-h-28"
+                          className="max-h-32 w-auto object-contain md:max-h-40"
                         />
                       </li>
                     ))}
