@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
   // Activamos trailingSlash global para no romper backlinks ni SEO tras migrar.
   trailingSlash: true,
 
+  // Permite acceder al dev server desde 127.0.0.1 además de localhost. Sin
+  // esto, Next 15+ rechaza con 403 los assets (fonts) y el WebSocket HMR
+  // cuando el origen del navegador no coincide con el hostname con el que
+  // arrancó el server — rompe la hidratación de componentes client. Sólo
+  // aplica en `next dev`, no afecta a producción.
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
+
   /*
    * Redirects 301 — Preservación SEO de la migración WP → Next.js.
    *
