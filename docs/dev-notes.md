@@ -118,15 +118,55 @@ orden de menor a mayor cambio:
 
 ## Formularios y endpoints
 
-**Todo lo que envía datos está pendiente.** Hoy todos los formularios
+**Todo lo que envía datos está pendiente.** Hoy casi todos los formularios
 (`#demo`, `#contacto`, hero CTAs) son visuales — redirigen a
 `/contacto` o son `<a>` decorativos. Cualquier integración real
 (Zoho, HubSpot, custom backend) se marca como `TODO senior:` en el
 JSX y se discute antes de implementar.
 
+**Excepción cableada:** el form de newsletter del blog
+([components/sections/blog-cta.tsx](../components/sections/blog-cta.tsx))
+hace POST a [`/api/newsletter`](../app/api/newsletter/route.ts), que
+reenvía la suscripción por SMTP a `marketing@fideltour.com` con
+`nodemailer`. Ver sección siguiente para las env vars.
+
 WhatsApp QR demo del slide 14 del dossier de Agoratech sigue
 pendiente — no hay `wa.me` oficial cableado. Si vas a meterlo, abre
 ticket con marketing primero.
+
+### SMTP del endpoint `/api/newsletter`
+
+El route handler lee estas env vars **server-side** (NO usar
+`NEXT_PUBLIC_*` — exponer credenciales SMTP al cliente sería un agujero
+de seguridad). Faltan todas en `.env.local` por defecto:
+
+| Var             | Ejemplo                  | Descripción                                |
+| --------------- | ------------------------ | ------------------------------------------ |
+| `SMTP_HOST`     | `smtp.fideltour.com`     | Host SMTP del dominio                      |
+| `SMTP_PORT`     | `587`                    | 587 STARTTLS recomendado; 465 TLS implícito |
+| `SMTP_USER`     | `noreply@fideltour.com`  | Usuario de autenticación                   |
+| `SMTP_PASS`     | `…`                      | Password o app-password                    |
+| `SMTP_FROM`     | `noreply@fideltour.com`  | Dirección del "From:"                      |
+| `NEWSLETTER_TO` | `marketing@fideltour.com`| Destinatario (default si se omite)         |
+
+En **dev local**, si faltan las vars el endpoint no rompe: loggea un
+warning (`[newsletter] SMTP env vars missing…`) y devuelve 200 OK. El
+usuario ve "¡Suscrito!" pero el email no se manda. Suficiente para
+desarrollar UI sin credenciales.
+
+En **producción** (Vercel), pegar las vars en Project Settings →
+Environment Variables, marcadas para Production (y Preview si quieres
+que los previews también envíen).
+
+**Vercel y SMTP outbound:** las funciones serverless de Vercel
+permiten outbound en 587/465. El puerto 25 sí está bloqueado en muchos
+proveedores — usa siempre 587 (STARTTLS) o 465 (TLS implícito).
+
+**Anti-spam:** el route incluye honeypot (campo oculto `website`) y
+rate limit in-memory (5 req / 10 min por IP). Si el form empieza a
+recibir spam serio, valorar Cloudflare Turnstile o hCaptcha — la
+decisión vive como `TODO senior` en
+[`app/api/newsletter/route.ts`](../app/api/newsletter/route.ts).
 
 ## Brand-guard
 
