@@ -3,6 +3,13 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { clienteSegments } from "@/lib/content/clientes";
 
+/**
+ * Logos cuyo asset tiene mucho whitespace / contenido fino y por tanto
+ * necesitan un max-height mayor para llegar al mismo peso visual que el
+ * resto. Manual hasta que algún día recortemos los assets originales.
+ */
+const OVERSIZE_LOGOS = new Set(["hm-hotels", "universal-beach", "eurostars"]);
+
 export function ClientesSegmentsSection() {
   return (
     <section id="segmentos" className="relative bg-background">
@@ -74,7 +81,12 @@ export function ClientesSegmentsSection() {
                           width={320}
                           height={160}
                           sizes="(min-width: 1024px) 200px, (min-width: 640px) 220px, 45vw"
-                          className="max-h-32 w-auto object-contain md:max-h-40"
+                          className={cn(
+                            "w-auto object-contain",
+                            OVERSIZE_LOGOS.has(customer.slug)
+                              ? "max-h-44 md:max-h-56"
+                              : "max-h-32 md:max-h-40",
+                          )}
                         />
                       </li>
                     ))}
