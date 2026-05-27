@@ -534,40 +534,6 @@
     }
   }
 
-  /* Variante del carrusel para el strip de premios en la home. Los items
-     son pequeños (logo + 2 líneas de texto), así que no forzamos anchura:
-     fluyen a su tamaño natural y el scroll-snap los engancha al inicio.
-     En `md+` vuelve al flex-wrap centrado que tenía antes (no a un grid). */
-  .awards-mobile-track {
-    display: flex;
-    gap: 2rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    padding-bottom: 0.5rem;
-  }
-  .awards-mobile-track::-webkit-scrollbar {
-    display: none;
-  }
-  .awards-mobile-track > * {
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
-  @media (min-width: 768px) {
-    .awards-mobile-track {
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      column-gap: 3.5rem;
-      row-gap: 1.5rem;
-      overflow: visible;
-      padding-bottom: 0;
-    }
-    .awards-mobile-track > * {
-      flex-shrink: initial;
-    }
-  }
-
   /* Iframe del formulario Zoho embebido en /contacto. La altura es mayor en
      móvil porque los campos se apilan en una sola columna. */
   .contacto-form-iframe {
