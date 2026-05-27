@@ -47,7 +47,7 @@ export const clienteSegments: ClienteSegment[] = [
     customers: [
       { slug: "sirenis", name: "Sirenis Hotels & Resorts" },
       { slug: "hm-hotels", name: "HM Hotels" },
-      { slug: "soho-boutique", name: "Soho Boutique Hotels" },
+      { slug: "cabau", name: "Cabau Hotels" },
       { slug: "universal-beach", name: "Universal Beach Hotels" },
     ],
   },

@@ -8,7 +8,7 @@ import { clienteSegments } from "@/lib/content/clientes";
  * necesitan un max-height mayor para llegar al mismo peso visual que el
  * resto. Manual hasta que algún día recortemos los assets originales.
  */
-const OVERSIZE_LOGOS = new Set(["hm-hotels", "universal-beach", "eurostars"]);
+const OVERSIZE_LOGOS = new Set(["hm-hotels", "eurostars"]);
 
 export function ClientesSegmentsSection() {
   return (
