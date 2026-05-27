@@ -81,7 +81,7 @@ export function CrmToCdpSection() {
 
               <div className="relative flex h-full flex-col justify-between p-8 text-white">
                 <div className="text-eyebrow text-white/80">
-                  Customer Data Platform
+                  CDP
                 </div>
                 <div className="flex flex-col gap-4">
                   <div className="font-sans text-3xl font-bold leading-tight md:text-4xl">
