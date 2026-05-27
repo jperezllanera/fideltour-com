@@ -12,6 +12,7 @@
     "check-images": "node scripts/convert-images.mjs --audit",
     "check-redirects": "node scripts/check-redirects.mjs",
     "check-canonicals": "node scripts/check-canonicals.mjs",
+    "check-metadata-parity": "node scripts/check-metadata-parity.mjs",
     "prepare": "husky"
   },
   "dependencies": {
