@@ -63,9 +63,12 @@ export function CrmToCdpSection() {
               <div className="absolute -bottom-16 -right-16 size-[320px] rounded-full border-[56px] border-white/30" />
 
               {/* Mockup del CRM flotando — la "puerta de entrada" al CDP.
-                  Ancho ~78% y anclado al tercio superior, deja libre la zona
-                  del titular de abajo (~38% del alto de la pastilla). */}
-              <div className="pointer-events-none absolute left-1/2 top-[14%] w-[78%] -translate-x-1/2">
+                  Desktop: ancho ~78% anclado al tercio superior, deja libre
+                  la zona del titular de abajo (~38% del alto de la pastilla).
+                  Mobile: ~60% pegado arriba para no chocar con el título —
+                  la pastilla es aspect-square y el titular text-3xl de dos
+                  líneas se come la mitad inferior. */}
+              <div className="pointer-events-none absolute left-1/2 top-2 w-3/5 -translate-x-1/2 md:top-[14%] md:w-[78%]">
                 <Image
                   src="/brand/platform/crm-hoteles.webp"
                   alt="Captura del CRM de Fideltour como puerta de entrada al CDP"
