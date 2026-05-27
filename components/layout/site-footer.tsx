@@ -35,6 +35,48 @@ function SpotifyIcon(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+/* Banderas inline simplificadas (sin escudos) para la lista de países.
+   Cada bandera va etiquetada con el nombre del país al lado, así que la
+   versión sin escudo no genera ambigüedad (México vs Italia, etc.).
+   Colores oficiales — son especificación de la bandera, no tokens de marca. */
+function CountryFlag({ code }: { code: string }) {
+  const flags: Record<string, React.ReactNode> = {
+    ES: (
+      <>
+        <rect width="16" height="12" fill="#AA151B" />
+        <rect y="3" width="16" height="6" fill="#F1BF00" />
+      </>
+    ),
+    CO: (
+      <>
+        <rect width="16" height="12" fill="#FCD116" />
+        <rect y="6" width="16" height="3" fill="#003893" />
+        <rect y="9" width="16" height="3" fill="#CE1126" />
+      </>
+    ),
+    MX: (
+      <>
+        <rect width="16" height="12" fill="#FFFFFF" />
+        <rect width="5.34" height="12" fill="#006847" />
+        <rect x="10.66" width="5.34" height="12" fill="#CE1126" />
+      </>
+    ),
+    PT: (
+      <>
+        <rect width="16" height="12" fill="#DA291C" />
+        <rect width="6.4" height="12" fill="#046A38" />
+      </>
+    ),
+  };
+  return (
+    <span className="inline-flex w-5 shrink-0 overflow-hidden rounded-sm ring-1 ring-border/50">
+      <svg viewBox="0 0 16 12" className="block w-full" aria-hidden>
+        {flags[code]}
+      </svg>
+    </span>
+  );
+}
+
 const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Soluciones",
@@ -137,14 +179,14 @@ export function SiteFooter() {
             <div className="text-eyebrow text-muted-foreground">
               Contacto
             </div>
-            <ul className="mt-3 grid grid-cols-2 gap-2">
+            <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2.5">
               {countries.map((c) => (
                 <li
                   key={c.code}
-                  className="flex items-center justify-between rounded-md border border-border/70 px-3 py-2 text-sm"
+                  className="flex items-center gap-2 text-sm text-foreground/85"
                 >
+                  <CountryFlag code={c.code} />
                   <span>{c.label}</span>
-                  <span className="text-2xs text-muted-foreground">{c.code}</span>
                 </li>
               ))}
             </ul>

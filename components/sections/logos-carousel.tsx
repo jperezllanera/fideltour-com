@@ -36,7 +36,7 @@ export function LogosCarouselSection() {
           </h2>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 items-center justify-items-center gap-x-10 gap-y-12 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 lg:gap-x-12">
+        <div className="mt-14 grid grid-cols-2 items-center justify-items-center gap-x-10 gap-y-12 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-12">
           {clients.map((c) => (
             <Image
               key={c.src}
