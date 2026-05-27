@@ -48,7 +48,7 @@ export const clienteSegments: ClienteSegment[] = [
       { slug: "sirenis", name: "Sirenis Hotels & Resorts" },
       { slug: "hm-hotels", name: "HM Hotels" },
       { slug: "cabau", name: "Cabau Hotels" },
-      { slug: "universal-beach", name: "Universal Beach Hotels" },
+      { slug: "universal-beach-hotels", name: "Universal Beach Hotels" },
     ],
   },
   {
