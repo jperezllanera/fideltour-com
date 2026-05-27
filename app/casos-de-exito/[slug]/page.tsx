@@ -71,7 +71,7 @@ export default async function CasoDeExitoPage({ params }: CasoPageProps) {
       <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-[15%] top-1/2 -translate-y-1/2 size-[110vw] max-w-[1100px] max-h-[1100px] rounded-full border-[100px] border-brand/[0.22]"
+          className="pointer-events-none absolute -right-[15%] top-1/2 -translate-y-1/2 size-[110vw] max-w-[1100px] max-h-[1100px] rounded-full border-[140px] border-brand/[0.22]"
         />
 
         <div className="relative mx-auto max-w-5xl px-4 pt-20 pb-20 md:px-6 md:pt-24 md:pb-24">

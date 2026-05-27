@@ -11,7 +11,7 @@ export function KitDigitalHeroSection() {
       {/* Aro de marca (eco de la "O" del logo) — uno solo, grueso, recortado por overflow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-[18%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1380px] max-h-[1380px] rounded-full border-[125px] border-brand/[0.22]"
+        className="pointer-events-none absolute -right-[18%] top-1/2 -translate-y-1/2 size-[144vw] max-w-[1380px] max-h-[1380px] rounded-full border-[160px] border-brand/[0.22]"
       />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pt-20 pb-20 md:grid-cols-12 md:gap-8 md:px-6 md:pt-24 md:pb-24">

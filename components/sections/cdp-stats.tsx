@@ -10,7 +10,7 @@ export function CdpStatsSection() {
           </div>
           <h2 className="mt-3">
             Ya movemos el dato{" "}
-            <span className="text-brand-navy-deep">a escala</span>.
+            <span className="text-brand">a escala</span>.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             No es un piloto. Es la base sobre la que se construyen los

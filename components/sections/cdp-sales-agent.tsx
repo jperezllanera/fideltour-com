@@ -10,7 +10,7 @@ export function CdpSalesAgentSection() {
           </div>
           <h2 className="mt-3">
             El huésped preguntará por tu hotel y le responderá{" "}
-            <span className="text-brand-navy-deep">tu agente de venta</span>.
+            <span className="text-brand">tu agente de venta</span>.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             Tu motor de reservas conversa, propone, cotiza y cierra. Tu canal

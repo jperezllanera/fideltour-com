@@ -11,7 +11,7 @@ export function CdpEraShiftSection() {
           </div>
           <h2 className="mt-3">
             Cada era se gana con un{" "}
-            <span className="text-brand-navy-deep">activo distinto</span>.
+            <span className="text-brand">activo distinto</span>.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             El activo de la era que viene es el tuyo — si lo construyes. Los

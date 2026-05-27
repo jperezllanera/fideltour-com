@@ -21,7 +21,7 @@ export function CdpAgenticEraSection() {
             </div>
             <h2 className="h-mega mt-3">
               Bienvenido a la{" "}
-              <span className="text-brand-navy-deep">era agéntica</span>.
+              <span className="text-brand">era agéntica</span>.
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Tu motor de reservas conversa, propone, cotiza y cierra.

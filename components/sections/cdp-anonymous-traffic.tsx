@@ -7,7 +7,7 @@ export function CdpAnonymousTrafficSection() {
             Por qué el CRM no basta
           </div>
           <h2 className="mt-3">
-            El <span className="text-brand-navy-deep">80%</span> de tu web es
+            El <span className="text-brand">80%</span> de tu web es
             anónimo. Tu CRM no lo ve.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">

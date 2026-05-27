@@ -7,7 +7,7 @@ export function CdpContextComparisonSection() {
         <div className="max-w-3xl">
           <div className="text-eyebrow text-brand-navy-deep">La diferencia</div>
           <h2 className="mt-3">
-            La misma IA. <span className="text-brand-navy-deep">Dos resultados</span>.
+            La misma IA. <span className="text-brand">Dos resultados</span>.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             El modelo de IA es el mismo. La diferencia está en el dato que

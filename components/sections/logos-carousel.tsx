@@ -32,7 +32,7 @@ export function LogosCarouselSection() {
           </div>
           <h2 className="mt-3">
             Ellos ya confían en{" "}
-            <span className="text-brand-navy-deep">Fideltour</span>.
+            <span className="text-brand">Fideltour</span>.
           </h2>
         </div>
 

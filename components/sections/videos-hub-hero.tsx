@@ -7,7 +7,7 @@ export function VideosHubHeroSection() {
       {/* Aro de marca centrado — réplica del patrón hero del resto del sitio */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[132vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.18] md:border-[132px]"
+        className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[132vw] max-w-[1200px] max-h-[1200px] rounded-full border-[120px] border-brand/[0.18] md:border-[150px]"
       />
 
       <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-20 md:px-6 md:pt-24 md:pb-24">

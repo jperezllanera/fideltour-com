@@ -9,7 +9,7 @@ export function CdpTimelineSection() {
           <div className="text-eyebrow text-brand-navy-deep">Aquí estamos</div>
           <h2 className="mt-3">
             Veinticinco años.{" "}
-            <span className="text-brand-navy-deep">
+            <span className="text-brand">
               La siguiente jugada eres tú.
             </span>
           </h2>

@@ -438,7 +438,7 @@
 
   /* Aro de marca (eco de la "O" del logo) en el hero home.
      Replica la presencia del aro corporativo de fideltour.com: ocupa
-     ~60vw del hero con stroke grueso (130px), anclado a la derecha y
+     ~60vw del hero con stroke grueso (160px), anclado a la derecha y
      *detrás* del mockup. El contenedor del grid es `relative` así que
      un absolute sin z-index queda detrás. Color aclarado con blanco
      porque a esa altura del degradado el fondo ya es cian mezclado. */
@@ -454,7 +454,7 @@
     min-height: 620px;
     transform: translateY(-50%);
     border-radius: 9999px;
-    border: 130px solid
+    border: 160px solid
       color-mix(in oklch, var(--brand-primary) 70%, white 15%);
     opacity: 0.55;
     z-index: 0;

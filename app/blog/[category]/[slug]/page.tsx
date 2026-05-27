@@ -141,7 +141,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         ) : (
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.22]"
+            className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[140px] border-brand/[0.22]"
           />
         )}
 
@@ -263,14 +263,26 @@ export default async function BlogPostPage({ params }: PageProps) {
                     style={{ ["--i" as never]: i }}
                     className="bento-cell group relative flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:shadow-[var(--shadow-bento)]"
                   >
-                    <div className="relative isolate flex h-32 items-center justify-center overflow-hidden bg-hero-gradient text-white">
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute -right-8 -bottom-8 size-[160px] rounded-full border-[28px] border-brand/25"
-                      />
-                      <span className="relative inline-flex size-12 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
-                        <RelIcon className="size-5" />
-                      </span>
+                    <div className="relative isolate h-32 overflow-hidden bg-hero-gradient text-white">
+                      {rel.image ? (
+                        <Image
+                          src={rel.image}
+                          alt={rel.title}
+                          fill
+                          sizes="(min-width: 768px) 30vw, 90vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <>
+                          <div
+                            aria-hidden
+                            className="pointer-events-none absolute -right-8 -bottom-8 size-[160px] rounded-full border-[28px] border-brand/25"
+                          />
+                          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex size-12 items-center justify-center rounded-full bg-white/10 text-brand ring-1 ring-white/15 backdrop-blur">
+                            <RelIcon className="size-5" />
+                          </span>
+                        </>
+                      )}
                     </div>
                     <div className="flex flex-1 flex-col gap-3 p-5">
                       <span className="text-eyebrow text-brand-navy-deep">

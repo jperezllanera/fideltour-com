@@ -83,7 +83,7 @@ export default async function BlogCategoryPage({ params }: PageProps) {
       <section className="relative overflow-hidden bg-hero-gradient text-white isolate">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[108px] border-brand/[0.22]"
+          className="pointer-events-none absolute -right-[20%] top-1/2 -translate-y-1/2 size-[120vw] max-w-[1200px] max-h-[1200px] rounded-full border-[140px] border-brand/[0.22]"
         />
 
         <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-16 md:px-6 md:pt-20 md:pb-20">

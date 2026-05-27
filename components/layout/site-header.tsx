@@ -49,7 +49,7 @@ export function SiteHeader() {
       className={cn(
         "sticky top-0 z-40 w-full",
         "border-b border-border/60",
-        "bg-background/70 backdrop-blur-md supports-backdrop-filter:bg-background/55",
+        "bg-background/90 backdrop-blur-md supports-backdrop-filter:bg-background/80",
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 md:px-6">
@@ -161,10 +161,10 @@ const megaCols: Record<number, string> = {
  * con bg propio, replícalo aquí o la pastilla se solapará.
  */
 const navTriggerOverride =
-  "relative z-10 hover:bg-transparent focus:bg-transparent data-popup-open:bg-transparent data-popup-open:hover:bg-transparent data-open:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent";
+  "relative z-10 text-base hover:bg-transparent focus:bg-transparent data-popup-open:bg-transparent data-popup-open:hover:bg-transparent data-open:bg-transparent data-open:hover:bg-transparent data-open:focus:bg-transparent";
 
 const navLinkOverride =
-  "relative z-10 px-2.5 py-1.5 text-sm font-medium text-foreground/80 hover:bg-transparent hover:text-foreground focus:bg-transparent data-active:bg-transparent";
+  "relative z-10 px-2.5 py-1.5 text-base font-medium text-foreground/80 hover:bg-transparent hover:text-foreground focus:bg-transparent data-active:bg-transparent";
 
 function NavHoverPill() {
   return (

@@ -15,7 +15,7 @@ export function CdpEcosystemSection() {
             La capa que lo une
           </div>
           <h2 className="mt-3">
-            El <span className="text-brand-navy-deep">CDP para hoteles</span>{" "}
+            El <span className="text-brand">CDP para hoteles</span>{" "}
             es el centro del ecosistema del dato.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
