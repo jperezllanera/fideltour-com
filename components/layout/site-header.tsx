@@ -217,12 +217,12 @@ function MultichannelList({
             >
               <NavigationMenuLink
                 closeOnClick
-                className="rounded-md p-0 hover:bg-transparent focus:bg-transparent"
+                className="text-sm rounded-md p-0 hover:bg-transparent focus:bg-transparent"
                 render={
                   <Link
                     href={item.href}
                     className={cn(
-                      "group/channel flex w-full items-center justify-center gap-2 rounded-md border border-border/60 bg-background px-2.5 py-2 text-xs font-medium text-foreground/85 transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary",
+                      "group/channel flex w-full items-center justify-center gap-2 rounded-md border border-border/60 bg-background px-2.5 py-2 text-sm font-medium text-foreground/85 transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary",
                       isLastOdd && "w-1/2",
                     )}
                   >
@@ -288,10 +288,10 @@ function DesktopNav() {
                     key={group.title}
                     className="row-span-3 grid grid-rows-subgrid"
                   >
-                    <div className="text-sm font-bold text-brand-navy">
+                    <div className="text-base font-bold text-brand-navy">
                       {group.title}
                     </div>
-                    <p className="mt-1.5 text-xs text-muted-foreground">
+                    <p className="mt-1.5 text-sm text-muted-foreground">
                       {group.description}
                     </p>
                     <ul className="mt-4 space-y-1">
@@ -299,10 +299,11 @@ function DesktopNav() {
                         <li key={item.label}>
                           <NavigationMenuLink
                             closeOnClick
+                            className="text-base"
                             render={
                               <Link
                                 href={item.href}
-                                className="text-sm font-medium text-foreground/90 transition-colors hover:text-primary"
+                                className="text-base font-medium text-foreground/90 transition-colors hover:text-primary"
                               >
                                 {item.label}
                               </Link>
@@ -326,7 +327,7 @@ function DesktopNav() {
           >
             {hoveredKey === link.label && <NavHoverPill />}
             <NavigationMenuLink
-              className="hover:bg-transparent focus:bg-transparent"
+              className="text-base hover:bg-transparent focus:bg-transparent"
               render={
                 <Link href={link.href} className={navLinkOverride}>
                   {link.label}
