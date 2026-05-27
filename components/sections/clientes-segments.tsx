@@ -69,7 +69,14 @@ export function ClientesSegmentsSection() {
                   <div className="text-eyebrow text-muted-foreground">
                     Algunos clientes
                   </div>
-                  <ul className="grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-10">
+                  <ul
+                    className={cn(
+                      "items-center",
+                      customers.length === 1
+                        ? "flex justify-center py-2"
+                        : "grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 sm:gap-x-8 lg:grid-cols-4 lg:gap-x-10",
+                    )}
+                  >
                     {customers.map((customer) => (
                       <li
                         key={customer.slug}
@@ -80,12 +87,18 @@ export function ClientesSegmentsSection() {
                           alt={`${customer.name} — cliente Fideltour`}
                           width={320}
                           height={160}
-                          sizes="(min-width: 1024px) 200px, (min-width: 640px) 220px, 45vw"
+                          sizes={
+                            customers.length === 1
+                              ? "(min-width: 1024px) 640px, (min-width: 768px) 520px, 80vw"
+                              : "(min-width: 1024px) 200px, (min-width: 640px) 220px, 45vw"
+                          }
                           className={cn(
                             "w-auto object-contain",
-                            OVERSIZE_LOGOS.has(customer.slug)
-                              ? "max-h-44 md:max-h-56"
-                              : "max-h-32 md:max-h-40",
+                            customers.length === 1
+                              ? "max-h-48 md:max-h-64 lg:max-h-72"
+                              : OVERSIZE_LOGOS.has(customer.slug)
+                                ? "max-h-44 md:max-h-56"
+                                : "max-h-32 md:max-h-40",
                           )}
                         />
                       </li>
