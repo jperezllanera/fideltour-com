@@ -89,13 +89,13 @@ export function ClientesSegmentsSection() {
                           height={160}
                           sizes={
                             customers.length === 1
-                              ? "(min-width: 1024px) 640px, (min-width: 768px) 520px, 80vw"
+                              ? "(min-width: 768px) 224px, 176px"
                               : "(min-width: 1024px) 200px, (min-width: 640px) 220px, 45vw"
                           }
                           className={cn(
                             "w-auto object-contain",
                             customers.length === 1
-                              ? "max-h-48 md:max-h-64 lg:max-h-72"
+                              ? "max-h-44 max-w-44 md:max-w-56"
                               : OVERSIZE_LOGOS.has(customer.slug)
                                 ? "max-h-44 md:max-h-56"
                                 : "max-h-32 md:max-h-40",
