@@ -50,9 +50,11 @@ export function Logo({ className, variant = "wordmark", height = 24 }: LogoProps
       <Image
         src="/brand/fideltour-logo.webp"
         alt="Fideltour — CDP para hoteles"
+        // Cabecera above-the-fold: carga ansiosa pero SIN preload, para no
+        // competir con el preload del mockup hero (LCP) en el carril crítico.
         width={width}
         height={height}
-        priority
+        loading="eager"
         sizes="(min-width: 768px) 160px, 144px"
         className="h-6 w-auto md:h-[26px]"
       />

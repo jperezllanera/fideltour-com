@@ -374,6 +374,54 @@
     to   { transform: translateX(-50%); }
   }
 
+  /* Cápsulas decorativas del hero (HeroShapes). Antes usaban motion; ahora
+     son CSS puro para que HeroShapes sea server component y el float corra
+     en el compositor (GPU), no en el hilo principal (rAF de motion).
+     Parámetros por cápsula vía CSS vars inline:
+       --rotate       rotación final
+       --delay        retardo de la entrada (s)
+       --float-delay  desfase del loop de flotación (s)
+     Dos elementos: el padre hace la entrada (translate+rotate+fade), el hijo
+     hace el float infinito — cada uno anima translateY por separado, igual
+     que los dos motion.div originales. */
+  .hero-shape {
+    animation:
+      hero-shape-in-move 2.2s cubic-bezier(0.23, 0.86, 0.39, 0.96)
+        var(--delay, 0s) both,
+      hero-shape-in-fade 1.2s cubic-bezier(0.23, 0.86, 0.39, 0.96)
+        var(--delay, 0s) both;
+  }
+  @keyframes hero-shape-in-move {
+    from {
+      transform: translateY(-60px) rotate(calc(var(--rotate, 0deg) - 12deg));
+    }
+    to {
+      transform: translateY(0) rotate(var(--rotate, 0deg));
+    }
+  }
+  @keyframes hero-shape-in-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .hero-shape-float {
+    animation: hero-shape-float 12s ease-in-out var(--float-delay, 0s) infinite;
+  }
+  @keyframes hero-shape-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(14px); }
+  }
+  /* Reduced motion: saltamos la ENTRADA (aparición instantánea en su pose
+     final) pero mantenemos el float — es gentil (14px/12s) y parte de la
+     identidad visual; apagarlo dejaría las cápsulas como un bug visual.
+     Mismo criterio que el código motion original. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-shape {
+      animation: none;
+      opacity: 1;
+      transform: rotate(var(--rotate, 0deg));
+    }
+  }
+
   /* Fondo degradado de marca para superficies oscuras (hero + CTA cards).
      Horizontal: brand-navy a la izquierda, manteniéndose sólido en el
      primer ~18% para legibilidad del texto, y mezclándose hacia el cian

@@ -1,7 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
-
 import { cn } from "@/lib/utils";
 
 type ShapeProps = {
@@ -21,42 +17,21 @@ function ElegantShape({
   tone = "cyan",
   className,
 }: ShapeProps) {
-  // Reduced motion: respetamos la entrada (sin desplazamiento + rotación de
-  // golpe) pero mantenemos el float continuo, porque es muy gentil (12 px en
-  // 14 s) y forma parte de la identidad visual del hero. Si quitamos el loop
-  // las cápsulas parecen un bug visual, no una decisión de accesibilidad.
-  const reduced = useReducedMotion();
-
   const gradientFrom =
     tone === "cyan" ? "from-brand/[0.18]" : "from-white/[0.10]";
 
   return (
-    <motion.div
-      initial={reduced ? false : { opacity: 0, y: -60, rotate: rotate - 12 }}
-      animate={{ opacity: 1, y: 0, rotate }}
-      transition={
-        reduced
-          ? { duration: 0 }
-          : {
-              duration: 2.2,
-              delay,
-              ease: [0.23, 0.86, 0.39, 0.96],
-              opacity: { duration: 1.2 },
-            }
-      }
-      className={cn("absolute", className)}
+    <div
+      className={cn("hero-shape absolute", className)}
+      style={{
+        // CSS vars que parametrizan las keyframes (.hero-shape / -float en
+        // globals.css): rotación final y retardos de entrada + flotación.
+        ["--rotate" as never]: `${rotate}deg`,
+        ["--delay" as never]: `${delay}s`,
+        ["--float-delay" as never]: `${delay * 0.4}s`,
+      }}
     >
-      <motion.div
-        animate={{ y: [0, 14, 0] }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: delay * 0.4,
-        }}
-        style={{ width, height }}
-        className="relative"
-      >
+      <div className="hero-shape-float relative" style={{ width, height }}>
         <div
           className={cn(
             "absolute inset-0 rounded-full",
@@ -68,8 +43,8 @@ function ElegantShape({
             "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.16),transparent_70%)]"
           )}
         />
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
 
@@ -78,8 +53,12 @@ function ElegantShape({
  * para sumarse al aro corporativo (no reemplazarlo): opacidad baja, cian
  * de marca + blancos, sin otros colores.
  *
+ * Animación 100% CSS (ver `.hero-shape*` en globals.css) — por eso es un
+ * server component y no añade JS al cliente. La entrada respeta
+ * prefers-reduced-motion; el float continuo se mantiene a propósito.
+ *
  * Uso: colocar como PRIMER hijo de un <section relative overflow-hidden
- * bg-hero-gradient ...>. Es client-only por usar motion.
+ * bg-hero-gradient ...>.
  */
 export function HeroShapes() {
   return (

@@ -341,8 +341,20 @@ function DesktopNav() {
 }
 
 function MobileNav() {
+  const [open, setOpen] = React.useState(false);
+
+  // Base UI Dialog no se entera del cambio de ruta de next/link, así que el
+  // sheet quedaba abierto tras navegar. Lo cerramos por delegación cuando se
+  // hace click en un enlace dentro del sheet. El trigger del accordion es un
+  // <button> (no un <a>), así que expandir "Plataforma" no cierra el menú.
+  const closeOnLinkClick = (e: React.MouseEvent<HTMLElement>) => {
+    if ((e.target as HTMLElement).closest("a")) {
+      setOpen(false);
+    }
+  };
+
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         render={
           <Button
@@ -361,7 +373,10 @@ function MobileNav() {
             <Logo />
           </SheetTitle>
         </SheetHeader>
-        <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 pb-4">
+        <nav
+          className="flex flex-1 flex-col gap-1 overflow-y-auto px-4 pb-4"
+          onClick={closeOnLinkClick}
+        >
           <MobileFeaturedCard />
           <Accordion className="border-b border-border pb-2">
             <AccordionItem value="platform" className="border-0">
@@ -404,7 +419,10 @@ function MobileNav() {
             </Link>
           ))}
         </nav>
-        <div className="flex flex-col gap-2 border-t border-border p-4">
+        <div
+          className="flex flex-col gap-2 border-t border-border p-4"
+          onClick={closeOnLinkClick}
+        >
           {/* TODO i18n: re-habilitar <LocaleToggle className="self-start" /> cuando exista traducción real. */}
           <Button
             variant="outline"

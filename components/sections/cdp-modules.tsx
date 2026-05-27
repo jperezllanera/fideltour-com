@@ -14,7 +14,7 @@ export function CdpModulesSection() {
           </div>
           <h2 className="mt-3">
             12 módulos.{" "}
-            <span className="text-brand-navy-deep">Una sola tarifa.</span>
+            <span className="text-brand">Una sola tarifa.</span>
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
             Nada que comprar por separado. Todos los módulos del CDP con IA

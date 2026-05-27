@@ -48,6 +48,7 @@ export function HeroSection() {
             width={1200}
             height={900}
             priority
+            fetchPriority="high"
             sizes="(min-width: 1024px) 600px, (min-width: 768px) 50vw, 100vw"
             className="w-full h-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.35)]"
           />
