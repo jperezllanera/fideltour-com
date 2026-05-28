@@ -24,9 +24,9 @@ export function HeroSection() {
           </h1>
 
           <p className="max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
-            Plataforma de marketing y ventas para hoteles. Un CDP que unifica
-            datos, reservas, estancias y comunicaciones multicanal — y devuelve
-            al hotelero el control sobre su venta directa.
+            El CDP que unifica datos, reservas, estancias y comunicaciones
+            multicanal — y devuelve al hotelero el control sobre su venta
+            directa.
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
