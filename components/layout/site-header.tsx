@@ -72,7 +72,7 @@ export function SiteHeader() {
           <Button
             size="sm"
             className="rounded-full bg-brand-navy text-white hover:bg-brand-navy/90 px-4"
-            render={<a href="https://sso.fideltour.com/login/" target="_blank" rel="noopener noreferrer" />}
+            render={<a href="https://grm.fideltour.com" target="_blank" rel="noopener noreferrer" />}
           >
             Iniciar Sesión
           </Button>
@@ -436,7 +436,7 @@ function MobileNav() {
           <Button
             size="sm"
             className="justify-center rounded-full bg-brand-navy text-white hover:bg-brand-navy/90"
-            render={<a href="https://sso.fideltour.com/login/" target="_blank" rel="noopener noreferrer" />}
+            render={<a href="https://grm.fideltour.com" target="_blank" rel="noopener noreferrer" />}
           >
             Iniciar Sesión
           </Button>
