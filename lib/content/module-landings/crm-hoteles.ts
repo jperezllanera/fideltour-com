@@ -6,6 +6,10 @@ export const crmLanding: ModuleLanding = {
   slug: "crm-hoteles",
   category: "data-intelligence",
   navLabel: "CRM",
+  video: {
+    youtubeId: "za_cEzVxsrs",
+    title: "CRM para hoteles: tu venta más directa",
+  },
   meta: {
     title: "CRM para hoteles · Del CRM al CDP",
     description:

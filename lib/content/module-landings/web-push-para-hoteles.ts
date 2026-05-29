@@ -6,6 +6,10 @@ export const webPushLanding: ModuleLanding = {
   slug: "web-push-para-hoteles",
   category: "multicanalidad",
   navLabel: "Web Push",
+  video: {
+    youtubeId: "OGiIW1KFLcs",
+    title: "Notificaciones Web Push: capta la atención de tus huéspedes",
+  },
   meta: {
     title: "Web Push para hoteles",
     description:

@@ -6,6 +6,10 @@ export const b2bLanding: ModuleLanding = {
   slug: "b2b-para-hoteles",
   category: "data-intelligence",
   navLabel: "Sales B2B",
+  video: {
+    youtubeId: "kUTfAyz7tQs",
+    title: "Módulo B2B: gestiona tus cuentas y oportunidades",
+  },
   meta: {
     title: "Sales B2B para hoteles",
     description:

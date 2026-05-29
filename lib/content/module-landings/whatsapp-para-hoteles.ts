@@ -6,6 +6,10 @@ export const whatsappLanding: ModuleLanding = {
   slug: "whatsapp-para-hoteles",
   category: "multicanalidad",
   navLabel: "WhatsApp",
+  video: {
+    youtubeId: "Eh3tFWpt9Bw",
+    title: "WhatsApp para hoteles: la mejor forma de conectar con tu huésped",
+  },
   meta: {
     title: "WhatsApp para hoteles",
     description:

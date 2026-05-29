@@ -6,6 +6,10 @@ export const rewardsLanding: ModuleLanding = {
   slug: "fidelizacion-hoteles",
   category: "data-activation",
   navLabel: "Rewards",
+  video: {
+    youtubeId: "HmcuccyVZCE",
+    title: "Módulo Rewards: fideliza a tu huésped",
+  },
   meta: {
     title: "Fideltour Rewards: programa de fidelización para hoteles",
     description:

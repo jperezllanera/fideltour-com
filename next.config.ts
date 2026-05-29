@@ -6,6 +6,15 @@ const nextConfig: NextConfig = {
   // produce una imagen de runtime pequeña. Mismo patrón que el otro proyecto.
   output: "standalone",
 
+  // Pósters de los vídeos de producto de YouTube (mockup de tablet en las
+  // landings de módulo). Sólo el thumbnail estático — el iframe del player
+  // se carga aparte al hacer click (patrón facade en ModuleVideo).
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
+    ],
+  },
+
   // El blog vivo en fideltour.com usa URLs con slash final
   // (p. ej. /blog/marketing/automatizaciones-esenciales-para-hoteles/).
   // Activamos trailingSlash global para no romper backlinks ni SEO tras migrar.

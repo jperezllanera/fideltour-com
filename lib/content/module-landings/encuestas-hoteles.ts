@@ -6,6 +6,10 @@ export const encuestasLanding: ModuleLanding = {
   slug: "encuestas-hoteles",
   category: "data-intelligence",
   navLabel: "Reviews",
+  video: {
+    youtubeId: "cORqcll_FTk",
+    title: "Módulo Reviews: mejora tu reputación online",
+  },
   meta: {
     title: "Encuestas y reviews para hoteles",
     description:

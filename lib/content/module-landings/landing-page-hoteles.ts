@@ -6,6 +6,10 @@ export const landingPagesLanding: ModuleLanding = {
   slug: "landing-page-hoteles",
   category: "data-activation",
   navLabel: "Landings & Forms",
+  video: {
+    youtubeId: "o_rVRxearTs",
+    title: "Módulo Landings: crea impactantes páginas de aterrizaje",
+  },
   meta: {
     title: "Landing pages y formularios para hoteles",
     description:

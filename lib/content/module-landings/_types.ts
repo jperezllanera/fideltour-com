@@ -86,6 +86,18 @@ export type ModuleLanding = {
     /** Texto del CTA principal. Por defecto "Solicita una DEMO gratis". */
     ctaLabel?: string;
   };
+  /**
+   * Vídeo de producto de YouTube que acompaña la landing, embebido en un
+   * mockup de tablet (sección "Míralo en acción"). Patrón facade: se pinta
+   * el póster del vídeo y el iframe sólo se carga al hacer click, para no
+   * penalizar el LCP. Opcional — si no se aporta, la sección no se renderiza.
+   */
+  video?: {
+    /** ID de YouTube (la parte tras `?v=` o el último segmento de youtu.be). */
+    youtubeId: string;
+    /** Título del vídeo, usado en el `title` del iframe y el aria-label del play. */
+    title: string;
+  };
   miniCards: ModuleMiniCard[];
   pillars: ModulePillar[];
   benefits: ModuleBenefit[];

@@ -6,6 +6,10 @@ export const campaignsLanding: ModuleLanding = {
   slug: "marketing-hoteles",
   category: "data-activation",
   navLabel: "Campaigns",
+  video: {
+    youtubeId: "w2RGPDvH-Mk",
+    title: "Módulo Campaigns: conecta con tu huésped",
+  },
   meta: {
     title: "Campaigns: marketing para hoteles",
     description:

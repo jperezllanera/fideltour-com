@@ -6,6 +6,10 @@ export const smsLanding: ModuleLanding = {
   slug: "sms-para-hoteles",
   category: "multicanalidad",
   navLabel: "SMS",
+  video: {
+    youtubeId: "ZVU9_pDH_PI",
+    title: "SMS Marketing para hoteles: información clave para tu huésped",
+  },
   meta: {
     title: "SMS para hoteles · Comunica mejor y aumenta la fidelización",
     description:

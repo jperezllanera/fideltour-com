@@ -6,6 +6,10 @@ export const socialLanding: ModuleLanding = {
   slug: "redes-sociales-hoteles",
   category: "data-activation",
   navLabel: "Social",
+  video: {
+    youtubeId: "oQmxnNu5fWw",
+    title: "Módulo Social: gestiona tus redes sociales",
+  },
   meta: {
     title: "Redes sociales para hoteles",
     description:

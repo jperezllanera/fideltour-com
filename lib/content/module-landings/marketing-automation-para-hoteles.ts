@@ -6,6 +6,10 @@ export const automationLanding: ModuleLanding = {
   slug: "marketing-automation-para-hoteles",
   category: "data-activation",
   navLabel: "Automation",
+  video: {
+    youtubeId: "vUmxkWGFO68",
+    title: "Módulo Automation: marketing automation para tu hotel",
+  },
   meta: {
     title: "Marketing Automation para hoteles",
     description:

@@ -6,6 +6,10 @@ export const pmsLanding: ModuleLanding = {
   slug: "integracion-pms-para-hoteles",
   category: "data-import",
   navLabel: "PMS",
+  video: {
+    youtubeId: "6FdvLo-xBWI",
+    title: "Módulo Connect: centraliza todas tus fuentes de datos",
+  },
   meta: {
     title: "Integración con tu PMS · CDP para hoteles",
     description:

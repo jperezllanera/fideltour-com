@@ -12,6 +12,7 @@ import { ModuleHero } from "./module-hero";
 import { ModuleMiniCards } from "./module-mini-cards";
 import { ModulePillars } from "./module-pillars";
 import { ModuleBenefits } from "./module-benefits";
+import { ModuleVideo } from "./module-video";
 import { ModuleFaq } from "./module-faq";
 import { ModuleRelated } from "./module-related";
 import { ModuleCaseProof } from "./module-case-proof";
@@ -58,6 +59,9 @@ export function ModuleLandingPage({ data }: Props) {
       <ModuleMiniCards cards={data.miniCards} />
       <ModulePillars pillars={data.pillars} />
       <ModuleBenefits benefits={data.benefits} />
+      {data.video && (
+        <ModuleVideo video={data.video} navLabel={data.navLabel} />
+      )}
       {data.relatedCaso && <ModuleCaseProof casoSlug={data.relatedCaso} />}
       <ModuleRelated currentSlug={data.slug} category={data.category} />
       <ModuleFaq faq={data.faq} />
