@@ -614,8 +614,8 @@
 
   /* Carrusel horizontal con scroll-snap nativo. En móvil las cards se
      alinean en una sola fila con peek de la siguiente (~15%) y snap al
-     inicio. A partir de md vuelve a ser un grid de 3 columnas. Lo usa
-     la sección de testimoniales en la home. */
+     inicio. A partir de md vuelve a ser un grid de 3 columnas. Utilidad
+     genérica reutilizable para tiras de tarjetas grandes. */
   .carousel-mobile-track {
     display: flex;
     gap: 1rem;
@@ -644,6 +644,17 @@
       width: auto;
       flex-shrink: initial;
     }
+  }
+
+  /* Rotador de testimoniales (home). Apila todas las tarjetas en la misma
+     celda de grid para que el alto del contenedor sea estable (el de la
+     tarjeta más alta) sin necesidad de min-height arbitrario; solo la
+     tarjeta activa es visible vía opacidad. */
+  .testimonial-rotator {
+    display: grid;
+  }
+  .testimonial-rotator > * {
+    grid-area: 1 / 1;
   }
 
   /* Iframe del formulario Zoho embebido en /contacto. La altura es mayor en

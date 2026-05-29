@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "motion/react";
+import { Quote } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const items = [
   {
@@ -28,59 +33,124 @@ const items = [
   },
 ];
 
-export function TestimonialsSection() {
-  return (
-    <section id="clientes" className="relative bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-24">
-        <div className="max-w-2xl">
-          <div className="text-eyebrow text-brand-navy-deep">
-            Casos · Clientes
-          </div>
-          <h2 className="mt-3">
-            Qué dicen los clientes de Fideltour
-          </h2>
-        </div>
+const ROTATE_INTERVAL = 6000;
 
-        <div className="carousel-mobile-track mt-12 -mx-4 px-4 md:mx-0 md:px-0">
-          {items.map((t) => (
-            <Card
-              key={t.org}
-              className="overflow-visible rounded-2xl border-border/70 bg-card p-0 shadow-[var(--shadow-soft)] transition-shadow hover:shadow-[var(--shadow-bento)]"
-            >
-              <div className="relative aspect-[4/3] w-full overflow-hidden">
-                <Image
-                  src={t.image}
-                  alt={`${t.org} — caso de éxito Fideltour`}
-                  fill
-                  sizes="(min-width:768px) 33vw, 100vw"
-                  className="object-cover"
+export function TestimonialsSection() {
+  const [active, setActive] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, {
+    once: true,
+    margin: "0px 0px -10% 0px",
+  });
+
+  // Auto-rotación; se reinicia el temporizador cada vez que cambia el activo
+  // (también al hacer click en un dot) para no saltar antes de tiempo.
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActive((current) => (current + 1) % items.length);
+    }, ROTATE_INTERVAL);
+    return () => clearInterval(id);
+  }, [active]);
+
+  return (
+    <section ref={sectionRef} id="clientes" className="relative bg-background">
+      <div className="mx-auto max-w-7xl px-4 py-20 md:px-6 md:py-24">
+        <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
+          {/* Izquierda: titular + navegación por dots */}
+          <motion.div
+            className="flex flex-col"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="text-eyebrow text-brand-navy-deep">
+              Casos · Clientes
+            </div>
+            <h2 className="mt-3">Qué dicen los clientes de Fideltour</h2>
+            <p className="mt-5 max-w-prose text-muted-foreground">
+              Hoteleros que dominan su dato y refuerzan su venta directa con
+              Fideltour. Esto es lo que cuentan.
+            </p>
+
+            <div className="mt-8 flex items-center gap-3">
+              {items.map((t, i) => (
+                <button
+                  key={t.org}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  aria-label={`Ver testimonio de ${t.org}`}
+                  aria-pressed={active === i}
+                  className={cn(
+                    "h-2.5 rounded-full transition-all duration-300",
+                    active === i
+                      ? "w-10 bg-brand"
+                      : "w-2.5 bg-muted-foreground/30 hover:bg-muted-foreground/50",
+                  )}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/10 to-transparent" />
-                <div className="absolute bottom-3 left-4 right-4 text-eyebrow text-white">
-                  {t.org}
-                </div>
-              </div>
-              <CardContent className="flex h-full flex-col gap-5 p-6">
-                <div
-                  aria-hidden
-                  className="text-2xl leading-none text-brand"
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Derecha: tarjetas apiladas en una celda; rota la activa */}
+          <motion.div
+            className="testimonial-rotator"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {items.map((t, i) => {
+              const isActive = active === i;
+              return (
+                <motion.figure
+                  key={t.org}
+                  aria-hidden={!isActive}
+                  initial={false}
+                  animate={{
+                    opacity: isActive ? 1 : 0,
+                    x: isActive ? 0 : 40,
+                    scale: isActive ? 1 : 0.96,
+                  }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className={cn(
+                    "overflow-hidden rounded-2xl border border-border/70 bg-card shadow-[var(--shadow-bento)]",
+                    isActive ? "z-10" : "pointer-events-none z-0",
+                  )}
                 >
-                  &ldquo;
-                </div>
-                <p className="text-sm leading-relaxed text-foreground">
-                  {t.quote}
-                </p>
-                <div className="mt-auto border-t border-border/60 pt-4">
-                  <div className="text-sm font-semibold text-foreground">
-                    {t.author}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Image
+                      src={t.image}
+                      alt={`${t.org} — caso de éxito Fideltour`}
+                      fill
+                      sizes="(min-width:768px) 40vw, 100vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/70 via-brand-navy/10 to-transparent" />
+                    <figcaption className="absolute bottom-3 left-4 right-4 text-eyebrow text-white">
+                      {t.org}
+                    </figcaption>
                   </div>
-                  <div className="text-xs text-muted-foreground">
-                    {t.role} · {t.org}
+
+                  <div className="flex flex-col gap-5 p-8">
+                    <Quote
+                      aria-hidden
+                      className="h-8 w-8 rotate-180 text-brand/30"
+                    />
+                    <blockquote className="text-foreground">
+                      {t.quote}
+                    </blockquote>
+                    <div className="mt-2 border-t border-border/60 pt-4">
+                      <div className="font-semibold text-foreground">
+                        {t.author}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {t.role} · {t.org}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </motion.figure>
+              );
+            })}
+          </motion.div>
         </div>
       </div>
     </section>
