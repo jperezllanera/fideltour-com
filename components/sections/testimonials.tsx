@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, type PanInfo } from "motion/react";
 import { Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -44,13 +44,24 @@ export function TestimonialsSection() {
   });
 
   // Auto-rotación; se reinicia el temporizador cada vez que cambia el activo
-  // (también al hacer click en un dot) para no saltar antes de tiempo.
+  // (también al hacer click en un dot o arrastrar) para no saltar antes de tiempo.
   useEffect(() => {
     const id = setInterval(() => {
       setActive((current) => (current + 1) % items.length);
     }, ROTATE_INTERVAL);
     return () => clearInterval(id);
   }, [active]);
+
+  const go = (dir: 1 | -1) =>
+    setActive((current) => (current + dir + items.length) % items.length);
+
+  // Swipe (dedo) / drag (cursor): pasa de tarjeta si el gesto supera un umbral
+  // de distancia o de velocidad; si no, motion la devuelve al origen.
+  const handleDragEnd = (_e: unknown, info: PanInfo) => {
+    const { offset, velocity } = info;
+    if (offset.x < -60 || velocity.x < -400) go(1);
+    else if (offset.x > 60 || velocity.x > 400) go(-1);
+  };
 
   return (
     <section ref={sectionRef} id="clientes" className="relative bg-background">
@@ -111,9 +122,20 @@ export function TestimonialsSection() {
                     scale: isActive ? 1 : 0.96,
                   }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  {...(isActive
+                    ? {
+                        drag: "x" as const,
+                        dragConstraints: { left: 0, right: 0 },
+                        dragElastic: 0.6,
+                        dragSnapToOrigin: true,
+                        onDragEnd: handleDragEnd,
+                      }
+                    : {})}
                   className={cn(
-                    "overflow-hidden rounded-2xl border border-border/70 bg-card shadow-[var(--shadow-bento)]",
-                    isActive ? "z-10" : "pointer-events-none z-0",
+                    "select-none overflow-hidden rounded-2xl border border-border/70 bg-card shadow-[var(--shadow-bento)]",
+                    isActive
+                      ? "z-10 cursor-grab active:cursor-grabbing"
+                      : "pointer-events-none z-0",
                   )}
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
@@ -121,6 +143,7 @@ export function TestimonialsSection() {
                       src={t.image}
                       alt={`${t.org} — caso de éxito Fideltour`}
                       fill
+                      draggable={false}
                       sizes="(min-width:768px) 40vw, 100vw"
                       className="object-cover"
                     />
